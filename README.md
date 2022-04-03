@@ -1,6 +1,8 @@
 ## HardWear – it fits your pocket
 ### Project Overview
-This web and mobile application stays as an interface between users and different retailers.
+This web and mobile application stays as an interface between users and different retailers. With this app, the computer geeks coud purchase the products they are interested in for the right price and best quality.
+
+At HardWear, we keep our customers ahead of the line by providing a discount of 15% and you can see that in the real time by looking at the product tags.
 ### Roles
  	Admin
  	Retailer
