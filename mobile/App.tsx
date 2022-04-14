@@ -1,13 +1,16 @@
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
-import { Button, Dimensions, StyleSheet, Text, View } from 'react-native';
-import { RegistrationScreen } from './src/pages/registration-page';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { RegistrationScreen } from './src/screens/registration-screen';
 import { useFonts } from 'expo-font';
+import { LoginScreen } from './src/screens/login-screen';
+import { MainScreen } from './src/screens/main-screen';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import React from 'react';
 
 
-function useAppNavigation() {
+export function useAppNavigation() {
   const nav = useNavigation();
 
   const navigate = (screen: string) => {
@@ -18,34 +21,25 @@ function useAppNavigation() {
     navigate
   };
 }
-function HomeScreen() {
-  const nav = useAppNavigation();
-  const goToRegister = () => {
-    nav.navigate("Registration");
-  }
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app bjhfvjabdvjab!</Text>
-      <StatusBar style="auto" />
-      <Button title="go to register" onPress={goToRegister}></Button>
-    </View>
-  );
-}
+ 
 export default function App() {
   const Stack = createNativeStackNavigator();
-  let [fontsLoaded] = useFonts({
+  useFonts({
     'JetBrainsMono': require('./assets/fonts/ttf/JetBrainsMono-Regular.ttf'),
     'Open-Sans': require('./assets/fonts/OpenSans/OpenSans-Regular.ttf'),
     'Open-Sans-Bold': require('./assets/fonts/OpenSans/OpenSans-Bold.ttf'),
   });
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Registration">
-        <Stack.Screen name="Registration" component={RegistrationScreen} />
-        {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
+    <SafeAreaView style = {{backgroundColor: "black",  flex: 1}}>
+    <NavigationContainer  >
+      <Stack.Navigator initialRouteName="Main">
+        <Stack.Screen  options = {{ headerStyle: {backgroundColor: "#c6c6c6"} }}  name="Main" component={MainScreen} />
+        <Stack.Screen  options = {{ headerStyle: {backgroundColor: "#c6c6c6"} }} name="Registration" component={RegistrationScreen} />
+        <Stack.Screen  options = {{ headerStyle: {backgroundColor: "#c6c6c6"} }} name="Login" component={LoginScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
