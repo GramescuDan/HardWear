@@ -1,0 +1,26 @@
+
+h1,h2{
+  font-family: "Open Sans";
+  font-size: 20px;
+  font-weight: bolder;
+}
+body{
+  background: var(--color-primary);
+
+  font-family: "JetBrains Mono";
+  font-size: 14px;
+}
+:root{
+  /* Background and all elements colors */
+  --color-primary: #19141A;
+  --color-secundary: #331F33;
+  --color-tertiary: #4D264D;
+  --color-quaternary: #662966;
+
+  --color-accent: #00DB30;
+  --color-warning: #EBDF71;
+
+  --color-main-font: #DEDEDE;
+  --color-secundary-font: #CECECE;
+}
+
