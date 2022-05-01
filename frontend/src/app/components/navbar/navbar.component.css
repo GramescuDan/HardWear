@@ -14,5 +14,23 @@
   padding-right:75px;
   display:flex;
   column-gap: 5px;
+  align-items: center;
 
+}
+.search-bar{
+  padding-right: 10px;
+  background: none;
+  color: var(--color-secundary-font);
+  border: none;
+  height: 25px;
+  width: 250px;
+  padding-left: 10px;
+  outline: none;
+}
+
+.search-bar-border{
+  border: 2px solid;
+  height: 32px;
+  border-color: var(--color-quaternary);
+  border-radius: 4px;
 }

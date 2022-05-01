@@ -13,11 +13,13 @@ button{
 }
 ::ng-deep.mat-menu-panel.user-menu{
   background: var(--color-tertiary);
+  border-radius: 8px;
 }
 .user-content{
   padding-top: 4px;
   display: flex;
   flex-direction: column;
+  row-gap: 10px;
 }
 .user-option{
   padding-right: 10px;
@@ -26,4 +28,8 @@ button{
   color: var(--color-secundary-font);
   background: none;
   border-style: none;
+
+}
+.user-option:hover{
+  color:var(--color-main-font);
 }
