@@ -9,5 +9,6 @@ export class IconButtonComponent{
 
   @Input() Id = ' ';
   @Input() image = ' ';
+  menu: any;
 
 }

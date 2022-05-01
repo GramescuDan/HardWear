@@ -7,6 +7,9 @@ import { IconButtonComponent } from './components/user-button/icon-button.compon
 import { CartButtonComponent } from './components/cart-button/cart-button.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatBadgeModule} from "@angular/material/badge";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -15,11 +18,14 @@ import {MatBadgeModule} from "@angular/material/badge";
     IconButtonComponent,
     CartButtonComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatBadgeModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatBadgeModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

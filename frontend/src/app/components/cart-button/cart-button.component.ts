@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {ICart} from "../../models/cart";
 
 @Component({
   selector: 'app-cart-button',
@@ -9,5 +10,4 @@ export class CartButtonComponent {
 
   @Input() Id = ' ';
   @Input() image = ' ';
-
 }

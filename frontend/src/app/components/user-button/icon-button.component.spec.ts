@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { IconButtonComponent } from './icon-button.component';
+import {ViewChild} from "@angular/core";
+import {MatMenuTrigger} from "@angular/material/menu";
 
 describe('IconButtonComponent', () => {
   let component: IconButtonComponent;
@@ -23,3 +24,4 @@ describe('IconButtonComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

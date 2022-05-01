@@ -1,5 +1,11 @@
 <div class="icon-button">
-  <a [href]="Id">
-    <img [src]="[image]">
-  </a>
+  <button mat-button [matMenuTriggerFor]="menu" disableRipple="true">
+    <img src="assets/user.svg" alt="Account" class="changecolor">
+  </button>
+  <mat-menu #menu="matMenu" yPosition="below" class="user-menu">
+    <div class="user-content">
+      <button class="user-option">My account</button>
+      <button class="user-option">Log out</button>
+    </div>
+  </mat-menu>
 </div>
