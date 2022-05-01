@@ -2,9 +2,11 @@
   <div class="navbar-items">
     <div class="search-bar-border">
       <div style="padding-top: 2px; padding-right: 10px">
-        <input class="search-bar">
+        <input class="search-bar"  (keyup)="onKey($event)" [value]="SearchResult">
       </div>
-      <!--Cand apare scris in input field sa apara x-ul.-->
+      <button class="x"  (click)="clearInputField()" >
+        <img src="assets/x.svg">
+      </button>
     </div>
 
     <app-cart-button image="./assets/shopping-cart.svg"></app-cart-button>

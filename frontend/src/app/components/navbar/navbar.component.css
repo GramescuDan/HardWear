@@ -29,8 +29,14 @@
 }
 
 .search-bar-border{
+  display: flex;
   border: 2px solid;
   height: 32px;
   border-color: var(--color-quaternary);
   border-radius: 4px;
+}
+.x{
+  background: none;
+  outline: none;
+  border: none;
 }
