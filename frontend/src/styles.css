@@ -1,12 +1,13 @@
 
 h1,h2{
+  color:var(--color-main-font);
   font-family: "Open Sans";
   font-size: 20px;
   font-weight: bolder;
 }
 body{
   background: var(--color-primary);
-
+  color:var(--color-secundary-font);
   font-family: "JetBrains Mono";
   font-size: 14px;
 }
@@ -24,3 +25,6 @@ body{
   --color-secundary-font: #CECECE;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

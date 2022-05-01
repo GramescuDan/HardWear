@@ -1,0 +1,11 @@
+.cart-button{
+  padding: 6px;
+
+}
+
+.mat-badge-content {
+  background: var(--color-accent);
+  color: var(--color-secundary);
+  left:14px;
+  top:16px
+}
