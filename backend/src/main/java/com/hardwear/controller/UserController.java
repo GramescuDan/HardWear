@@ -6,9 +6,12 @@ import com.hardwear.exception.DuplicateEntityException;
 import com.hardwear.exception.EntityNotFoundException;
 import com.hardwear.model.User;
 import com.hardwear.service.userservice.UserService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +22,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
@@ -47,6 +52,19 @@ public class UserController {
 
         User savedUser = this.userService.saveOrUpdate(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> authenticateUser(@RequestBody @NotNull User userData) {
+        Optional<User> optionalUser = userService.findByUsername(userData.getUsername());
+
+        if (optionalUser.isPresent()) {
+            if (passwordEncoder.matches(userData.getPassword(), optionalUser.get().getPassword())) {   //verify if the plain text password match the encoded password from DB
+                return ResponseEntity.ok(optionalUser.get());
+            }
+        }
+
+        throw new UsernameNotFoundException("Username: " + userData.getUsername() + " not found!");
     }
 
     @PutMapping("/users/{userId}")

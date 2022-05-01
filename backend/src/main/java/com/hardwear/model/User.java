@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -14,9 +16,11 @@ import static javax.persistence.GenerationType.IDENTITY;
         @UniqueConstraint(name = "user_username_unique", columnNames = "username")})
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+@Builder
 public class User {
 
     @Id
@@ -44,10 +48,25 @@ public class User {
     private String phone;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Column(name = "day_of_registration", nullable = false, columnDefinition = "DATE")
-    private LocalDate dateOfRegistration;
+    @Column(name = "date", nullable = false, columnDefinition = "DATE")
+    private LocalDate date;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Role role;
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    private Boolean enabled = false; //email validation
+
+    public User(String email, String password, String firstName, String lastName, String username,
+                String phone, LocalDate dateOfBirth, Set<Role> roles) {
+
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.phone = phone;
+        this.date = dateOfBirth;
+        this.roles = roles;
+    }
 }
