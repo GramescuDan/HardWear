@@ -1,11 +1,13 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { useAppNavigation } from "../../App";
 import { AuthentificationBox } from "../components/AuthentificationBox";
-import { px } from "../hooks/utils";
+import { px, useAppNavigation } from "../hooks/utils";
 
 export function LoginScreen() {
-  
+    const nav = useAppNavigation();
+    const goToProducts = () => {
+      nav.navigate("Products");
+    }
     return (
         <AuthentificationBox
             welcome="Welcome back"
@@ -14,6 +16,7 @@ export function LoginScreen() {
             password="Password"
             checkAccount="Forgot password?"
             buttonText="Login"
+            buttonOnPress = {goToProducts}
         ></AuthentificationBox>
 
     );
