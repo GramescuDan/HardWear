@@ -13,7 +13,7 @@
 .navbar-items{
   padding-right:75px;
   display:flex;
-  column-gap: 5px;
+  column-gap: 20px;
   align-items: center;
 
 }

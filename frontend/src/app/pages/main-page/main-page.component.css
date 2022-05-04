@@ -1,0 +1,19 @@
+.main-page-contents{
+  padding-left: 74px;
+  padding-right: 74px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+.main-page-cover{
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+.cover-text{
+  position: relative;
+  bottom: 80px;
+  left: 60px;
+  font-size: 60px;
+  font-family: "Open Sans Semibold";
+}

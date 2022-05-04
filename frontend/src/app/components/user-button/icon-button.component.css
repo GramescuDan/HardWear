@@ -12,6 +12,7 @@ button{
   fill: var(--color-accent);
 }
 ::ng-deep.mat-menu-panel.user-menu{
+  margin-top: 20px;
   background: var(--color-tertiary);
   border-radius: 8px;
 }

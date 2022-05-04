@@ -2,7 +2,7 @@
   <div class="navbar-items">
     <div class="search-bar-border">
       <div style="padding-top: 2px; padding-right: 10px">
-        <input class="search-bar"  (keyup)="onKey($event)" [value]="SearchResult">
+        <input class="search-bar"  (keyup)="onKey($event)" [value]="SearchResult" placeholder="Search for parts here">
       </div>
       <button class="x" (click)="clearInputField()" >
         <img *ngIf="!SearchResult" src="assets/lupa.svg">
