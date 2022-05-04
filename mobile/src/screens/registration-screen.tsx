@@ -1,8 +1,9 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { useAppNavigation } from "../../App";
 import { AuthentificationBox } from "../components/AuthentificationBox";
-import { px } from "../hooks/utils";
+import { StackNavComponent } from "../components/StackNavigation";
+import { px, useAppNavigation } from "../hooks/utils";
 
 
 export function RegistrationScreen() {
@@ -11,6 +12,7 @@ export function RegistrationScreen() {
       nav.navigate("Login");
     }
     return (
+  
         <AuthentificationBox
             welcome="Hello"
             completeFields="Please complete the fields"
@@ -18,7 +20,7 @@ export function RegistrationScreen() {
             password="Password"
             checkAccount="Have an account already?"
             buttonText="Register"
-            buttonOnPress = {goToLogin}
+            textOnPress = {goToLogin}
         ></AuthentificationBox>
 
     );

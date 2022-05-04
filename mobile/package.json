@@ -10,15 +10,21 @@
         "eject": "expo eject"
     },
     "dependencies": {
+        "@react-navigation/material-bottom-tabs": "^6.2.1",
         "@react-navigation/native": "^6.0.10",
         "@react-navigation/native-stack": "^6.6.1",
         "expo": "~44.0.0",
+        "expo-image-manipulator": "^10.2.1",
         "expo-status-bar": "~1.2.0",
         "react": "17.0.1",
         "react-dom": "17.0.1",
         "react-native": "0.64.3",
+        "react-native-image-crop-picker": "^0.37.3",
+        "react-native-paper": "^4.12.0",
+        "react-native-permissions": "^3.3.1",
         "react-native-safe-area-context": "3.3.2",
         "react-native-screens": "^3.13.1",
+        "react-native-vector-icons": "^9.1.0",
         "react-native-web": "0.17.1",
         "react-router": "^6.3.0",
         "react-router-dom": "^6.3.0"
