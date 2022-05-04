@@ -5,12 +5,12 @@
         <input class="search-bar"  (keyup)="onKey($event)" [value]="SearchResult" placeholder="Search for parts here">
       </div>
       <button class="x" (click)="clearInputField()" >
-        <img *ngIf="!SearchResult" src="assets/lupa.svg">
-        <img  *ngIf="SearchResult" src="assets/x.svg" style="padding: 2.5px">
+        <img *ngIf="!SearchResult" src="/assets/lupa.svg">
+        <img  *ngIf="SearchResult" src="/assets/x.svg" style="padding: 2.5px">
       </button>
     </div>
 
-    <app-cart-button image="./assets/shopping-cart.svg"></app-cart-button>
-    <app-user-button image="./assets/user.svg"></app-user-button>
+    <app-cart-button image="/assets/shopping-cart.svg"></app-cart-button>
+    <app-user-button image="/assets/user.svg"></app-user-button>
   </div>
 </div>

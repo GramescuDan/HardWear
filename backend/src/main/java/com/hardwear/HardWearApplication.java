@@ -2,9 +2,11 @@ package com.hardwear;
 
 import com.hardwear.exception.DatabaseException;
 import com.hardwear.exception.UsernameAlreadyExistsException;
+import com.hardwear.model.Category;
 import com.hardwear.model.ConfirmationToken;
 import com.hardwear.model.Role;
 import com.hardwear.model.User;
+import com.hardwear.service.categoryservice.CategoryService;
 import com.hardwear.service.confirmationtokenservive.ConfirmationTokenService;
 import com.hardwear.service.roleservice.RoleService;
 import com.hardwear.service.userservice.UserService;
@@ -33,6 +35,9 @@ public class HardWearApplication implements CommandLineRunner {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @Autowired
     private RoleService roleService;
@@ -85,7 +90,7 @@ public class HardWearApplication implements CommandLineRunner {
 
             confirmationTokenService.saveConfirmationToken(adminConfirmationToken);
         } else {
-            throw new UsernameAlreadyExistsException("Admin is already defined");
+            System.out.println("Admin is already defined");
         }
     }
 

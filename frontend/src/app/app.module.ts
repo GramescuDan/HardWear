@@ -16,6 +16,9 @@ import {FormsModule} from "@angular/forms";
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MyAccountPageComponent } from './pages/my-account-page/my-account-page.component';
 import {RouterModule} from "@angular/router";
+import {AngularSvgIconModule} from "angular-svg-icon";
+import {AppRoutingModule} from "./pages/app.routing";
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -26,19 +29,22 @@ import {RouterModule} from "@angular/router";
     MainPageComponent,
     MyAccountPageComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatBadgeModule,
-        MatMenuModule,
-        MatIconModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-        RouterModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatBadgeModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    RouterModule,
+    AngularSvgIconModule,
+    AppRoutingModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export const routingComponents = [MainPageComponent,MyAccountPageComponent,NotFoundPageComponent]

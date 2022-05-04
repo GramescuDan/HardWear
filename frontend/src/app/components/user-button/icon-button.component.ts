@@ -15,7 +15,7 @@ export class IconButtonComponent implements OnInit{
   menu: any;
 
   onMyAccountClick() : void{
-//this.router.navigateByUrl("/my-account");
+this.router.navigateByUrl('/my-account');
   }
 
   ngOnInit(): void {

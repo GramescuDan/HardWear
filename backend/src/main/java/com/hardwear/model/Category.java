@@ -16,10 +16,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Category {
 
     @Id
-    @Column(name = "category", updatable = false, columnDefinition = "INTEGER")
+    @Column(name = "id", updatable = false, columnDefinition = "INTEGER")
     @GeneratedValue(strategy = IDENTITY)
     @SequenceGenerator(name = "category_sequence", sequenceName = "category_sequence", allocationSize = 1)
-    private Integer category;
+    private Integer id;
 
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
     private String name;
