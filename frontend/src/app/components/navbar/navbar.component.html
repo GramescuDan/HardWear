@@ -4,8 +4,9 @@
       <div style="padding-top: 2px; padding-right: 10px">
         <input class="search-bar"  (keyup)="onKey($event)" [value]="SearchResult">
       </div>
-      <button class="x"  (click)="clearInputField()" >
-        <img src="assets/x.svg">
+      <button class="x" (click)="clearInputField()" >
+        <img *ngIf="!SearchResult" src="assets/lupa.svg">
+        <img  *ngIf="SearchResult" src="assets/x.svg" style="padding: 2.5px">
       </button>
     </div>
 

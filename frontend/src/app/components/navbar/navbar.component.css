@@ -24,6 +24,8 @@
   border: none;
   height: 25px;
   width: 250px;
+  max-width: 250px;
+  min-width: 250px;
   padding-left: 10px;
   outline: none;
 }
@@ -32,6 +34,8 @@
   display: flex;
   border: 2px solid;
   height: 32px;
+  max-width:inherit ;
+  min-width: inherit;
   border-color: var(--color-quaternary);
   border-radius: 4px;
 }
