@@ -14,6 +14,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { MyAccountPageComponent } from './pages/my-account-page/my-account-page.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -21,19 +23,21 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     NavbarComponent,
     IconButtonComponent,
     CartButtonComponent,
-    MainPageComponent
+    MainPageComponent,
+    MyAccountPageComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatBadgeModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatBadgeModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        RouterModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
