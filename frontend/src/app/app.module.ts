@@ -27,7 +27,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     IconButtonComponent,
     CartButtonComponent,
     MainPageComponent,
-    MyAccountPageComponent
+    MyAccountPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,

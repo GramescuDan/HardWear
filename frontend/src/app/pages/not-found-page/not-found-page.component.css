@@ -1,0 +1,34 @@
+.not-found{
+  font-family: JetBrains Mono;
+  font-size: 300px;
+  font-weight: 700;
+  line-height: 396px;
+  letter-spacing: -0.085em;
+  text-align: center;
+  color: rgba(102, 41, 102, 1);
+}
+
+.not-found-text{
+  font-family: JetBrains Mono;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.085em;
+  text-align: center;
+  color: rgba(102, 41, 102, 1);
+}
+button{
+  width: 138px;
+  height: 32px;
+  left: 651px;
+  top: 685px;
+
+  background: #10DD3D;
+  border-radius: 8px;
+  border-style: none;
+}
+div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
