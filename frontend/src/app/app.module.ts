@@ -19,6 +19,7 @@ import {RouterModule} from "@angular/router";
 import {AngularSvgIconModule} from "angular-svg-icon";
 import {AppRoutingModule} from "./pages/app.routing";
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { CategoryButtonComponent } from './components/category-button/category-button.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     CartButtonComponent,
     MainPageComponent,
     MyAccountPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    CategoryButtonComponent
   ],
   imports: [
     BrowserModule,

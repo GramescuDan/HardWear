@@ -19,4 +19,9 @@
   font-family: "Open Sans Semibold", serif;
   font-size: 3vw;
 }
+.category-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
