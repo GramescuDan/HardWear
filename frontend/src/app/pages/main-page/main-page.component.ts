@@ -11,10 +11,10 @@ export class MainPageComponent implements OnInit {
   categories: ICategory[] | undefined;
 
 
-  //constructor(private readonly _category : CategoryService) { }
+  constructor(private readonly _category : CategoryService) { }
 
   ngOnInit(): void {
-    //this._category.get().subscribe(categories => this.categories = categories)
+    this._category.get().subscribe(categories => this.categories = categories)
   }
 
 }
