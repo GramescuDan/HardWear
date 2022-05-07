@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../../services/user-service";
+import {firstValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-log-in-card',
@@ -23,7 +24,11 @@ export class LogInCardComponent implements OnInit {
     }
   }
 
-  loginpress():void{
-this._user.post(this.Username,this.Password);
+  async loginpress():Promise<void>{
+    let message = {
+      useranme: this.Username,
+      password: this.Password
+    }
+    await firstValueFrom(this._user.post(message));
   }
 }

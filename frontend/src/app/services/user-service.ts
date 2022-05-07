@@ -17,7 +17,19 @@ export class UserService {
   ) {
   }
 
-  post(username: String, password:String): Observable<IUser> {
-  return this._http.post<IUser>(this._apiUrl,[username,password]).pipe(tap(user => GlobalVars.user = user))
+  post(message: any): Observable<IUser> {
+    let user:{ id:any,password: any; role: string; phone: string; localdate: Date; last_name: string; first_name: string; email: string; username: any } = {
+      id:null,  
+      email:'',
+      password: message.password,
+      first_name : '',
+      last_name : '',
+      username: message.username,
+      phone : '',
+      localdate: new Date(),
+      role: ''
+    };
+
+  return this._http.post<IUser>(this._apiUrl,user).pipe(tap(user => GlobalVars.user = user));
   }
 }
