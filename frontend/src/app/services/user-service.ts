@@ -9,7 +9,7 @@ import {Injectable} from "@angular/core";
 })
 
 export class UserService {
-  private readonly _apiUrl = environment.apiUrl + 'users/login';
+  private readonly _apiUrl = environment.apiUrl + 'users';
 
   constructor(
     private readonly _http: HttpClient
@@ -17,6 +17,11 @@ export class UserService {
   }
 
   post(user:IUser): Observable<IUser> {
-return this._http.post<IUser>(this._apiUrl,user);
+    let url = this._apiUrl + "/login";
+return this._http.post<IUser>(url,user);
+  }
+
+  register(user:IUser): Observable<IUser> {
+    return this._http.post<IUser>(this._apiUrl,user);
   }
 }

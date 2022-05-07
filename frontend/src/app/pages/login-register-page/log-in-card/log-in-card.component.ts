@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../../services/user-service";
-import {firstValueFrom} from "rxjs";
 import {IUser} from "../../../models/user";
 import {GlobalVars} from "../../../services/global-vars";
 import {Router} from "@angular/router";

@@ -40,7 +40,7 @@ export class RegisterCardComponent implements OnInit {
 
   registerpress():void{
 
-    this._user.post(this.user).subscribe(data =>{
+    this._user.register(this.user).subscribe(data =>{
         GlobalVars.user = data;
         this.router.navigateByUrl('');
       }, error => alert('login failed!')
