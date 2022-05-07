@@ -27,6 +27,7 @@ import { ButtonFullComponent } from './pages/login-register-page/button-full/but
 import { ButtonOutlineComponent } from './pages/login-register-page/button-outline/button-outline.component';
 import { MainCardComponent } from './pages/login-register-page/main-card/main-card.component';
 import { LogInCardComponent } from './pages/login-register-page/log-in-card/log-in-card.component';
+import { RegisterCardComponent } from './pages/login-register-page/register-card/register-card.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { LogInCardComponent } from './pages/login-register-page/log-in-card/log-
     ButtonOutlineComponent,
     MainCardComponent,
     LogInCardComponent,
+    RegisterCardComponent,
   ],
   imports: [
     HttpClientModule,
