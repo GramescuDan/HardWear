@@ -16,13 +16,16 @@ h1,p{
   margin-right: 3vw;
 }
 .login-buttons{
-  padding-top: 32px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  column-gap: 20px;
 }
 
 ::ng-deep.mat-input-element, .mat-input-element{
   color:var(--color-secundary-font);
+}
+input{
+  border-color: var(--color-quaternary);
+  border-radius: 4px;
 }

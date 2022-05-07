@@ -1,12 +1,23 @@
 <div class="form-start">
   <h1>Welcome back!</h1>
   <p>Let’s make your PC shine like no other!</p>
-  <mat-form-field>
+  <div style="display: flex;align-content: center; flex-direction: column;align-items: center;">
+  <!--Username Field-->
+  <mat-form-field appearance="outline">
     <mat-label>Username</mat-label>
-    <input matInput [formControl]="Username" ]>
+    <input matInput [value]="Username" (keyup)="onKey($event, 0)" >
   </mat-form-field>
-  <div class="login-buttons">
-    <app-button-full text="Log in" ></app-button-full>
-    <app-button-outline text="Back"></app-button-outline>
+  <!--Password Field-->
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" (keyup)="onKey($event, 1)" >
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+      <div class="login-buttons">
+      <app-button-full text="Log in" (click)="loginpress()"></app-button-full>
+      <app-button-outline text="Back"></app-button-outline>
+    </div>
   </div>
 </div>
