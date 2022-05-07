@@ -19,3 +19,9 @@ background: var(--color-secundary);
   margin-top: 34px;
   margin-right: 70px;
 }
+.footer-list{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
