@@ -1,4 +1,5 @@
 import http from '../http-common';
+import { RegInfo } from '../screens/registration-screen';
 
 class UserService {
     getAll() {
@@ -9,7 +10,7 @@ class UserService {
         return http.post('users/login', data);
     }
 
-    register(data: {password: string, username: string}) {
+    register(data: RegInfo<string>) {
       return http.post("/users", data);
     }
 
