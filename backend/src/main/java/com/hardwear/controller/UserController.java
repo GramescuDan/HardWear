@@ -1,9 +1,6 @@
 package com.hardwear.controller;
 
-import com.hardwear.exception.ControllerException;
-import com.hardwear.exception.DatabaseException;
-import com.hardwear.exception.DuplicateEntityException;
-import com.hardwear.exception.EntityNotFoundException;
+import com.hardwear.exception.*;
 import com.hardwear.model.User;
 import com.hardwear.service.userservice.UserService;
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +20,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/users")
@@ -50,11 +48,26 @@ public class UserController {
             throw new ControllerException("User id should be null");
         }
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = this.userService.saveOrUpdate(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
-    @PostMapping("/login")
+//    @PostMapping("/users/login")
+//    public ResponseEntity<?> authenticateUser(@RequestBody @NotNull String username,
+//                                              @RequestBody @NotNull String password) {
+//        Optional<User> optionalUser = userService.findByUsername(username);
+//
+//        if (optionalUser.isPresent()) {
+//            if (passwordEncoder.matches(password, optionalUser.get().getPassword())) {   //verify if the plain text password match the encoded password from DB
+//                return ResponseEntity.ok(optionalUser.get());
+//            }
+//            throw new BadCredentialsException("password not found");
+//        }
+//        throw new UsernameNotFoundException("username not found");
+//    }
+
+    @PostMapping("/users/login")
     public ResponseEntity<?> authenticateUser(@RequestBody @NotNull User userData) {
         Optional<User> optionalUser = userService.findByUsername(userData.getUsername());
 
@@ -62,8 +75,8 @@ public class UserController {
             if (passwordEncoder.matches(userData.getPassword(), optionalUser.get().getPassword())) {   //verify if the plain text password match the encoded password from DB
                 return ResponseEntity.ok(optionalUser.get());
             }
+            throw new BadCredentialsException("password not found");
         }
-
         throw new UsernameNotFoundException("Username: " + userData.getUsername() + " not found!");
     }
 

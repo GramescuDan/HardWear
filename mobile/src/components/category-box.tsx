@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image, ImageSourcePropType } from "react-
 import { px, useAppNavigation } from "../hooks/utils";
 import { SubCategoryType } from "../screens/home/home-screen";
 
-export function CategoryBox(p: { categoryName: string, imageSource: ImageSourcePropType, subCategory?: SubCategoryType }) {
+export function CategoryBox(p: { categoryName: string, imageSource: ImageSourcePropType, subCategory?: SubCategoryType[] }) {
     const nav = useAppNavigation();
 
     const onPress = () => {
