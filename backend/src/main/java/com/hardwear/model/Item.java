@@ -43,9 +43,17 @@ public class Item {
     @Column(name = "quantity", updatable = false, columnDefinition = "INTEGER")
     private Integer quantity;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(name = "item_categories",
-            joinColumns = @JoinColumn(name = "item_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Category> categories;
+    @ElementCollection
+    private List<String> categories;
+
+    public Item(String thumbnail, List<String> images, String description, String shortDescription, String name, Integer price, Integer quantity, List<String> categories) {
+        this.thumbnail = thumbnail;
+        this.images = images;
+        this.description = description;
+        this.shortDescription = shortDescription;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.categories = categories;
+    }
 }
