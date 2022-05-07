@@ -82,7 +82,6 @@ export const categories = [
 export function HomeScreen() {
   const [searchedResults, setSearchedResults] = useState<typeof categories>();
   const [searchInput, setSearchInput] = useState<string>();
-  console.log(categories.length)
   const changeSearchInput = (val: string) => {
     setSearchInput(val);
   };

@@ -5,9 +5,13 @@ class UserService {
         return http.get("/users");
       }
 
-    // login(data: {email: string, password: string}) {
-    //     return http.post('/login', data);
-    // }
+    login(data: {username: string, password: string}) {
+        return http.post('users/login', data);
+    }
+
+    register(data: {password: string, username: string}) {
+      return http.post("/users", data);
+    }
 
     
     }

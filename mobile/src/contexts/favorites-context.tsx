@@ -21,7 +21,9 @@ function useFavorite() {
 
     const getItemsToFavorite = async () => {
         const favorite = await AsyncStorage.getItem("favorite");
-        setFavoriteItems(JSON.parse(favorite!));
+        if (favorite) {
+            setFavoriteItems(JSON.parse(favorite!));
+        }
     }
 
     return function() {
