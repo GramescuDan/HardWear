@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +51,7 @@ public class UserController {
 //            }
 //            throw new ControllerException("User id should be null");
 //        }
+//      TODO: check if email and username are unique
         User user = UserDto.toEntity(userDto);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         User savedUser = this.userService.saveOrUpdate(user);
@@ -78,9 +80,9 @@ public class UserController {
             if (passwordEncoder.matches(userDto.getPassword(), optionalUser.get().getPassword())) {   //verify if the plain text password match the encoded password from DB
                 return ResponseEntity.ok(optionalUser.get());
             }
-            throw new BadCredentialsException("password not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Password not found");
         }
-        throw new UsernameNotFoundException("Username: " + userDto.getUsername() + " not found!");
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Username not found");
     }
 
     @PutMapping("/users/{userId}")
