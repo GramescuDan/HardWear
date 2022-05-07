@@ -10,7 +10,7 @@ import {ICategory} from "../models/category";
 })
 
 export class CategoryService {
-  private readonly _apiUrl = environment.apiUrl + 'Category';
+  private readonly _apiUrl = environment.apiUrl + 'categories';
 
   constructor(
     private readonly _http: HttpClient

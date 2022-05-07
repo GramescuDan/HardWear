@@ -30,7 +30,7 @@ public class User {
     private Integer id;
 
     @Column(name = "email", nullable = false, columnDefinition = "TEXT")
-    private String email;
+    private String   email;
 
     @Column(name = "password", nullable = false, columnDefinition = "TEXT")
     private String password;

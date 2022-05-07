@@ -2,12 +2,13 @@
   display: flex;
   padding-left: 74px;
   padding-right: 74px;
-
   flex-direction: column;
-  row-gap: 0.85vw;
+  row-gap: 1vw;
 }
 .main-page-cover{
+
   display: flex;
+  height: 73vh;
   flex-direction: column;
   font-size: 20px;
   max-width: 100%;
@@ -16,7 +17,6 @@
   position: relative;
   bottom: 4.25vw;
   left: 3.19vw;
-  font-family: "Open Sans Semibold", serif;
   font-size: 3vw;
 }
 .category-section{

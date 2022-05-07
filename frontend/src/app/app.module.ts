@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -19,7 +20,9 @@ import {RouterModule} from "@angular/router";
 import {AngularSvgIconModule} from "angular-svg-icon";
 import {AppRoutingModule} from "./pages/app.routing";
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { CategoryButtonComponent } from './components/category-button/category-button.component';
+import {CategoryButtonComponent} from "./pages/main-page/category-button/category-button.component";
+import { LoginRegisterPageComponent } from './pages/login-register-page/login-register-page.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -30,9 +33,11 @@ import { CategoryButtonComponent } from './components/category-button/category-b
     MainPageComponent,
     MyAccountPageComponent,
     NotFoundPageComponent,
-    CategoryButtonComponent
+    CategoryButtonComponent,
+    LoginRegisterPageComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatBadgeModule,
@@ -44,7 +49,8 @@ import { CategoryButtonComponent } from './components/category-button/category-b
     FormsModule,
     RouterModule,
     AngularSvgIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
