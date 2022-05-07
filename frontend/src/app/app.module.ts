@@ -21,6 +21,7 @@ import {AngularSvgIconModule} from "angular-svg-icon";
 import {AppRoutingModule} from "./pages/app.routing";
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import {CategoryButtonComponent} from "./pages/main-page/category-button/category-button.component";
+import { LoginRegisterPageComponent } from './pages/login-register-page/login-register-page.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {CategoryButtonComponent} from "./pages/main-page/category-button/categor
     MyAccountPageComponent,
     NotFoundPageComponent,
     CategoryButtonComponent,
+    LoginRegisterPageComponent,
   ],
   imports: [
     HttpClientModule,
