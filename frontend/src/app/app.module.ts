@@ -23,6 +23,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import {CategoryButtonComponent} from "./pages/main-page/category-button/category-button.component";
 import { LoginRegisterPageComponent } from './pages/login-register-page/login-register-page.component';
 import {MatStepperModule} from "@angular/material/stepper";
+import { ButtonFullComponent } from './pages/login-register-page/button-full/button-full.component';
+import { ButtonOutlineComponent } from './pages/login-register-page/button-outline/button-outline.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import {MatStepperModule} from "@angular/material/stepper";
     NotFoundPageComponent,
     CategoryButtonComponent,
     LoginRegisterPageComponent,
+    ButtonFullComponent,
+    ButtonOutlineComponent,
   ],
   imports: [
     HttpClientModule,

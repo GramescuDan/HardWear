@@ -16,12 +16,12 @@ html,body{
 .form-start{
   top:0;
   position: absolute;
-  padding-top: 5vh;
+  padding-top: 10vh;
   background: rgb(51,31,51,95%);
   margin-top: 21.72vh;
   margin-left:  9.57vw;
   width: 22.35vw;
-  height: 48.13vh;
+  height: 38.13vh;
   border-radius: 20px;
   z-index: 1;
 }
@@ -31,4 +31,19 @@ html,body{
   background-size: cover;
   height: 100%;
   z-index: -1;
+}
+.login-button{
+
+}
+
+.register-button{
+
+
+}
+.login-buttons{
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 32px;
 }
