@@ -21,6 +21,8 @@ import {AngularSvgIconModule} from "angular-svg-icon";
 import {AppRoutingModule} from "./pages/app.routing";
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import {CategoryButtonComponent} from "./pages/main-page/category-button/category-button.component";
+import { FooterComponent } from './components/footer/footer.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {CategoryButtonComponent} from "./pages/main-page/category-button/categor
     MyAccountPageComponent,
     NotFoundPageComponent,
     CategoryButtonComponent,
+    FooterComponent,
   ],
   imports: [
     HttpClientModule,
@@ -46,7 +49,8 @@ import {CategoryButtonComponent} from "./pages/main-page/category-button/categor
     FormsModule,
     RouterModule,
     AngularSvgIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
