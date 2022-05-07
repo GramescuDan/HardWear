@@ -12,7 +12,7 @@ export function StackNavComponent() {
 
     return (
         
-        <Stack.Navigator screenOptions = {{headerTitle: ""}} >
+        <Stack.Navigator screenOptions = {{headerTitle: ""}} initialRouteName = "Main" >
             <Stack.Screen options={{ headerStyle: { backgroundColor: "#c6c6c6" } }} name="Main" component={MainScreen} />
             <Stack.Screen options={{ headerStyle: { backgroundColor: "#c6c6c6" } }} name="Registration" component={RegistrationScreen} />
             <Stack.Screen options={{ headerStyle: { backgroundColor: "#c6c6c6" } }} name="Login" component={LoginScreen} />
