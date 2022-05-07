@@ -10,7 +10,8 @@ import { CustomTextInput } from "../components/custom-text-inputs";
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 
-type RegInfo<T> = {
+export type RegInfo<T> = {
+    id: number,
     username: T,
     email: T,
     password: T,
@@ -23,7 +24,16 @@ type RegInfo<T> = {
 
 export function RegistrationScreen() {
     const nav = useAppNavigation();
-    const [regInfo, setRegInfo] = useState<RegInfo<string>>()
+    const [regInfo, setRegInfo] = useState<RegInfo<string>>({
+        id: 0,
+        date: "",
+        email: "",
+        firstName: "",
+        lastName: "",
+        password: "",
+        phone: "",
+        username: ""
+    })
   
     const register = async (regInfo: RegInfo<string>) => {
         try {
