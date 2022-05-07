@@ -30,7 +30,7 @@ public class User {
     private Integer id;
 
     @Column(name = "email", nullable = false, columnDefinition = "TEXT")
-    private String   email;
+    private String email;
 
     @Column(name = "password", nullable = false, columnDefinition = "TEXT")
     private String password;
@@ -57,9 +57,10 @@ public class User {
 
     private Boolean enabled = false; //email validation
 
-    public User(String email, String password, String firstName, String lastName, String username,
-                String phone, LocalDate dateOfBirth, Set<Role> roles) {
+    public User(int id, String email, String password, String firstName, String lastName, String username,
+                String phone, LocalDate dateOfBirth) {
 
+        this.id = id;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -67,6 +68,5 @@ public class User {
         this.username = username;
         this.phone = phone;
         this.date = dateOfBirth;
-        this.roles = roles;
     }
 }

@@ -1,6 +1,9 @@
 package com.hardwear.controller;
 
-import com.hardwear.exception.*;
+import com.hardwear.dto.UserDto;
+import com.hardwear.exception.BadCredentialsException;
+import com.hardwear.exception.DatabaseException;
+import com.hardwear.exception.EntityNotFoundException;
 import com.hardwear.model.User;
 import com.hardwear.service.userservice.UserService;
 import org.jetbrains.annotations.NotNull;
@@ -39,18 +42,18 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) throws DatabaseException, ControllerException {
-        if (user.getId() != null) {
-            Optional<User> optionalUser = userService.getById(user.getId());
-            if (optionalUser.isPresent()) {
-                throw new DuplicateEntityException("User with id " + user.getId() + " already exists");
-            }
-            throw new ControllerException("User id should be null");
-        }
-
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) throws DatabaseException {
+//        if (user.getId() != null) {
+//            Optional<User> optionalUser = userService.getById(user.getId());
+//            if (optionalUser.isPresent()) {
+//                throw new DuplicateEntityException("User with id " + user.getId() + " already exists");
+//            }
+//            throw new ControllerException("User id should be null");
+//        }
+        User user = UserDto.toEntity(userDto);
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         User savedUser = this.userService.saveOrUpdate(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+        return new ResponseEntity<>(UserDto.toDto(savedUser), HttpStatus.CREATED);
     }
 
 //    @PostMapping("/users/login")
@@ -68,27 +71,27 @@ public class UserController {
 //    }
 
     @PostMapping("/users/login")
-    public ResponseEntity<?> authenticateUser(@RequestBody @NotNull User userData) {
-        Optional<User> optionalUser = userService.findByUsername(userData.getUsername());
+    public ResponseEntity<?> authenticateUser(@RequestBody @NotNull UserDto userDto) {
+        Optional<User> optionalUser = userService.findByUsername(userDto.getUsername());
 
         if (optionalUser.isPresent()) {
-            if (passwordEncoder.matches(userData.getPassword(), optionalUser.get().getPassword())) {   //verify if the plain text password match the encoded password from DB
+            if (passwordEncoder.matches(userDto.getPassword(), optionalUser.get().getPassword())) {   //verify if the plain text password match the encoded password from DB
                 return ResponseEntity.ok(optionalUser.get());
             }
             throw new BadCredentialsException("password not found");
         }
-        throw new UsernameNotFoundException("Username: " + userData.getUsername() + " not found!");
+        throw new UsernameNotFoundException("Username: " + userDto.getUsername() + " not found!");
     }
 
     @PutMapping("/users/{userId}")
     public User updateUser(@PathVariable Integer userId,
-                           @RequestBody User user) throws DatabaseException {
-        if (userId.equals(user.getId())) {
-            Optional<User> optionalUser = this.userService.getById(userId);
-            if (optionalUser.isPresent()) {
-                return this.userService.saveOrUpdate(user);
-            }
+                           @RequestBody UserDto userDto) throws DatabaseException {
+
+        Optional<User> optionalUser = this.userService.getById(userId);
+        if (optionalUser.isPresent()) {
+            return this.userService.saveOrUpdate(UserDto.toEntity(userDto));
         }
+
         throw new EntityNotFoundException("User with id " + userId + " not found");
     }
 
