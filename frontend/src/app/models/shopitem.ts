@@ -1,8 +1,8 @@
 import {IBase} from './base';
-import {ICustomer} from "./customer";
+import {IUser} from "./user";
 
 export interface IShopItem extends IBase{
-  customer: ICustomer;
+  user: IUser;
   stock: number;
   price: number;
   nameItem: string;

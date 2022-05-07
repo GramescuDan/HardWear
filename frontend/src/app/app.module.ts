@@ -22,6 +22,7 @@ import {AppRoutingModule} from "./pages/app.routing";
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import {CategoryButtonComponent} from "./pages/main-page/category-button/category-button.component";
 import { LoginRegisterPageComponent } from './pages/login-register-page/login-register-page.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LoginRegisterPageComponent } from './pages/login-register-page/login-re
     FormsModule,
     RouterModule,
     AngularSvgIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

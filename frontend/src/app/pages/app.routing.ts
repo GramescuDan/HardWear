@@ -8,8 +8,9 @@ import {LoginRegisterPageComponent} from "./login-register-page/login-register-p
 const routes: Routes = [
   {path:'my-account', component: MyAccountPageComponent},
   {path:'', component:MainPageComponent},
-  {path:"**", component:NotFoundPageComponent},
-  {path:'login', component:LoginRegisterPageComponent}
+  {path:'login', component:LoginRegisterPageComponent},
+  {path:"**", component:NotFoundPageComponent}
+
 ];
 
 @NgModule({
