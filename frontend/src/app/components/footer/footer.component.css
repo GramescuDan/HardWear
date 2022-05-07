@@ -1,0 +1,21 @@
+::ng-deep.mat-expansion-panel{
+  background: var(--color-secundary);
+  color: var(--color-secundary-font);
+  border: none;
+}
+::ng-deep.mat-expansion-panel-header-title{
+  color: var(--color-main-font);
+}
+.footer{
+
+  position: fixed;
+  bottom: 0;
+  padding-right: 400%;
+background: var(--color-secundary);
+}
+.footer-background{
+  margin-bottom: 60px;
+  margin-left: 70px;
+  margin-top: 34px;
+  margin-right: 70px;
+}
