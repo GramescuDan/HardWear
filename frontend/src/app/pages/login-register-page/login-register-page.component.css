@@ -1,21 +1,34 @@
-body{
-  background-image: url("/src/assets/login-background.gif");
+img{
   background-size:100%;
   height:100%;
   width:100%;
 }
 
+
 h1,p{
-  margin-left:5vw;
+  margin-left:3vw;
   margin-right:5vw;
 }
-
+html,body{
+  height: 100%;
+  margin: 0;
+}
 .form-start{
+  top:0;
+  position: absolute;
   padding-top: 5vh;
-  background: var(--color-secundary);
+  background: rgb(51,31,51,95%);
   margin-top: 21.72vh;
   margin-left:  9.57vw;
   width: 22.35vw;
   height: 48.13vh;
   border-radius: 20px;
+  z-index: 1;
+}
+.background-image{
+  position: relative;
+  background: url("/assets/background-vid.gif") no-repeat fixed;
+  background-size: cover;
+  height: 100%;
+  z-index: -1;
 }
