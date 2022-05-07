@@ -13,7 +13,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MyAccountPageComponent } from './pages/my-account-page/my-account-page.component';
 import {RouterModule} from "@angular/router";
@@ -25,6 +25,8 @@ import { LoginRegisterPageComponent } from './pages/login-register-page/login-re
 import {MatStepperModule} from "@angular/material/stepper";
 import { ButtonFullComponent } from './pages/login-register-page/button-full/button-full.component';
 import { ButtonOutlineComponent } from './pages/login-register-page/button-outline/button-outline.component';
+import { MainCardComponent } from './pages/login-register-page/main-card/main-card.component';
+import { LogInCardComponent } from './pages/login-register-page/log-in-card/log-in-card.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ButtonOutlineComponent } from './pages/login-register-page/button-outli
     LoginRegisterPageComponent,
     ButtonFullComponent,
     ButtonOutlineComponent,
+    MainCardComponent,
+    LogInCardComponent,
   ],
   imports: [
     HttpClientModule,
@@ -54,7 +58,8 @@ import { ButtonOutlineComponent } from './pages/login-register-page/button-outli
     RouterModule,
     AngularSvgIconModule,
     AppRoutingModule,
-    MatStepperModule
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

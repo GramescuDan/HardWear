@@ -4,27 +4,11 @@ img{
   width:100%;
 }
 
-
-h1,p{
-  margin-left:3vw;
-  margin-right:5vw;
-}
 html,body{
   height: 100%;
   margin: 0;
 }
-.form-start{
-  top:0;
-  position: absolute;
-  padding-top: 10vh;
-  background: rgb(51,31,51,95%);
-  margin-top: 21.72vh;
-  margin-left:  9.57vw;
-  width: 22.35vw;
-  height: 38.13vh;
-  border-radius: 20px;
-  z-index: 1;
-}
+
 .background-image{
   position: relative;
   background: url("/assets/background-vid.gif") no-repeat fixed;
@@ -32,18 +16,4 @@ html,body{
   height: 100%;
   z-index: -1;
 }
-.login-button{
 
-}
-
-.register-button{
-
-
-}
-.login-buttons{
-  padding-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 32px;
-}
