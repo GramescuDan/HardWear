@@ -17,6 +17,6 @@ export class UserService {
   }
 
   post(user:IUser): Observable<IUser> {
-return this._http.post<IUser>(`{this._apiUrl}`,user);
+return this._http.post<IUser>(this._apiUrl,user);
   }
 }

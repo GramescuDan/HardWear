@@ -3,6 +3,7 @@ import {UserService} from "../../../services/user-service";
 import {firstValueFrom} from "rxjs";
 import {IUser} from "../../../models/user";
 import {GlobalVars} from "../../../services/global-vars";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-log-in-card',
@@ -24,7 +25,7 @@ export class LogInCardComponent implements OnInit {
 
   hide: boolean =true;
 
-  constructor(private readonly _user:UserService) { }
+  constructor(private readonly _user:UserService,private router: Router) { }
 
 
   ngOnInit(): void {
@@ -40,6 +41,10 @@ export class LogInCardComponent implements OnInit {
 
   loginpress():void{
 
-    this._user.post(this.user).subscribe(data => GlobalVars.user = data);
+    this._user.post(this.user).subscribe(data =>{
+      GlobalVars.user = data;
+      this.router.navigateByUrl('');
+    }, error => alert('login failed!')
+    );
   }
 }
