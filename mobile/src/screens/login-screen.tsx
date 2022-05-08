@@ -15,7 +15,8 @@ type RegInfo<T> = {
 export function LoginScreen() {
 
     const nav = useAppNavigation();
-    const [regInfo, setRegInfo] = useState<RegInfo<string>>()
+    const [regInfo, setRegInfo] = useState<RegInfo<string>>();
+    const [error, setError] =  useState(false);
 
     const onChangeUsername = (val: string) => {
         setRegInfo({...regInfo!, username: val});
@@ -28,13 +29,13 @@ export function LoginScreen() {
     const login = async (regInfo: RegInfo<string>) => {
         try {
             const data = await (await UserService.login(regInfo)).data;
-            if (data.toString().slice(0, 15) === "<!DOCTYPE html>") {
-                return;  //eroare pe backend
-            }
             nav.navigate("Products");
+
         } catch (e) {
+            setError(true);
             console.log(e);
         }
+
     }
 
     const inputs = [
@@ -57,8 +58,9 @@ export function LoginScreen() {
     return (
         <AuthentificationBox
             title = "Login"
+            error = {error}
             textInputs = {inputs}
-            buttonText="Login"
+            buttonText="Log in"
             buttonOnPress={() => login(regInfo!)}
         ></AuthentificationBox>
 

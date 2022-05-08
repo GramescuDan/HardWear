@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { StyleProp, TextInput, View, ViewStyle } from "react-native";
+import React, { useRef, useState } from "react";
+import { StyleProp, TextInput, View, ViewStyle, Text } from "react-native";
 
 const textInputStyles: StyleProp<ViewStyle> = {
     margin: 12,
@@ -14,13 +14,22 @@ const textInputStyles: StyleProp<ViewStyle> = {
     alignItems: "center",
 }
 
+type CustomInputProps = {
+    icon: JSX.Element, 
+    value: string | undefined, 
+    placeholderText: string, 
+    onChangeText: (val: string) => void,
 
-export function CustomTextInput(p: {icon: JSX.Element, value: string | undefined, placeholderText: string, onChangeText: (val: string) => void}) {
+}
+
+export function CustomTextInput(p: CustomInputProps) {
     const inputRef = useRef<TextInput>(null!);
+
     return <View style={textInputStyles} onTouchEnd = {() => inputRef.current.focus()}>
         {p.icon}
         <TextInput
             placeholder={p.placeholderText}
+            placeholderTextColor = "gray"
             ref = {inputRef}
             onChangeText = {p.onChangeText}
             style={{

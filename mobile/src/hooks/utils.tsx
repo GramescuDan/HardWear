@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { Dimensions } from "react-native";
+import { useEffect } from "react";
 
 export const {width, height} = Dimensions.get('window');
 
@@ -18,4 +19,10 @@ export function useAppNavigation() {
   return {
     navigate
   };
+}
+
+export function useEffectAsync(fn: () => Promise<void | (() => void)>, deps: any[]) {
+    useEffect(() => {
+        fn()
+    }, deps);
 }
