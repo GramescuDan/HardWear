@@ -7,10 +7,7 @@
   color: var(--color-main-font);
 }
 .footer{
-
-  position: fixed;
   bottom: 0;
-  padding-right: 400%;
 background: var(--color-secundary);
 }
 .footer-background{
