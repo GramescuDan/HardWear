@@ -42,7 +42,7 @@ export class LogInCardComponent implements OnInit {
 
     this._user.post(this.user).subscribe(data =>{
       GlobalVars.user = data;
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('main');
     }, error => alert('login failed!')
     );
   }

@@ -60,7 +60,7 @@ export class RegisterCardComponent implements OnInit {
 
     this._user.register(this.user).subscribe(data =>{
         GlobalVars.user = data;
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('main');
       }, error => alert('login failed!')
     );
   }
