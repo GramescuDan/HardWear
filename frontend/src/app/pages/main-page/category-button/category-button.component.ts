@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ICategory} from "../../../models/category";
 
 @Component({
@@ -8,9 +8,10 @@ import {ICategory} from "../../../models/category";
 })
 export class CategoryButtonComponent implements OnInit {
 
-  category: ICategory | undefined;
   pressed: boolean =true;
-  constructor() { }
+  @Input() name: String | undefined;
+  constructor() {
+}
 
   onClick(){
     this.pressed = !this.pressed;

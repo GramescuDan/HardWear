@@ -1,0 +1,9 @@
+button{
+  color: var(--color-secundary-font);
+  background: none;
+  height: 40px;
+  width: 100px;
+  border-radius: 8px;
+  border-color: var(--color-accent);
+  border-width: 3px;
+}

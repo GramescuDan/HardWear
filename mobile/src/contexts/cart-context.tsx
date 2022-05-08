@@ -21,7 +21,9 @@ function useCart() {
 
     const getItemsToCart = async () => {
         const cart = await AsyncStorage.getItem("cart");
-        setCartItems(JSON.parse(cart!));
+        if (cart) {
+            setCartItems(JSON.parse(cart!));
+        }
     }
 
     return function() {

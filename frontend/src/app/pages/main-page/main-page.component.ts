@@ -8,13 +8,11 @@ import {ICategory} from "../../models/category";
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-  categories: ICategory[] | undefined;
 
 
-  constructor(private readonly _category : CategoryService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this._category.get().subscribe(categories => this.categories = categories)
   }
 
 }

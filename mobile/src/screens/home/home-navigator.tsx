@@ -6,7 +6,7 @@ import { SubCategory } from "./subcategories-screen";
 export function HomeNavigator() {
     const Stack = createNativeStackNavigator();
 
-    return <Stack.Navigator screenOptions = {{headerTitle: ""}}  >
+    return <Stack.Navigator screenOptions = {{headerTitle: "" }}  >
         <Stack.Screen options={{ headerStyle: { backgroundColor: "#c6c6c6" } }} name="Category"  component={HomeScreen} />
         <Stack.Screen options={{ headerStyle: { backgroundColor: "#c6c6c6" } }} name="SubCategory" component={SubCategory} />
         <Stack.Screen options={{ headerStyle: { backgroundColor: "#c6c6c6" } }} name="ProductList" component={ProductListScreen} />

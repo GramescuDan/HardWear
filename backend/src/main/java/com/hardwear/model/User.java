@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -56,6 +57,19 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     private Boolean enabled = false; //email validation
+
+    public User(int id, String email, String password, String firstName, String lastName, String username,
+                String phone, LocalDate dateOfBirth) {
+
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.phone = phone;
+        this.date = dateOfBirth;
+    }
 
     public User(String email, String password, String firstName, String lastName, String username,
                 String phone, LocalDate dateOfBirth, Set<Role> roles) {

@@ -13,7 +13,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MyAccountPageComponent } from './pages/my-account-page/my-account-page.component';
 import {RouterModule} from "@angular/router";
@@ -23,6 +23,13 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import {CategoryButtonComponent} from "./pages/main-page/category-button/category-button.component";
 import { FooterComponent } from './components/footer/footer.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { LoginRegisterPageComponent } from './pages/login-register-page/login-register-page.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import { ButtonFullComponent } from './pages/login-register-page/button-full/button-full.component';
+import { ButtonOutlineComponent } from './pages/login-register-page/button-outline/button-outline.component';
+import { MainCardComponent } from './pages/login-register-page/main-card/main-card.component';
+import { LogInCardComponent } from './pages/login-register-page/log-in-card/log-in-card.component';
+import { RegisterCardComponent } from './pages/login-register-page/register-card/register-card.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +42,12 @@ import {MatExpansionModule} from "@angular/material/expansion";
     NotFoundPageComponent,
     CategoryButtonComponent,
     FooterComponent,
+    LoginRegisterPageComponent,
+    ButtonFullComponent,
+    ButtonOutlineComponent,
+    MainCardComponent,
+    LogInCardComponent,
+    RegisterCardComponent,
   ],
   imports: [
     HttpClientModule,
@@ -50,7 +63,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
     RouterModule,
     AngularSvgIconModule,
     AppRoutingModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

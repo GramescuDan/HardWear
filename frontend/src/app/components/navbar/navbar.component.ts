@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit {
   onKey(event:any):void{
   this.SearchResult =event.target.value;
 }
-
   clearInputField():void{
   this.SearchResult = '';
   }

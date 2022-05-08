@@ -1,0 +1,31 @@
+.form-start{
+  top:0;
+  position: absolute;
+  padding-top: 10vh;
+  background: rgb(51,31,51,95%);
+  margin-top: 21.72vh;
+  margin-left:  9.57vw;
+  width: 22.35vw;
+  height: 38.13vh;
+  border-radius: 20px;
+  z-index: 1;
+
+}
+h1,p{
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+.login-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 20px;
+}
+
+::ng-deep.mat-input-element, .mat-input-element{
+  color:var(--color-secundary-font);
+}
+input{
+  border-color: var(--color-quaternary);
+  border-radius: 4px;
+}
