@@ -3,19 +3,19 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { AuthentificationBox } from "../components/AuthentificationBox";
 import { CustomTextInput } from "../components/custom-text-inputs";
 import { px, useAppNavigation } from "../hooks/utils";
-import UserService from '../services/user';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import { useAuthService } from "../contexts/auth-context";
 
-type RegInfo<T> = {
+export type LoginInfo<T> = {
     username: T,
     password: T
 }
 
 export function LoginScreen() {
-
+    const { login} = useAuthService();
     const nav = useAppNavigation();
-    const [regInfo, setRegInfo] = useState<RegInfo<string>>();
+    const [regInfo, setRegInfo] = useState<LoginInfo<string>>();
     const [error, setError] =  useState(false);
 
     const onChangeUsername = (val: string) => {
@@ -24,18 +24,6 @@ export function LoginScreen() {
 
     const onChangePassword = (val: string) => {
         setRegInfo({...regInfo!, password: val});
-    }
-
-    const login = async (regInfo: RegInfo<string>) => {
-        try {
-            const data = await (await UserService.login(regInfo)).data;
-            nav.navigate("Products");
-
-        } catch (e) {
-            setError(true);
-            console.log(e);
-        }
-
     }
 
     const inputs = [
@@ -61,7 +49,7 @@ export function LoginScreen() {
             error = {error}
             textInputs = {inputs}
             buttonText="Log in"
-            buttonOnPress={() => login(regInfo!)}
+            buttonOnPress={() => login(regInfo!, setError)}
         ></AuthentificationBox>
 
     );

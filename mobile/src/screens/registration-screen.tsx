@@ -9,6 +9,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { CustomTextInput } from "../components/custom-text-inputs";
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useAuthService } from "../contexts/auth-context";
 
 export type RegInfo<T> = {
     id: number,
@@ -24,6 +25,7 @@ export type RegInfo<T> = {
 
 export function RegistrationScreen() {
     const nav = useAppNavigation();
+    const { register } = useAuthService();
     const [regInfo, setRegInfo] = useState<RegInfo<string>>({
         id: 0,
         date: "",
@@ -34,18 +36,6 @@ export function RegistrationScreen() {
         phone: "",
         username: ""
     })
-  
-    const register = async (regInfo: RegInfo<string>) => {
-        try {
-            const data = await (await UserService.register(regInfo)).data;
-            if (data.toString().slice(0, 15) === "<!DOCTYPE html>") {
-                return;  //eroare pe backend
-            }
-            nav.navigate("Login");
-        } catch (e) {
-            console.log(e);
-        }
-    }
 
     const onChangeUsername = (val: string) => {
         setRegInfo({...regInfo!, username: val});

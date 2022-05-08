@@ -1,4 +1,5 @@
 import http from '../http-common';
+import { EditableInputs } from '../screens/account/my-profile';
 import { RegInfo } from '../screens/registration-screen';
 
 class UserService {
@@ -12,6 +13,11 @@ class UserService {
 
     register(data: RegInfo<string>) {
       return http.post("/users", data);
+    }
+
+    editProfile(data: EditableInputs<string>) {
+      console.log(data)
+      return http.put(`/users/${data.id}`, data)
     }
 
     

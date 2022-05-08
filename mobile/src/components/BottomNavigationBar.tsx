@@ -2,7 +2,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { View } from 'react-native';
-import { AccountClientScreen } from '../screens/account-client-screen';
 import { MyProfilePage } from '../screens/account/my-profile';
 import { MainScreen } from '../screens/main-screen';
 import { RegistrationScreen } from '../screens/registration-screen';

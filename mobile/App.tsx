@@ -12,6 +12,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { StackNavComponent } from './src/components/StackNavigation';
 import { CartContextProvider } from './src/contexts/cart-context';
 import { FavoriteContextProvider } from './src/contexts/favorites-context';
+import { AuthContextProvider } from './src/contexts/auth-context';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -28,7 +29,9 @@ export default function App() {
       <FavoriteContextProvider>
         <CartContextProvider>
           <NavigationContainer>
-            <StackNavComponent></StackNavComponent>
+            <AuthContextProvider>
+              <StackNavComponent></StackNavComponent>
+            </AuthContextProvider>
           </NavigationContainer>
         </CartContextProvider>
       </FavoriteContextProvider>
