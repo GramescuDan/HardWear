@@ -2,7 +2,7 @@
   <h1>Hello there!</h1>
   <p>Take your first step into greatness!</p>
   <div style="display: flex;align-content: center; flex-direction: column;align-items: center;">
-    <mat-stepper>
+    <mat-stepper orientation="vertical">
       <mat-step [stepControl]="firstFormGroup">
         <!--Username Field-->
         <form [formGroup]="firstFormGroup"></form>
@@ -20,7 +20,7 @@
         </mat-form-field>
     <div class="login-buttons">
       <button class="button-full" mat-button matStepperNext>Next</button>
-      <button class="button-outline" mat-button matStepperPrevious>Back</button>
+      <button class="button-outline"  routerLink="..">Back</button>
     </div>
       </mat-step>
       <mat-step [stepControl]="secondFormGroup">
@@ -37,7 +37,7 @@
         </mat-form-field>
         <div class="login-buttons">
           <button class="button-full" mat-button matStepperNext>Next</button>
-          <button class="button-outline" mat-button matStepperPrevious>Back</button>
+          <button class="button-outline"  matStepperPrevious>Back</button>
         </div>
       </mat-step>
 
@@ -55,7 +55,7 @@
         </mat-form-field>
         <div class="login-buttons">
           <button class="button-full" mat-button matStepperNext>Next</button>
-          <button class="button-outline" mat-button matStepperPrevious>Back</button>
+          <button class="button-outline"  matStepperPrevious>Back</button>
         </div>
       </mat-step>
 
@@ -68,7 +68,7 @@
         </mat-form-field>
         <div class="login-buttons">
           <button class="button-full" mat-button (click)="registerpress()">Register</button>
-          <button class="button-outline" mat-button matStepperPrevious>Back</button>
+          <button class="button-outline"  matStepperPrevious>Back</button>
         </div>
       </mat-step>
     </mat-stepper>

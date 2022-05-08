@@ -1,13 +1,12 @@
 .form-start{
   top:0;
   position: absolute;
-  padding-top: 10vh;
+  padding-top: 5vh;
   background: rgb(51,31,51,95%);
   margin-top: 21.72vh;
   margin-left:  9.57vw;
   width: 22.35vw;
-  height: 38.13vh;
-  border-radius: 20px;
+  border-radius: 16px;
   z-index: 1;
 
 }
@@ -25,6 +24,24 @@ h1,p{
 ::ng-deep.mat-input-element, .mat-input-element{
   color:var(--color-secundary-font);
 }
+::ng-deep.mat-stepper-vertical{
+  background: none;
+}
+::ng-deep.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
+  background-color: var(--color-accent)!important;
+}
+::ng-deep.mat-step-header .mat-step-icon{
+background-color: var(--color-primary);
+}
+
+::ng-deep.mat-input-element, .mat-input-element{
+  caret-color: var(--color-quaternary);
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-thick{
+  color: var(--color-quaternary);
+}
+
 input{
   border-color: var(--color-quaternary);
   border-radius: 4px;
@@ -45,6 +62,7 @@ input{
   background: none;
   height: 40px;
   width: 100px;
+  border-style: solid;
   border-radius: 8px;
   border-color: var(--color-accent);
   border-width: 3px;
