@@ -21,6 +21,8 @@ import {AngularSvgIconModule} from "angular-svg-icon";
 import {AppRoutingModule} from "./pages/app.routing";
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import {CategoryButtonComponent} from "./pages/main-page/category-button/category-button.component";
+import { FooterComponent } from './components/footer/footer.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 import { LoginRegisterPageComponent } from './pages/login-register-page/login-register-page.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import { ButtonFullComponent } from './pages/login-register-page/button-full/button-full.component';
@@ -39,6 +41,7 @@ import { RegisterCardComponent } from './pages/login-register-page/register-card
     MyAccountPageComponent,
     NotFoundPageComponent,
     CategoryButtonComponent,
+    FooterComponent,
     LoginRegisterPageComponent,
     ButtonFullComponent,
     ButtonOutlineComponent,
@@ -60,6 +63,7 @@ import { RegisterCardComponent } from './pages/login-register-page/register-card
     RouterModule,
     AngularSvgIconModule,
     AppRoutingModule,
+    MatExpansionModule,
     MatStepperModule,
     ReactiveFormsModule
   ],
