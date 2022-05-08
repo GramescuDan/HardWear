@@ -5,7 +5,8 @@ import { View, Text, ImageURISource } from "react-native";
 import { BottomNavBar } from "../../components/BottomNavigationBar";
 import { CategoryBox } from "../../components/category-box";
 import { SearchHeader } from "../../components/search-header";
-import { px } from "../../hooks/utils";
+import { px, useEffectAsync } from "../../hooks/utils";
+import ItemsService from '../../services/item';
 
 export interface SubCategoryType {
   name: string;
@@ -82,6 +83,8 @@ export const categories = [
 export function HomeScreen() {
   const [searchedResults, setSearchedResults] = useState<typeof categories>();
   const [searchInput, setSearchInput] = useState<string>();
+  const [categoriesState, setCategoriesState] = useState([]);
+
   const changeSearchInput = (val: string) => {
     setSearchInput(val);
   };
@@ -90,6 +93,16 @@ export function HomeScreen() {
     const results = categories.filter(category => category.categoryName.toLowerCase().includes(searchInput?.toLowerCase()!));
     setSearchedResults(results);
   }, [searchInput])
+
+  useEffectAsync(async () => {
+    try {
+      const results = await (await ItemsService.getAll()).data;
+      setCategoriesState(results);
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }, [])
 
   return (
     <View style={{ flex: 1 }}>
