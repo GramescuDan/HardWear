@@ -29,3 +29,23 @@ input{
   border-color: var(--color-quaternary);
   border-radius: 4px;
 }
+.button-full{
+
+  color:var(--color-primary);
+  background: var(--color-accent);
+  font-weight: bold;
+  border:none;
+  height: 3.72vh;
+  width: 92px;
+  border-radius: 8px;
+}
+
+.button-outline{
+  color: var(--color-secundary-font);
+  background: none;
+  height: 40px;
+  width: 100px;
+  border-radius: 8px;
+  border-color: var(--color-accent);
+  border-width: 3px;
+}

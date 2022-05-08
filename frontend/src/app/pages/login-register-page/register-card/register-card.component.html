@@ -2,22 +2,76 @@
   <h1>Hello there!</h1>
   <p>Take your first step into greatness!</p>
   <div style="display: flex;align-content: center; flex-direction: column;align-items: center;">
-    <!--Username Field-->
-    <mat-form-field appearance="outline">
-      <mat-label>Username</mat-label>
-      <input matInput  [ngModel]="user.username" [value]="user.username" (keyup)="onKey($event, 0)" >
-    </mat-form-field>
-    <!--Password Field-->
-    <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput [ngModel]="user.password" [type]="hide ? 'password' : 'text'" (keyup)="onKey($event, 1)" >
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
+    <mat-stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <!--Username Field-->
+        <form [formGroup]="firstFormGroup"></form>
+       <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput  [ngModel]="user.username" [value]="user.username" (keyup)="onKey($event, 0)" >
+        </mat-form-field>
+        <!--Password Field-->
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput [ngModel]="user.password" [type]="hide ? 'password' : 'text'" (keyup)="onKey($event, 1)" >
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
     <div class="login-buttons">
-      <app-button-full text="Register" (click)="registerpress()"></app-button-full>
-      <app-button-outline text="Back"></app-button-outline>
+      <button class="button-full" mat-button matStepperNext>Next</button>
+      <button class="button-outline" mat-button matStepperPrevious>Back</button>
     </div>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <!--FirstName Field-->
+        <form [formGroup]="secondFormGroup"></form>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput  [ngModel]="user.first_name">
+        </mat-form-field>
+        <!--LastName Field-->
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput  [ngModel]="user.last_name">
+        </mat-form-field>
+        <div class="login-buttons">
+          <button class="button-full" mat-button matStepperNext>Next</button>
+          <button class="button-outline" mat-button matStepperPrevious>Back</button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="thirdFormGroup">
+        <!--FirstName Field-->
+        <form [formGroup]="thirdFormGroup"></form>
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input email matInput  [ngModel]="user.email">
+        </mat-form-field>
+        <!--LastName Field-->
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input  matInput  [ngModel]="user.phone">
+        </mat-form-field>
+        <div class="login-buttons">
+          <button class="button-full" mat-button matStepperNext>Next</button>
+          <button class="button-outline" mat-button matStepperPrevious>Back</button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="forthFormGroup">
+        <!--FirstName Field-->
+        <form [formGroup]="forthFormGroup"></form>
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <input  matInput  [ngModel]="user.localdate">
+        </mat-form-field>
+        <div class="login-buttons">
+          <button class="button-full" mat-button (click)="registerpress()">Register</button>
+          <button class="button-outline" mat-button matStepperPrevious>Back</button>
+        </div>
+      </mat-step>
+
+    </mat-stepper>
   </div>
 </div>
