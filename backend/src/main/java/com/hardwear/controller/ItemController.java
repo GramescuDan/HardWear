@@ -35,8 +35,8 @@ public class ItemController {
         }
     }
 
-    @GetMapping("/items/byCategory")
-    public List<Item> getItemByCategory(@RequestBody List<String> categories) {
+    @GetMapping("/items/byCategories")
+    public List<Item> getItemsByCategories(@RequestBody List<String> categories) {
         return itemService.getByCategories(categories);
     }
 
