@@ -31,6 +31,7 @@ import { MainCardComponent } from './pages/login-register-page/main-card/main-ca
 import { LogInCardComponent } from './pages/login-register-page/log-in-card/log-in-card.component';
 import { RegisterCardComponent } from './pages/login-register-page/register-card/register-card.component';
 import {AuthSerivce} from "./services/auth-serivce";
+import { InfoCardComponent } from './pages/my-account-page/info-card/info-card.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {AuthSerivce} from "./services/auth-serivce";
     MainCardComponent,
     LogInCardComponent,
     RegisterCardComponent,
+    InfoCardComponent,
   ],
   imports: [
     HttpClientModule,
