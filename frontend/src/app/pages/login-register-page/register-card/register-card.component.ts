@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthSerivce} from "../../../services/auth-serivce";
 
+
 @Component({
   selector: 'app-register-card',
   templateUrl: './register-card.component.html',

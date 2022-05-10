@@ -10,7 +10,7 @@ import {MainCardComponent} from "./login-register-page/main-card/main-card.compo
 
 const routes: Routes = [
   {path:'my-account', component: MyAccountPageComponent},
-  {path:'main', component:MainPageComponent},
+  {path:'', component:MainPageComponent},
   {path:'login', component:LoginRegisterPageComponent, children:[
       {path:'',component:MainCardComponent},
       {path:'login', component:LogInCardComponent},
