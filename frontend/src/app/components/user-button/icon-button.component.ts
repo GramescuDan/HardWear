@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthSerivce} from "../../services/auth-serivce";
+import {IUser} from "../../models/user";
 
 @Component({
   selector: 'app-user-button',
@@ -10,19 +11,23 @@ import {AuthSerivce} from "../../services/auth-serivce";
 export class IconButtonComponent implements OnInit{
 
   constructor(private router: Router, private _auth:AuthSerivce) {
-    if(_auth.currentUser){
+    _auth.currentUser.subscribe((data: IUser)=>this.user =data);
+    if(this.user){
       this.buttonlog = "Log out";
     }
   }
+  user:IUser;
   @Input() Id = ' ';
   @Input() image = ' ';
   @Input() buttonlog = 'Log in';
   menu: any;
 
   onMyAccountClick() : void{
-    if(this._auth.currentUser){
+    if(this.user){
+      console.log(this.user);
       this.router.navigateByUrl('/my-account');
     }else{
+      this._auth.logout();
       this.router.navigateByUrl('/login');
     }
   }

@@ -3,6 +3,7 @@ import {IUser} from "../../../models/user";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthSerivce} from "../../../services/auth-serivce";
+import {first} from "rxjs";
 
 
 @Component({
@@ -25,21 +26,35 @@ export class RegisterCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      Username: ['', Validators.required],
+      Password: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      FirstName: ['', Validators.required],
+      LastName: ['', Validators.required],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      Email: ['', Validators.required],
+      Phone: ['', Validators.required],
     });
     this.forthFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      Adress: ['', Validators.required],
     });
   }
 
   registerpress():void{
-  this._user.register(this.user);
+    if (this.firstFormGroup.invalid ||
+      this.secondFormGroup.invalid ||
+      this.thirdFormGroup.invalid ||
+      this.forthFormGroup.invalid) {
+      return;
+    }
+
+    this._user.register(this.user)
+      .pipe(first())
+      .subscribe(
+        data =>
+          this.router.navigateByUrl('/'));
   }
 
 }
