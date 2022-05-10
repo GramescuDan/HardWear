@@ -30,6 +30,7 @@ import { ButtonOutlineComponent } from './pages/login-register-page/button-outli
 import { MainCardComponent } from './pages/login-register-page/main-card/main-card.component';
 import { LogInCardComponent } from './pages/login-register-page/log-in-card/log-in-card.component';
 import { RegisterCardComponent } from './pages/login-register-page/register-card/register-card.component';
+import {AuthSerivce} from "./services/auth-serivce";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import { RegisterCardComponent } from './pages/login-register-page/register-card
     MatStepperModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthSerivce],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

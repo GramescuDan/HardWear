@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {global} from "@angular/compiler/src/util";
-import {GlobalVars} from "../../services/global-vars";
+import {AuthSerivce} from "../../services/auth-serivce";
 
 @Component({
   selector: 'app-user-button',
@@ -10,8 +9,8 @@ import {GlobalVars} from "../../services/global-vars";
 })
 export class IconButtonComponent implements OnInit{
 
-  constructor(private router: Router) {
-    if(GlobalVars.user){
+  constructor(private router: Router, private _auth:AuthSerivce) {
+    if(_auth.currentUser){
       this.buttonlog = "Log out";
     }
   }
@@ -21,7 +20,7 @@ export class IconButtonComponent implements OnInit{
   menu: any;
 
   onMyAccountClick() : void{
-    if(GlobalVars.user){
+    if(this._auth.currentUser){
       this.router.navigateByUrl('/my-account');
     }else{
       this.router.navigateByUrl('/login');

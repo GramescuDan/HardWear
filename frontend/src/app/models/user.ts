@@ -1,6 +1,6 @@
 import {IBase} from './base';
 
-export interface IUser extends IBase{
+export class IUser implements IBase{
 
   username: string;
   email :string;
@@ -10,4 +10,5 @@ export interface IUser extends IBase{
   phone : string;
   role: string;
   adress: string;
+  id: number;
 }

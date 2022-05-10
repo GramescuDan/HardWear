@@ -5,12 +5,12 @@
   <!--Username Field-->
   <mat-form-field appearance="outline">
     <mat-label>Username</mat-label>
-    <input matInput  [ngModel]="user.username" [value]="user.username" (keyup)="onKey($event, 0)" >
+    <input matInput  [ngModel]="username">
   </mat-form-field>
   <!--Password Field-->
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input matInput [ngModel]="user.password" [type]="hide ? 'password' : 'text'" (keyup)="onKey($event, 1)" >
+      <input matInput [ngModel]="password" [type]="hide ? 'password' : 'text'">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>

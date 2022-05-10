@@ -11,5 +11,4 @@ export class MyAccountPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

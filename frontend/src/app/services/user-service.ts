@@ -1,7 +1,7 @@
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {IUser} from "../models/user";
-import {Observable, tap} from "rxjs";
+import {BehaviorSubject, config, Observable, tap} from "rxjs";
 import {Injectable} from "@angular/core";
 
 @Injectable({
@@ -9,19 +9,17 @@ import {Injectable} from "@angular/core";
 })
 
 export class UserService {
-  private readonly _apiUrl = environment.apiUrl + 'users';
 
-  constructor(
-    private readonly _http: HttpClient
-  ) {
+
+  constructor(private _http:HttpClient) {
   }
 
-  post(user:IUser): Observable<IUser> {
-    let url = this._apiUrl + "/login";
-return this._http.post<IUser>(url,user);
+  getAll(){
+    return this._http.get<IUser[]>(`${environment.apiUrl}/users`);
   }
 
-  register(user:IUser): Observable<IUser> {
-    return this._http.post<IUser>(this._apiUrl,user);
+  register(user: IUser){
+    return this._http.post(`${environment.apiUrl}/users`,user);
   }
+
 }

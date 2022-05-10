@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../../services/user-service";
-import {IUser} from "../../../models/user";
-import {GlobalVars} from "../../../services/global-vars";
 import {Router} from "@angular/router";
+import {AuthSerivce} from "../../../services/auth-serivce";
 
 @Component({
   selector: 'app-log-in-card',
@@ -10,40 +8,20 @@ import {Router} from "@angular/router";
   styleUrls: ['./log-in-card.component.css']
 })
 export class LogInCardComponent implements OnInit {
-  user: IUser ={
-    email: "",
-    first_name: "",
-    id: 0,
-    last_name: "",
-    localdate: new Date,
-    password: "",
-    phone: "",
-    role: "",
-    username: ""
-  };
 
+  username: string;
+  password: string;
   hide: boolean =true;
 
-  constructor(private readonly _user:UserService,private router: Router) { }
+  constructor(private readonly _auth:AuthSerivce,private router: Router) { }
 
 
   ngOnInit(): void {
-  }
-  onKey(event:any, input:number):void{
-    if(input==0){
-      this.user.username=event.target.value;
-    }
-    else{
-      this.user.password=event.target.value;
-    }
+
   }
 
   loginpress():void{
-
-    this._user.post(this.user).subscribe(data =>{
-      GlobalVars.user = data;
-      this.router.navigateByUrl('main');
-    }, error => alert('login failed!')
-    );
+  this._auth.login(this.username,this.password);
   }
+
 }
