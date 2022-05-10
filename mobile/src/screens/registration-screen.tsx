@@ -19,7 +19,7 @@ export type RegInfo<T> = {
     firstName: T,
     lastName: T,
     phone: T,
-    date: T
+    location: T
 }
 
 
@@ -28,7 +28,7 @@ export function RegistrationScreen() {
     const { register } = useAuthService();
     const [regInfo, setRegInfo] = useState<RegInfo<string>>({
         id: 0,
-        date: "",
+        location: "",
         email: "",
         firstName: "",
         lastName: "",
@@ -61,8 +61,8 @@ export function RegistrationScreen() {
         setRegInfo({...regInfo!, phone: val});
     }
 
-    const onChangeDate = (val: string) => {
-        setRegInfo({...regInfo!, date: val});
+    const onChangelocation = (val: string) => {
+        setRegInfo({...regInfo!, location: val});
     }
 
     const inputs = [
@@ -109,9 +109,9 @@ export function RegistrationScreen() {
             key = {5}
         />,
         <CustomTextInput
-            value={regInfo?.date}
-            onChangeText = {onChangeDate}
-            placeholderText="Enter your date of birth"
+            value={regInfo?.location}
+            onChangeText = {onChangelocation}
+            placeholderText="Enter your location"
             icon={<Entypo name="calendar" size={24} color="gray" />}
             key = {6}
         />,

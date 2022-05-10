@@ -16,7 +16,7 @@ export function StackNavComponent() {
             <Stack.Screen options={{ headerStyle: { backgroundColor: "#c6c6c6" } }} name="Main" component={MainScreen} />
             <Stack.Screen options={{ headerStyle: { backgroundColor: "#c6c6c6" } }} name="Registration" component={RegistrationScreen} />
             <Stack.Screen options={{ headerStyle: { backgroundColor: "#c6c6c6" } }} name="Login" component={LoginScreen} />
-            <Stack.Screen options = {{headerStyle: { backgroundColor: "#c6c6c6" }, headerShown: false}} name = "Products" component = {BottomNavBar} />
+            <Stack.Screen options = {{headerStyle: { backgroundColor: "#f3f9fe" }, headerShown: false}} name = "Products" component = {BottomNavBar} />
         </Stack.Navigator>
         
     );

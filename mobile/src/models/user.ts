@@ -11,7 +11,7 @@ export interface User {
     lastName: string;
     username: string;
     phone: string;
-    date: string;
+    location: string;
     roles: Role[];
     enabled: boolean;
 }
