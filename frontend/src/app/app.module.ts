@@ -71,4 +71,3 @@ import { RegisterCardComponent } from './pages/login-register-page/register-card
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export const routingComponents = [MainPageComponent,MyAccountPageComponent,NotFoundPageComponent]

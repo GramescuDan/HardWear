@@ -9,5 +9,5 @@ export interface IUser extends IBase{
   last_name : string;
   phone : string;
   role: string;
-  localdate: Date;
+  adress: string;
 }

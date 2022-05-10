@@ -16,7 +16,7 @@ export class RegisterCardComponent implements OnInit {
     first_name: "",
     id: 0,
     last_name: "",
-    localdate: new Date,
+    adress: "",
     password: "",
     phone: "",
     role: "client",

@@ -13,6 +13,6 @@ export class NotFoundPageComponent implements OnInit {
   ngOnInit(): void {
   }
   onGoBackClick():void{
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/main');
   }
 }
