@@ -105,7 +105,7 @@ export function HomeScreen() {
   }, [])
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "#f3f9fe" }}>
       <SearchHeader
         placeholderText="Search"
         inputValue={searchInput}

@@ -15,7 +15,7 @@ export type EditableInputs<T> = {
     lastName: T;
     email: T;
     phone: T;
-    date: T;
+    location: T;
 }
 
 type EditableInputProps = {
@@ -34,7 +34,7 @@ function EditableInput(p: EditableInputProps) {
     const lastNameRef = useRef<TextInput>(null);
     const emailRef = useRef<TextInput>(null);
     const phoneRef = useRef<TextInput>(null);
-    const dateRef = useRef<TextInput>(null);
+    const locationRef = useRef<TextInput>(null);
 
     switch (p.inputName) {
         case "First name":
@@ -49,8 +49,8 @@ function EditableInput(p: EditableInputProps) {
         case "Phone":
             ref = phoneRef;
             break;
-        case "Date":
-            ref = dateRef;
+        case "location":
+            ref = locationRef;
             break;
         default:
             ref = ref;
@@ -96,11 +96,11 @@ export function MyProfilePage() {
     const onChangePhone = (val: string) => {
         setFields({ ...fields!, phone: val });
     }
-    const onChangeDate = (val: string) => {
-        setFields({ ...fields!, date: val });
+    const onChangelocation = (val: string) => {
+        setFields({ ...fields!, location: val });
     }
 
-    return <View style={{ flex: 1, backgroundColor: "#dee2fe", }}>
+    return <View style={{ flex: 1, backgroundColor: "#f3f9fe" }}>
         <View style={{ flexGrow: 1, alignItems: "center", justifyContent: "center" }}>
             <TouchableOpacity>
                 <MaterialCommunityIcons name="account" size={75} color="black" />
@@ -108,7 +108,7 @@ export function MyProfilePage() {
             <Text style={{ fontSize: px(24), fontWeight: "bold" }}>{loginInfo?.username}</Text>
         </View>
         <TouchableWithoutFeedback onPress={() => {
-            setFocusedInputs({ firstName: false, date: false, lastName: false, email: false, phone: false });
+            setFocusedInputs({ firstName: false, location: false, lastName: false, email: false, phone: false });
         }} >
             <View style={{ flexGrow: 0.5, backgroundColor: "white", borderTopEndRadius: 50, borderTopLeftRadius: 50 }}>
 
@@ -146,22 +146,22 @@ export function MyProfilePage() {
                         icon={<Entypo name="phone" size={24} color="gray" />}
                     />
                     <EditableInput
-                        focusedInput={focusedInputs?.date!}
-                        inputValue={fields?.date! ?? loginInfo?.date}
-                        onChangeText={onChangeDate}
-                        onPress={() => setFocusedInputs({ ...focusedInputs!, date: !focusedInputs?.date! })}
-                        inputName="Date"
+                        focusedInput={focusedInputs?.location!}
+                        inputValue={fields?.location! ?? loginInfo?.location}
+                        onChangeText={onChangelocation}
+                        onPress={() => setFocusedInputs({ ...focusedInputs!, location: !focusedInputs?.location! })}
+                        inputName="location"
                         icon={<Entypo name="calendar" size={24} color="gray" />}
                     />
                 </View>
             </View>
         </TouchableWithoutFeedback>
         <View style={{ flex: 1, flexGrow: 0.8, flexDirection: "row", backgroundColor: "white", justifyContent: "space-around", alignItems: "center", paddingBottom: 20 }}>
-            <TouchableOpacity onPress={() => editProfile(fields!)} style={{ backgroundColor: "#dee2fe", borderRadius: px(8), padding: px(20), }}>
+            <TouchableOpacity onPress={() => editProfile(fields!)} style={{ backgroundColor: "#f3f9fe", borderRadius: px(8), padding: px(20), }}>
                 <Feather name="save" size={24} color="black" style={{ alignSelf: "center" }} />
                 <Text style={{ fontWeight: "bold", textAlign: "center", alignSelf: "center" }}>SAVE</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={doLogout} style={{ backgroundColor: "#dee2fe", padding: px(20), borderRadius: px(8) }}>
+            <TouchableOpacity onPress={doLogout} style={{ backgroundColor: "#f3f9fe", padding: px(20), borderRadius: px(8) }}>
                 <AntDesign name="logout" size={24} color="black" style = {{alignSelf: "center"}}/>
                 <Text style={{ fontWeight: "bold", textAlign: "center" }}>LOG OUT</Text>
             </TouchableOpacity>

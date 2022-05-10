@@ -19,6 +19,12 @@ function useFavorite() {
         AsyncStorage.setItem("favorite", JSON.stringify(favoriteItems))
     }
 
+    const removeItemFormFavorites = () => {
+        favoriteItems.pop(); // momentan
+        setFavoriteItems([...favoriteItems]);
+        AsyncStorage.setItem("favorite", JSON.stringify(favoriteItems))
+    }
+
     const getItemsToFavorite = async () => {
         const favorite = await AsyncStorage.getItem("favorite");
         if (favorite) {
@@ -31,7 +37,8 @@ function useFavorite() {
         return {
             favoriteItems,
             addItemToFavorite,
-            getItemsToFavorite
+            getItemsToFavorite,
+            removeItemFormFavorites
         }
     }
 }

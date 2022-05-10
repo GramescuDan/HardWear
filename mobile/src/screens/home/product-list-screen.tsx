@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import { ProductItem } from "../../components/product-component";
 import { SearchHeader } from "../../components/search-header";
-import { px } from "../../hooks/utils";
+import { px, useAppNavigation } from "../../hooks/utils";
 
 export function ProductListScreen() {
     const [searchInput, setSearchInput] = useState<string>();
@@ -11,10 +11,17 @@ export function ProductListScreen() {
     const changeSearchInput = (val: string) => {
         setSearchInput(val);
     };
+
+    const nav = useAppNavigation();
+    const goToSingleProducts = () => {
+        nav.navigate("SingleProduct");
+    }
+    
+    
     useEffect(() => {
         // to add functionality for search
     }, [searchInput])
-    return <ScrollView>
+    return <ScrollView style = {{backgroundColor: "#f3f9fe"}}>
         <SearchHeader
             placeholderText="Search"
             inputValue={searchInput}
@@ -24,15 +31,19 @@ export function ProductListScreen() {
             inputStyle={{ flexGrow: 3 }}
         />
         <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around" }}>
+            <TouchableOpacity onPress = {goToSingleProducts}>
             <ProductItem />
+            </TouchableOpacity>
+            <TouchableOpacity>
             <ProductItem />
+            </TouchableOpacity>
+            <TouchableOpacity>
             <ProductItem />
+            </TouchableOpacity>
+            <TouchableOpacity>
             <ProductItem />
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
+            </TouchableOpacity>
+            
         </View>
     </ScrollView>
 }

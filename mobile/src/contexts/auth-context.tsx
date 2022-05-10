@@ -52,6 +52,7 @@ function useAuth() {
             nav.navigate("Login");
         }
 
+        
         return {
             login,
             register,
