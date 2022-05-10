@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,10 +18,10 @@ public class UserDto {
     private String lastName;
     private String username;
     private String phone;
-    private LocalDate date;
+    private String location;
 
     public UserDto(String email, String password, String firstName, String lastName, String username,
-                   String phone, LocalDate dateOfBirth) {
+                   String phone, String location) {
 
         this.email = email;
         this.password = password;
@@ -31,7 +29,7 @@ public class UserDto {
         this.lastName = lastName;
         this.username = username;
         this.phone = phone;
-        this.date = dateOfBirth;
+        this.location = location;
     }
 
     public static User toEntity(UserDto userDto) {
@@ -43,7 +41,7 @@ public class UserDto {
                 userDto.getLastName(),
                 userDto.getUsername(),
                 userDto.getPhone(),
-                userDto.getDate()
+                userDto.getLocation()
         );
     }
 
@@ -56,7 +54,7 @@ public class UserDto {
                 user.getLastName(),
                 user.getUsername(),
                 user.getPhone(),
-                user.getDate()
+                user.getLocation()
         );
     }
 }

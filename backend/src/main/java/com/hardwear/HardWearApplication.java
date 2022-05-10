@@ -55,7 +55,7 @@ public class HardWearApplication implements CommandLineRunner {
         String adminData = "admin";
         String adminPhoneNumber = "1234567890";
         String adminEmail = "hardwear@gmail.com";
-        LocalDate dateOfBirth = LocalDate.of(2000, 12, 12);
+        String adminLocation = "Timisoara";
 
         if (userService.findByUsername(adminData).isEmpty()) {
 
@@ -70,7 +70,7 @@ public class HardWearApplication implements CommandLineRunner {
                     adminData,
                     adminData,
                     adminPhoneNumber,
-                    dateOfBirth,
+                    adminLocation,
                     roles);
 
             admin.setEnabled(true);

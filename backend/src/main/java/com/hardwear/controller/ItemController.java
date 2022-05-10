@@ -35,6 +35,11 @@ public class ItemController {
         }
     }
 
+    @GetMapping("/items/byCategory")
+    public List<Item> getItemByCategory(@RequestBody List<String> categories) {
+        return itemService.getByCategories(categories);
+    }
+
     @PostMapping("/items")
     public ResponseEntity<Item> createItem(@RequestBody Item item) throws DatabaseException, ControllerException {
         if (item.getId() != null) {

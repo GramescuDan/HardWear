@@ -1,7 +1,6 @@
 package com.hardwear.controller;
 
 import com.hardwear.dto.UserDto;
-import com.hardwear.exception.BadCredentialsException;
 import com.hardwear.exception.DatabaseException;
 import com.hardwear.exception.EntityNotFoundException;
 import com.hardwear.model.User;
@@ -10,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;

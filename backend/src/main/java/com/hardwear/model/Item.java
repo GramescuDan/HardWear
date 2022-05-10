@@ -1,6 +1,8 @@
 package com.hardwear.model;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,6 +28,7 @@ public class Item {
     private String thumbnail;
 
     @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> images;
 
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
@@ -44,6 +47,7 @@ public class Item {
     private Integer quantity;
 
     @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> categories;
 
     public Item(String thumbnail, List<String> images, String description, String shortDescription, String name, Integer price, Integer quantity, List<String> categories) {

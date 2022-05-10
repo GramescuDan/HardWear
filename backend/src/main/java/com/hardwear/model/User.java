@@ -1,12 +1,9 @@
 package com.hardwear.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -48,9 +45,8 @@ public class User {
     @Column(name = "phone", nullable = false, columnDefinition = "TEXT")
     private String phone;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Column(name = "date", nullable = false, columnDefinition = "DATE")
-    private LocalDate date;
+    @Column(name = "location", nullable = false, columnDefinition = "TEXT")
+    private String location;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -59,7 +55,7 @@ public class User {
     private Boolean enabled = false; //email validation
 
     public User(int id, String email, String password, String firstName, String lastName, String username,
-                String phone, LocalDate dateOfBirth) {
+                String phone, String location) {
 
         this.id = id;
         this.email = email;
@@ -68,11 +64,11 @@ public class User {
         this.lastName = lastName;
         this.username = username;
         this.phone = phone;
-        this.date = dateOfBirth;
+        this.location = location;
     }
 
     public User(String email, String password, String firstName, String lastName, String username,
-                String phone, LocalDate dateOfBirth, Set<Role> roles) {
+                String phone, String location, Set<Role> roles) {
 
         this.email = email;
         this.password = password;
@@ -80,7 +76,7 @@ public class User {
         this.lastName = lastName;
         this.username = username;
         this.phone = phone;
-        this.date = dateOfBirth;
+        this.location = location;
         this.roles = roles;
     }
 }

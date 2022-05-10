@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -27,6 +30,17 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public List<Item> getByCategories(List<String> categories) {
+        Set<String> categorySet = new HashSet<>(categories);
+        List<Item> itemList = new ArrayList<>(itemRepository.findDistinctByCategoriesIn(categorySet));
+        //return itemList = itemList.stream().filter(distinctByKey(Item::getName)).collect(Collectors.toList());
+        for (String category: categories){
+            itemList.removeIf(item -> !item.getCategories().contains(category));
+        }
+        return itemList;
+    }
+
+    @Override
     public Item saveOrUpdate(Item domainObject) {
         return itemRepository.save(domainObject);
     }
@@ -35,5 +49,10 @@ public class ItemServiceImpl implements ItemService {
     @Transactional
     public void delete(Integer id) {
         itemRepository.deleteById(id);
+    }
+
+    public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+        Set<Object> seen = ConcurrentHashMap.newKeySet();
+        return t -> seen.add(keyExtractor.apply(t));
     }
 }
