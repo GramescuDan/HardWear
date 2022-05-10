@@ -24,15 +24,19 @@ export class AuthSerivce {
   }
 
   login(username:string, password: string){
-    var user :IUser = new IUser();
+    let user: IUser = new IUser();
+
     user.username = username;
     user.password = password;
+
     let url = this._apiUrl + "/login";
+    console.log(url);
     return this._http.post<IUser>(url,user).pipe(map(user=>{
       localStorage.setItem('currentUser',JSON.stringify(user));
       this.currentUserSubject.next(user);
       return user;
     }));
+
   }
 
   register(user:IUser): Observable<IUser> {

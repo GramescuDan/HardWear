@@ -27,7 +27,7 @@ public class Scheduler {
         categories.add(category2);
 //        categories.add(category3);
 
-        List<Item> itemList = itemController.getItemByCategory(categories);
+        //List<Item> itemList = itemController.getItemByCategory(categories);
         System.out.println("");
     }
 }
