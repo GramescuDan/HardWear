@@ -8,31 +8,33 @@ import {IUser} from "../../models/user";
   templateUrl: './icon-button.component.html',
   styleUrls: ['./icon-button.component.css']
 })
-export class IconButtonComponent implements OnInit{
+export class IconButtonComponent implements OnInit {
 
-  constructor(private router: Router, private _auth:AuthSerivce) {
-    _auth.currentUser.subscribe((data: IUser)=>this.user =data);
-    if(this.user){
+  constructor(private router: Router, private _auth: AuthSerivce) {
+    _auth.currentUser.subscribe((data: IUser) => this.user = data);
+    if (this.user) {
       this.buttonlog = "Log out";
     }
   }
-  user:IUser;
+
+  user: IUser;
   @Input() Id = ' ';
   @Input() image = ' ';
   @Input() buttonlog = 'Log in';
   menu: any;
 
-  onMyAccountClick() : void{
-    if(this.user){
+  onMyAccountClick(): void {
+    if (this.user) {
       console.log(this.user);
       this.router.navigateByUrl('/my-account');
-    }else{
-      this._auth.logout();
+    } else {
       this.router.navigateByUrl('/login');
     }
   }
 
-  onLoginClick():void{
+  onLoginClick(): void {
+    if(this.user){
+      this._auth.logout();}
     this.router.navigateByUrl('/login');
   }
 

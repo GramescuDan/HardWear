@@ -1,14 +1,13 @@
 import {IBase} from './base';
 
 export class IUser implements IBase{
-
-  username: string;
+  id: number;
   email :string;
   password : string;
-  first_name : string;
-  last_name : string;
+  firstName : string;
+  lastName : string;
+  username: string;
   phone : string;
-  role: string;
-  adress: string;
-  id: number;
+  location: string;
+
 }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IUser} from "../../../models/user";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthSerivce} from "../../../services/auth-serivce";
-import {first} from "rxjs";
+import {first, firstValueFrom, switchMap} from "rxjs";
 
 
 @Component({
@@ -13,15 +13,16 @@ import {first} from "rxjs";
 })
 export class RegisterCardComponent implements OnInit {
 
-  user:IUser = new IUser();
+  user: IUser = new IUser();
 
-  hide: boolean =true;
+  hide: boolean = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   forthFormGroup: FormGroup;
 
-  constructor(private readonly _user:AuthSerivce,private router: Router,private _formBuilder: FormBuilder) { }
+  constructor(private readonly _user: AuthSerivce, private router: Router, private _formBuilder: FormBuilder) {
+  }
 
 
   ngOnInit(): void {
@@ -42,19 +43,19 @@ export class RegisterCardComponent implements OnInit {
     });
   }
 
-  registerpress():void{
+  registerpress() {
+    this.user.id = 1;
     if (this.firstFormGroup.invalid ||
       this.secondFormGroup.invalid ||
       this.thirdFormGroup.invalid ||
       this.forthFormGroup.invalid) {
-      return;
+      console.log("error");
+      return ;
     }
 
-    this._user.register(this.user)
-      .pipe(first())
-      .subscribe(
-        data =>
-          this.router.navigateByUrl('/'));
+    const register = this._user.register(this.user)
+      .pipe(switchMap(() => this.router.navigate(['/'])));
+    return firstValueFrom(register);
   }
 
 }
