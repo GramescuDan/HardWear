@@ -1,5 +1,6 @@
 .my-account-contents{
   display: flex;
+  margin-top: 70px;
   padding-left: 74px;
   padding-right: 74px;
   flex-direction: column;
