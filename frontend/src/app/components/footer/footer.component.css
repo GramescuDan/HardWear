@@ -7,10 +7,15 @@
   color: var(--color-main-font);
 }
 .footer{
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
   bottom: 0;
+  width: 100%;
 background: var(--color-secundary);
 }
 .footer-background{
+  height: 100%;
   margin-bottom: 60px;
   margin-left: 70px;
   margin-top: 34px;
