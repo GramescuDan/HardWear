@@ -24,4 +24,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.details{
+  flex-direction: row;
 
+}

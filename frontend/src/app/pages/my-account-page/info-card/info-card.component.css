@@ -6,9 +6,15 @@
 }
 
 .info-card{
-  width: 590px;
-  height: 268px;
+  width: 550px;
+  height: 248px;
   background: var(--color-secundary);
   padding :16px 16px 16px 16px;
   border-radius: 16px;
+}
+.change-button{
+  padding-top: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }
