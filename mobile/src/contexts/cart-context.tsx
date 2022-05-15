@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 import { AsyncStorage } from "react-native";
 import { Product } from "../components/product-component";
 
@@ -19,6 +19,13 @@ function useCart() {
         AsyncStorage.setItem("cart", JSON.stringify(cartItems))
     }
 
+    const removeItemFromCart = (product: Product) => {
+        const index = cartItems.indexOf(product);
+        cartItems.splice(index, 1);
+        setCartItems([...cartItems]);
+        AsyncStorage.setItem("cart", JSON.stringify(cartItems));
+    }
+
     const getItemsToCart = async () => {
         const cart = await AsyncStorage.getItem("cart");
         if (cart) {
@@ -26,19 +33,26 @@ function useCart() {
         }
     }
 
-    return function() {
+    const clearCart = async () => {
+        await AsyncStorage.removeItem("cart");
+        setCartItems([]);
+    }
+
+    return function () {
 
         return {
             cartItems,
             addItemToCart,
-            getItemsToCart
+            getItemsToCart,
+            clearCart,
+            removeItemFromCart
         }
     }
 }
 
-export function CartContextProvider(p: {children?: ReactNode}) {
+export function CartContextProvider(p: { children?: ReactNode }) {
     const service = useCart();
-    return <CartContext.Provider value = {service}>
+    return <CartContext.Provider value={service}>
         {p.children}
     </CartContext.Provider>
 }
