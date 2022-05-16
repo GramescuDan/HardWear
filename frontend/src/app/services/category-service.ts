@@ -1,9 +1,6 @@
 import {Injectable} from "@angular/core";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {IShopItem} from "../models/shopitem";
-import {Observable} from "rxjs";
-import {ICategory} from "../models/category";
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +8,24 @@ import {ICategory} from "../models/category";
 
 export class CategoryService {
   private readonly _apiUrl = environment.apiUrl + 'categories';
+  private categories: string[];
 
   constructor(
     private readonly _http: HttpClient
   ) {
   }
 
-  get(): Observable<ICategory[]> {
-    return this._http.get<ICategory[]>(this._apiUrl);
+  add(elem: string) {
+    this.categories.push(elem);
   }
+
+  remove(elem: string) {
+    this.categories = this.categories.filter(c => c !== elem);
+  }
+
+  post() {
+
+  }
+
+
 }
