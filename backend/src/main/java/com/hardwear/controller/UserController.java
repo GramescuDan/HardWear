@@ -92,7 +92,7 @@ public class UserController {
             return this.userService.saveOrUpdate(UserDto.toEntity(userDto));
         }
 
-        throw new EntityNotFoundException("User with id " + userId + " not found");
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with id " + userId + " not found");
     }
 
     @DeleteMapping("/users/{userId}")
@@ -101,7 +101,7 @@ public class UserController {
         if (optionalUser.isPresent()) {
             userService.delete(userId);
         } else {
-            throw new EntityNotFoundException("User with id " + userId + " not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with id " + userId + " not found");
         }
     }
 }

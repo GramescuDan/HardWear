@@ -27,15 +27,8 @@ public class Item {
     @Column(name = "thumbnail", nullable = false, columnDefinition = "TEXT")
     private String thumbnail;
 
-    @ElementCollection
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<String> images;
-
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
-
-    @Column(name = "short_description", nullable = false, columnDefinition = "TEXT")
-    private String shortDescription;
 
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
     private String name;
@@ -50,11 +43,9 @@ public class Item {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> categories;
 
-    public Item(String thumbnail, List<String> images, String description, String shortDescription, String name, Integer price, Integer quantity, List<String> categories) {
+    public Item(String thumbnail, String description, String name, Integer price, Integer quantity, List<String> categories) {
         this.thumbnail = thumbnail;
-        this.images = images;
         this.description = description;
-        this.shortDescription = shortDescription;
         this.name = name;
         this.price = price;
         this.quantity = quantity;

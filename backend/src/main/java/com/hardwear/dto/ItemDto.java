@@ -13,7 +13,6 @@ import java.util.List;
 public class ItemDto {
     private int id;
     private String thumbnail;
-    private List<String> images;
     private String description;
     private String shortDescription;
     private String name;
@@ -21,12 +20,10 @@ public class ItemDto {
     private Integer quantity;
     private List<String> categories;
 
-    public ItemDto(int id, String thumbnail, List<String> images, String description, String shortDescription, String name, Integer price, Integer quantity, List<String> categories) {
+    public ItemDto(int id, String thumbnail, String description, String name, Integer price, Integer quantity, List<String> categories) {
         this.id = id;
         this.thumbnail = thumbnail;
-        this.images = images;
         this.description = description;
-        this.shortDescription = shortDescription;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -37,9 +34,7 @@ public class ItemDto {
         return new Item(
                 itemDto.getId(),
                 itemDto.getThumbnail(),
-                itemDto.getImages(),
                 itemDto.getDescription(),
-                itemDto.getShortDescription(),
                 itemDto.getName(),
                 itemDto.getPrice(),
                 itemDto.getQuantity(),
@@ -51,9 +46,7 @@ public class ItemDto {
         return new ItemDto(
                 item.getId(),
                 item.getThumbnail(),
-                item.getImages(),
                 item.getDescription(),
-                item.getShortDescription(),
                 item.getName(),
                 item.getPrice(),
                 item.getQuantity(),
