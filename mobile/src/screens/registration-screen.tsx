@@ -70,6 +70,7 @@ export function RegistrationScreen() {
             value={regInfo?.username}
             onChangeText = {onChangeUsername}
             placeholderText="Enter your username"
+            isTextSecured = {false}
             icon={<MaterialCommunityIcons name="account" size={24} color="gray" />}
             key = {0}
         />,
@@ -77,18 +78,21 @@ export function RegistrationScreen() {
             value={regInfo?.password}
             onChangeText = {onChangePassword}
             placeholderText="Enter your password"
+            isTextSecured = {false}
             icon={<Entypo name="lock-open" size={24} color="gray" />}
             key = {1}
         />,
         <CustomTextInput
             value={regInfo?.email}
             onChangeText = {onChangeEmail}
+            isTextSecured = {false}
             placeholderText="Enter your email"
             icon={<Entypo name="mail" size={24} color="gray" />}
             key = {2}
         />,
         <CustomTextInput
             value={regInfo?.firstName}
+            isTextSecured = {false}
             onChangeText = {onChangeFirstName}
             placeholderText="Enter your first name"
             icon={<MaterialIcons name="drive-file-rename-outline" size={24} color="gray" />}
@@ -96,6 +100,7 @@ export function RegistrationScreen() {
         />,
         <CustomTextInput
             value={regInfo?.lastName}
+            isTextSecured = {false}
             onChangeText = {onChangeLastName}
             placeholderText="Enter your last name"
             icon={<MaterialIcons name="drive-file-rename-outline" size={24} color="gray" />}
@@ -103,6 +108,7 @@ export function RegistrationScreen() {
         />,
         <CustomTextInput
             value={regInfo?.phone}
+            isTextSecured = {false}
             onChangeText = {onChangePhone}
             placeholderText="Enter your phone number"
             icon={<Entypo name="phone" size={24} color="gray" />}
@@ -110,6 +116,7 @@ export function RegistrationScreen() {
         />,
         <CustomTextInput
             value={regInfo?.location}
+            isTextSecured = {false}
             onChangeText = {onChangelocation}
             placeholderText="Enter your location"
             icon={<Entypo name="calendar" size={24} color="gray" />}

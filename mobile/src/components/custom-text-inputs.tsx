@@ -19,7 +19,7 @@ type CustomInputProps = {
     value: string | undefined, 
     placeholderText: string, 
     onChangeText: (val: string) => void,
-
+    isTextSecured: boolean
 }
 
 export function CustomTextInput(p: CustomInputProps) {
@@ -31,6 +31,7 @@ export function CustomTextInput(p: CustomInputProps) {
             placeholder={p.placeholderText}
             placeholderTextColor = "gray"
             ref = {inputRef}
+            secureTextEntry = {p.isTextSecured}
             onChangeText = {p.onChangeText}
             style={{
                 marginLeft: 10,

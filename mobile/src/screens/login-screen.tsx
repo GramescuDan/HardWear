@@ -32,12 +32,14 @@ export function LoginScreen() {
             onChangeText = {onChangeUsername}
             placeholderText="Enter your username"
             icon={<MaterialCommunityIcons name="account" size={24} color="gray" />}
+            isTextSecured = {false}
             key = {0}
         />,
         <CustomTextInput
             value={regInfo?.password}
             onChangeText = {onChangePassword}
             placeholderText="Enter your password"
+            isTextSecured
             icon={<Entypo name="lock-open" size={24} color="gray" />}
             key = {1}
         />,
