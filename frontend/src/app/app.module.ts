@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { IconButtonComponent } from './components/user-button/icon-button.component';
@@ -33,6 +32,10 @@ import { RegisterCardComponent } from './pages/login-register-page/register-card
 import {AuthSerivce} from "./services/auth-serivce";
 import { InfoCardComponent } from './pages/my-account-page/info-card/info-card.component';
 import { ItemComponent } from './components/item/item.component';
+import {CommonModule} from "@angular/common";
+
+
+
 
 @NgModule({
   declarations: [
@@ -55,6 +58,7 @@ import { ItemComponent } from './components/item/item.component';
     ItemComponent,
   ],
   imports: [
+    CommonModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,

@@ -8,9 +8,10 @@ import {Item} from "../../models/Item";
 })
 export class ItemComponent implements OnInit {
 
-  item: Item;
 
-  constructor() { }
+  @Input() itemContainer:Item;
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
