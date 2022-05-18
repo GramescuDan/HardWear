@@ -42,8 +42,7 @@ public class UserController {
         if (optionalUser.isPresent()) {
             return optionalUser.get();
         } else {
-            throw new EntityNotFoundException("User with id " + userId + " not found");
-        }
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");        }
     }
 
     @PostMapping("/users")
