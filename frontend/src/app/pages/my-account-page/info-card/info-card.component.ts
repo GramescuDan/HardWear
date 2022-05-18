@@ -37,5 +37,6 @@ export class InfoCardComponent implements OnInit {
     }
 
     });
+
   }
 }
