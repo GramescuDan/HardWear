@@ -22,10 +22,7 @@ import org.springframework.web.filter.CorsFilter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @SpringBootApplication
 @AllArgsConstructor
@@ -48,7 +45,19 @@ public class HardWearApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws UsernameAlreadyExistsException, DatabaseException {
+        insertPredefinedRoles();
         insertPredefinedAdmin();
+    }
+
+    private void insertPredefinedRoles() throws DatabaseException {
+        if (roleService.findByName("CLIENT").isEmpty()) {
+            Role role = new Role("CLIENT");
+            roleService.saveOrUpdate(role);
+        }
+        if (roleService.findByName("ADMIN").isEmpty()) {
+            Role role = new Role("ADMIN");
+            roleService.saveOrUpdate(role);
+        }
     }
 
     private void insertPredefinedAdmin() throws UsernameAlreadyExistsException, DatabaseException {
@@ -59,10 +68,10 @@ public class HardWearApplication implements CommandLineRunner {
 
         if (userService.findByUsername(adminData).isEmpty()) {
 
-            Role role = new Role("ADMIN");
-            roleService.saveOrUpdate(role);
             Set<Role> roles = new HashSet<>();
-            roles.add(role);
+            Optional<Role> optionalRole = roleService.findByName("ADMIN");
+
+            optionalRole.ifPresent(roles::add);
 
             User admin = new User(adminEmail,
                     passwordEncoder.encode(adminData),
@@ -84,8 +93,6 @@ public class HardWearApplication implements CommandLineRunner {
                     admin);
 
             confirmationTokenService.saveConfirmationToken(adminConfirmationToken);
-        } else {
-            System.out.println("Admin is already defined");
         }
     }
 
