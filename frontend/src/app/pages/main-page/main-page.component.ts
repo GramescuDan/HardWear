@@ -12,7 +12,7 @@ export class MainPageComponent implements OnInit {
   constructor(private _items: ItemService) { }
 
   ngOnInit(): void {
-    this._items.get().subscribe(x =>this._items.items.push(x));
+    this._items.get().subscribe(x =>this._items.items = x);
   }
 
 }
