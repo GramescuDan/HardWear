@@ -11,10 +11,9 @@ import {Item} from "../models/Item";
 export class ItemService {
   constructor(private _http:HttpClient, private _categ:CategoryService) {
   }
-private _api = environment.apiUrl + "/items/byCategories";
+private _api = environment.apiUrl + "/items/byCategories?categories=";
+public items: Item[];
   get(){
-    let categories = this._categ.categories;
-
-    return this._http.get<Item>(this._api,categories);
+    return this._http.get<Item>(this._api + this._categ.categories.join(","));
   }
 }
