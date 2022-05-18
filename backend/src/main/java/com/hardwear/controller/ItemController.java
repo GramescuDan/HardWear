@@ -51,7 +51,7 @@ public class ItemController {
     }
 
     @GetMapping("/items/byCategories")
-    public List<Item> getItemsByCategories(@RequestBody List<String> categories) {
+    public List<Item> getItemsByCategories(@RequestParam List<String> categories) {
         return itemService.getByCategories(categories);
     }
 
