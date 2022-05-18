@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ICategory} from "../../../models/category";
+import {CategoryService} from "../../../services/category-service";
 
 @Component({
   selector: 'app-category-button',
@@ -9,12 +10,18 @@ import {ICategory} from "../../../models/category";
 export class CategoryButtonComponent implements OnInit {
 
   pressed: boolean =true;
-  @Input() name: String | undefined;
-  constructor() {
+  @Input() name: String;
+  constructor(private _categ: CategoryService) {
 }
 
   onClick(){
     this.pressed = !this.pressed;
+    if(this.pressed){
+      this._categ.add(this.name.toString());
+    }else{
+      this._categ.remove(this.name.toString());
+    }
+
   }
   ngOnInit(): void {
   }
