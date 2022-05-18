@@ -3,14 +3,14 @@ import { View, Text, TouchableOpacity, Image, ImageSourcePropType } from "react-
 import { px, useAppNavigation } from "../hooks/utils";
 import { SubCategoryType } from "../screens/home/home-screen";
 
-export function CategoryBox(p: { categoryName: string, imageSource: ImageSourcePropType, subCategory?: SubCategoryType[] }) {
+export function CategoryBox(p: { categoryName: string, imageSource: ImageSourcePropType, subCategory?: SubCategoryType[], subCategoryName?: string }) {
     const nav = useAppNavigation();
 
     const onPress = () => {
         if (p.subCategory) {
             nav.navigate("SubCategory", { subCategory: p.subCategory });
         } else {
-            nav.navigate("ProductList", {})
+            nav.navigate("ProductList", {categoryName: p.subCategoryName ?? ""})
         }
     }
 

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { px, useAppNavigation } from "../../hooks/utils";
 import CheckBox from 'expo-checkbox';
+import { useCartService } from "../../contexts/cart-context";
 
 export function CartPayment() {
     const [cardInput, setCardInput] = useState<string>();
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
     const nav = useAppNavigation();
+    const { cartItems } = useCartService();
 
     const changeCartInput = (val: string) => {
         setCardInput(val);
@@ -39,7 +41,7 @@ export function CartPayment() {
             }
             <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: px(40) }}>
                 <Text style={{ fontSize: 24, color: "black" }}>Total</Text>
-                <Text style={{ fontSize: 24, color: "black", fontWeight: "bold" }}>0$</Text>
+                <Text style={{ fontSize: 24, color: "black", fontWeight: "bold" }}>{cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0)}$</Text>
             </View>
             <View style={{ flexGrow: 1 }} />
             <TouchableOpacity onPress={() => nav.navigate("PlacedOrderInfo")} style={{ alignItems: "center", backgroundColor: "lightblue", padding: 20, borderRadius: 10 }}>

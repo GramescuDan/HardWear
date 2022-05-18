@@ -40,7 +40,7 @@ function useAuth() {
 
         const editProfile = async (fields: EditableInputs<string>) => {
             try {
-                await UserService.editProfile(fields);
+                UserService.editProfile(fields);
                 nav.navigate("Home");
             } catch (e) {
                 console.log(e)
@@ -52,7 +52,6 @@ function useAuth() {
             nav.navigate("Login");
         }
 
-        
         return {
             login,
             register,
