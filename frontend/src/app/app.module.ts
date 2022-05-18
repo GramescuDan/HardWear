@@ -32,6 +32,7 @@ import { LogInCardComponent } from './pages/login-register-page/log-in-card/log-
 import { RegisterCardComponent } from './pages/login-register-page/register-card/register-card.component';
 import {AuthSerivce} from "./services/auth-serivce";
 import { InfoCardComponent } from './pages/my-account-page/info-card/info-card.component';
+import { ItemComponent } from './components/item/item.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { InfoCardComponent } from './pages/my-account-page/info-card/info-card.c
     LogInCardComponent,
     RegisterCardComponent,
     InfoCardComponent,
+    ItemComponent,
   ],
   imports: [
     HttpClientModule,
