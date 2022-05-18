@@ -15,12 +15,10 @@
      <app-category-button [name]="'Networking & UPS'"></app-category-button>
      <app-category-button [name]="'Software & Office Supplies'"></app-category-button>
    </div>
-<app-item ></app-item>
-   <div class="category-section">
-     <img src="/assets/item-skeleton.png">
-     <img src="/assets/item-skeleton.png">
-     <img src="/assets/item-skeleton.png">
-     <img src="/assets/item-skeleton.png">
+   <div class="category-section" >
+    <div *ngFor="let item of itemsList">
+       <app-item [itemContainer]="item"></app-item>
+     </div>
    </div>
  </div>
  <app-footer></app-footer>

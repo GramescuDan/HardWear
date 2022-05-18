@@ -12,7 +12,12 @@ export class ItemService {
   constructor(private _http:HttpClient, private _categ:CategoryService) {
   }
 private _api = environment.apiUrl + "items";
-public items: Item[];
+private items: Item[];
+
+  itemsUpdate(newItems: Item[]){
+    this.items = newItems;
+  }
+
   get(){
     if(this._categ.categories.length == 0){
       return this._http.get<Item[]>(`${environment.apiUrl}items`);
