@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-my-account-dialog',
@@ -8,6 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class MyAccountDialogComponent implements OnInit {
 
   constructor() { }
+
+  @Input() fitext: string;
+  @Input() fires: string;
+
+  @Input() setext: string;
+  @Input() seres: string;
+
+  @Input() thtext: string;
+  @Input() thres:string;
+
+
+
 
   ngOnInit(): void {
   }

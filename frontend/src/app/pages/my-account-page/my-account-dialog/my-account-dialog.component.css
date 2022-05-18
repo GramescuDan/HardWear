@@ -1,0 +1,20 @@
+.dialog-account{
+display: flex;
+  flex-direction: column;
+
+}
+.my-account-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+::ng-deep.mat-dialog-container{
+  background: var(--color-tertiary);
+  color: var(--color-secundary-font);
+}
+
+::ng-deep.mat-input-element{
+  caret-color: #662966;
+
+}

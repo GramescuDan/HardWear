@@ -1,1 +1,21 @@
-<p>my-account-dialog works!</p>
+<div class="dialog-account">
+    <mat-form-field appearance="outline">
+    <mat-label>{{this.fitext}}</mat-label>
+      <input matInput value="{{this.fires}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{this.fitext}}</mat-label>
+      <input matInput value="{{this.fires}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{this.fitext}}</mat-label>
+      <input matInput value="{{this.fires}}">
+    </mat-form-field>
+  <div class="my-account-buttons">
+    <button>Save</button>
+    <button [mat-dialog-close]="true">Close</button>
+  </div>
+
+</div>
