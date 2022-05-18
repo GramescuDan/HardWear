@@ -22,7 +22,7 @@ public class Scheduler {
     @Autowired
     ItemService itemService;
 
-    @Scheduled(cron = "0 * * ? * *") //every minute
+    //@Scheduled(cron = "0 * * ? * *") //every minute
     public void testFilter() throws DatabaseException {
         String category1 = "Laptops";
         String category2 = "Mobile Phones";
