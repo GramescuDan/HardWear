@@ -30,6 +30,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public Item getByName(String name) {
+        return itemRepository.findByName(name);
+    }
+
+    @Override
     public List<Item> getByCategories(List<String> categories) {
         Set<String> categorySet = new HashSet<>(categories);
         List<Item> itemList = new ArrayList<>(itemRepository.findDistinctByCategoriesIn(categorySet));

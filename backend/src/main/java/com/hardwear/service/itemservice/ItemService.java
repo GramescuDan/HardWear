@@ -8,4 +8,6 @@ import java.util.List;
 public interface ItemService extends CRUDService<Item> {
 
     List<Item> getByCategories(List<String> categories);
+
+    Item getByName(String name);
 }

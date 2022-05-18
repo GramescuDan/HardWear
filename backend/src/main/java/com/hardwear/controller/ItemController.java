@@ -59,6 +59,11 @@ public class ItemController {
         return itemService.getByCategories(categories);
     }
 
+    @GetMapping("items/byName")
+    public Item getItemByName(@RequestParam String name) {
+        return itemService.getByName(name);
+    }
+
     @PostMapping("/items")
     public ResponseEntity<Item> createItem(@RequestBody Item item,
                                            @RequestParam("currentFile") MultipartFile currentFile)
