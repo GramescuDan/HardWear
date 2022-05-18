@@ -17,8 +17,10 @@ export class CategoryButtonComponent implements OnInit {
     this.pressed = !this.pressed;
     if(this.pressed){
       this._categ.add(this.name.toString());
+
     }else{
       this._categ.remove(this.name.toString());
+
     }
 
   }

@@ -1,0 +1,21 @@
+<div class="dialog-account">
+    <mat-form-field appearance="outline">
+    <mat-label>{{this.fitext}}</mat-label>
+      <input matInput value="{{this.fires}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{this.setext}}</mat-label>
+      <input matInput value="{{this.seres}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{this.thtext}}</mat-label>
+      <input matInput value="{{this.thres}}">
+    </mat-form-field>
+  <div class="my-account-buttons">
+    <button>Save</button>
+    <button [mat-dialog-close]="true">Close</button>
+  </div>
+
+</div>

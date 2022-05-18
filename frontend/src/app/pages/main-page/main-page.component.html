@@ -15,10 +15,25 @@
      <app-category-button [name]="'Networking & UPS'"></app-category-button>
      <app-category-button [name]="'Software & Office Supplies'"></app-category-button>
    </div>
-   <div class="category-section" >
+   <div class="category-section" style="flex-wrap: wrap;row-gap: 16px;">
     <div *ngFor="let item of itemsList">
        <app-item [itemContainer]="item"></app-item>
+    </div>
+     <div *ngFor="let item of itemsList">
+       <app-item [itemContainer]="item"></app-item>
      </div>
+     <div *ngFor="let item of itemsList">
+     <app-item [itemContainer]="item"></app-item>
+   </div>
+     <div *ngFor="let item of itemsList">
+     <app-item [itemContainer]="item"></app-item>
+   </div>
+     <div *ngFor="let item of itemsList">
+     <app-item [itemContainer]="item"></app-item>
+   </div>
+     <div *ngFor="let item of itemsList">
+     <app-item [itemContainer]="item"></app-item>
+   </div>
    </div>
  </div>
  <app-footer></app-footer>

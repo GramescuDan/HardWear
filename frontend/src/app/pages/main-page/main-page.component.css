@@ -22,7 +22,7 @@
 .category-section{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .details{
   flex-direction: row;

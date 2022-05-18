@@ -1,4 +1,5 @@
 import {IBase} from './base';
+import {Item} from "./Item";
 
 export class IUser implements IBase{
   id: number;
@@ -9,5 +10,6 @@ export class IUser implements IBase{
   username: string;
   phone : string;
   location: string;
+  favoriteItems: Item[];
 
 }

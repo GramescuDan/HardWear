@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -52,20 +53,10 @@ public class User {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany
+    private List<Item> favouriteItems;
+
     private Boolean enabled = false; //email validation
-
-    public User(int id, String email, String password, String firstName, String lastName, String username,
-                String phone, String location) {
-
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.phone = phone;
-        this.location = location;
-    }
 
     public User(String email, String password, String firstName, String lastName, String username,
                 String phone, String location, Set<Role> roles) {

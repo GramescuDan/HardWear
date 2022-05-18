@@ -13,8 +13,9 @@ import com.hardwear.exception.DatabaseException;
 import com.hardwear.exception.DuplicateEntityException;
 import com.hardwear.exception.EntityNotFoundException;
 import com.hardwear.model.Item;
+import com.hardwear.model.User;
 import com.hardwear.service.itemservice.ItemService;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import com.hardwear.service.userservice.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,9 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/items")
     public List<Item> getAllItems() {
         return itemService.listAll();
@@ -46,13 +50,18 @@ public class ItemController {
         if (optionalItem.isPresent()) {
             return optionalItem.get();
         } else {
-            throw new EntityNotFoundException("Item with id " + itemId + " not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found");
         }
     }
 
     @GetMapping("/items/byCategories")
     public List<Item> getItemsByCategories(@RequestParam List<String> categories) {
         return itemService.getByCategories(categories);
+    }
+
+    @GetMapping("items/byName")
+    public Item getItemByName(@RequestParam String name) {
+        return itemService.getByName(name);
     }
 
     @PostMapping("/items")
@@ -62,9 +71,9 @@ public class ItemController {
         if (item.getId() != null) {
             Optional<Item> optionalItem = itemService.getById(item.getId());
             if (optionalItem.isPresent()) {
-                throw new DuplicateEntityException("Item with id " + item.getId() + " already exists");
+                throw new ResponseStatusException(HttpStatus.ALREADY_REPORTED, "Item already exists");
             }
-            throw new ControllerException("Item id should be null");
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Item id should be null");
         }
 
         String bucketName = "hardwear-pad-jmk";
@@ -74,6 +83,43 @@ public class ItemController {
 
         Item savedItem = this.itemService.saveOrUpdate(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/items/saveFavourite/{userId}/{itemId}")
+    public ResponseEntity<User> saveItemAsFavourite(@PathVariable Integer userId,
+                                                    @PathVariable Integer itemId) throws DatabaseException {
+
+        Optional<User> optionalUser = this.userService.getById(userId);
+        Optional<Item> optionalItem = this.itemService.getById(itemId);
+        if (optionalUser.isPresent()) {
+            List<Item> favouriteItemList = optionalUser.get().getFavouriteItems();
+            if (optionalItem.isPresent()) {
+                favouriteItemList.add(optionalItem.get());
+                optionalUser.get().setFavouriteItems(favouriteItemList);
+                User savedUser = this.userService.saveOrUpdate(optionalUser.get());
+                return new ResponseEntity<>(savedUser, HttpStatus.OK);
+            }
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found");
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+    }
+
+    @PostMapping("/items/removeFavourite/{userId}/{itemId}")
+    public ResponseEntity<User> removeFavouriteItem(@PathVariable Integer userId,
+                                                    @PathVariable Integer itemId) throws DatabaseException {
+
+        Optional<User> optionalUser = this.userService.getById(userId);
+        Optional<Item> optionalItem = this.itemService.getById(itemId);
+        if (optionalUser.isPresent()) {
+            List<Item> favouriteItemList = optionalUser.get().getFavouriteItems();
+            if (optionalItem.isPresent()) {
+                favouriteItemList.remove(optionalItem.get());
+                optionalUser.get().setFavouriteItems(favouriteItemList);
+                User savedUser = this.userService.saveOrUpdate(optionalUser.get());
+                return new ResponseEntity<>(savedUser, HttpStatus.OK);
+            }
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
     }
 
 //    @PostMapping(value = "/items/uploadPhoto")
@@ -96,7 +142,7 @@ public class ItemController {
                 return this.itemService.saveOrUpdate(item);
             }
         }
-        throw new EntityNotFoundException("Item with id " + itemId + " not found");
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found");
     }
 
     @DeleteMapping("/items/{itemId}")
@@ -105,7 +151,7 @@ public class ItemController {
         if (optionalItem.isPresent()) {
             itemService.delete(itemId);
         } else {
-            throw new EntityNotFoundException("Item with id " + itemId + " not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found");
         }
     }
 

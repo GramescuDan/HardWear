@@ -1,5 +1,6 @@
 .my-account-contents{
   display: flex;
+  z-index: -1;
   margin-top: 70px;
   padding-left: 74px;
   padding-right: 74px;

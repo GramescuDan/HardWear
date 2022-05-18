@@ -33,6 +33,9 @@ import {AuthSerivce} from "./services/auth-serivce";
 import { InfoCardComponent } from './pages/my-account-page/info-card/info-card.component';
 import { ItemComponent } from './components/item/item.component';
 import {CommonModule} from "@angular/common";
+import { ItemDialogComponent } from './pages/main-page/item-dialog/item-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { MyAccountDialogComponent } from './pages/my-account-page/my-account-dialog/my-account-dialog.component';
 
 
 
@@ -56,6 +59,8 @@ import {CommonModule} from "@angular/common";
     RegisterCardComponent,
     InfoCardComponent,
     ItemComponent,
+    ItemDialogComponent,
+    MyAccountDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -74,7 +79,8 @@ import {CommonModule} from "@angular/common";
     AppRoutingModule,
     MatExpansionModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [AuthSerivce],
   bootstrap: [AppComponent]

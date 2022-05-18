@@ -10,4 +10,6 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 
     List<Item> findDistinctByCategoriesIn(Set<String> category);
 
+    Item findByName(String name);
+
 }

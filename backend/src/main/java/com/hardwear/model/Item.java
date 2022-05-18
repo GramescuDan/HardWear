@@ -42,13 +42,4 @@ public class Item {
     @ElementCollection
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> categories;
-
-    public Item(String thumbnail, String description, String name, Integer price, Integer quantity, List<String> categories) {
-        this.thumbnail = thumbnail;
-        this.description = description;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-        this.categories = categories;
-    }
 }

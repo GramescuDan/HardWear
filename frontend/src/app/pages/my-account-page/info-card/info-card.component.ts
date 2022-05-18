@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FF_MINUS} from "@angular/cdk/keycodes";
+import {MatDialog} from "@angular/material/dialog";
+import {MyAccountDialogComponent} from "../my-account-dialog/my-account-dialog.component";
 
 @Component({
   selector: 'app-info-card',
@@ -8,7 +10,7 @@ import {FF_MINUS} from "@angular/cdk/keycodes";
 })
 export class InfoCardComponent implements OnInit {
 
-  constructor() {
+  constructor(private _dia:MatDialog) {
   }
 
   @Input() headername: string;
@@ -21,4 +23,20 @@ export class InfoCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openDialog() {
+  this._dia.open(MyAccountDialogComponent, {
+    data:{
+      var1:this.fitext,
+      var1val:this.fires,
+
+      var2:this.setext,
+      var2val:this.seres,
+
+      var3:this.thtext,
+      var3val:this.thres
+    }
+
+    });
+
+  }
 }
