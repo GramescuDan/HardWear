@@ -18,3 +18,6 @@ display: flex;
   caret-color: #662966;
 
 }
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline{
+  color:var(--color-quaternary);
+}

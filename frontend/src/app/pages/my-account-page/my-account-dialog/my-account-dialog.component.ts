@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-my-account-dialog',
@@ -7,16 +8,16 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class MyAccountDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  @Input() fitext: string;
-  @Input() fires: string;
+  fitext: string = this.data.fitext;
+  fires: string = this.data.fires;
 
-  @Input() setext: string;
-  @Input() seres: string;
+  setext: string = this.data.setext;
+  seres: string = this.data.seres;
 
-  @Input() thtext: string;
-  @Input() thres:string;
+  thtext: string = this.data.thtext;
+  thres:string = this.data.thres;
 
 
 

@@ -24,6 +24,18 @@ export class InfoCardComponent implements OnInit {
   }
 
   openDialog() {
-  this._dia.open(MyAccountDialogComponent);
+  this._dia.open(MyAccountDialogComponent, {
+    data:{
+      var1:this.fitext,
+      var1val:this.fires,
+
+      var2:this.setext,
+      var2val:this.seres,
+
+      var3:this.thtext,
+      var3val:this.thres
+    }
+
+    });
   }
 }
