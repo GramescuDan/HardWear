@@ -1,7 +1,6 @@
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {IUser} from "../models/user";
-import {BehaviorSubject, config, Observable, tap} from "rxjs";
 import {Injectable} from "@angular/core";
 
 @Injectable({

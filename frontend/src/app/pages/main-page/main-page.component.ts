@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from "../../services/category-service";
-import {ICategory} from "../../models/category";
+import {ItemService} from "../../services/item-service";
 
 @Component({
   selector: 'app-main-page',
@@ -10,9 +9,10 @@ import {ICategory} from "../../models/category";
 export class MainPageComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private _items: ItemService) { }
 
   ngOnInit(): void {
+    this._items.get().subscribe(x =>this._items.items.push(x));
   }
 
 }

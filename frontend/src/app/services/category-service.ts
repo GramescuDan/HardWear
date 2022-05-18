@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 
 export class CategoryService {
   private readonly _apiUrl = environment.apiUrl + 'categories';
-  private categories: string[];
+  public categories: string[] = [];
 
   constructor(
     private readonly _http: HttpClient
