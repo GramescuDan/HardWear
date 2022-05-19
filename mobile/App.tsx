@@ -1,23 +1,13 @@
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet } from 'react-native';
-import { RegistrationScreen } from './src/screens/registration-screen';
-import { useFonts } from 'expo-font';
-import { LoginScreen } from './src/screens/login-screen';
-import { MainScreen } from './src/screens/main-screen';
+import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react';
-import { BottomNavBar } from './src/components/BottomNavigationBar';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { StackNavComponent } from './src/components/StackNavigation';
 import { CartContextProvider } from './src/contexts/cart-context';
 import { FavoriteContextProvider } from './src/contexts/favorites-context';
 import { AuthContextProvider } from './src/contexts/auth-context';
-
-const Tab = createMaterialBottomTabNavigator();
+import { ItemsContextProvider } from './src/contexts/items-context';
 
 export default function App() {
-  const Stack = createNativeStackNavigator();
   // useFonts({
   //   'JetBrainsMono': require('./assets/fonts/ttf/JetBrainsMono-Regular.ttf'),
   //   'Open-Sans': require('./assets/fonts/OpenSans/OpenSans-Regular.ttf'),
@@ -29,21 +19,14 @@ export default function App() {
       <FavoriteContextProvider>
         <CartContextProvider>
           <NavigationContainer>
-            <AuthContextProvider>
-              <StackNavComponent></StackNavComponent>
-            </AuthContextProvider>
+            <ItemsContextProvider>
+              <AuthContextProvider>
+                <StackNavComponent></StackNavComponent>
+              </AuthContextProvider>
+            </ItemsContextProvider>
           </NavigationContainer>
         </CartContextProvider>
       </FavoriteContextProvider>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

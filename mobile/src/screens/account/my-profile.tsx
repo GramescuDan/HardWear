@@ -80,7 +80,7 @@ function EditableInput(p: EditableInputProps) {
 export function MyProfilePage() {
     const nav = useAppNavigation();
     const { loginInfo, editProfile, doLogout } = useAuthService();
-    
+
     const [focusedInputs, setFocusedInputs] = useState<EditableInputs<boolean>>();
     const [fields, setFields] = useState<User>(loginInfo!);
 
@@ -162,7 +162,7 @@ export function MyProfilePage() {
                 <Text style={{ fontWeight: "bold", textAlign: "center", alignSelf: "center" }}>SAVE</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={doLogout} style={{ backgroundColor: "#f3f9fe", padding: px(20), borderRadius: px(8) }}>
-                <AntDesign name="logout" size={24} color="black" style = {{alignSelf: "center"}}/>
+                <AntDesign name="logout" size={24} color="black" style={{ alignSelf: "center" }} />
                 <Text style={{ fontWeight: "bold", textAlign: "center" }}>LOG OUT</Text>
             </TouchableOpacity>
         </View>

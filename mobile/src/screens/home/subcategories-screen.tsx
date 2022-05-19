@@ -39,7 +39,7 @@ export function SubCategory() {
             inputStyle={{ flexGrow: 3 }}
         />
         <View style={{ flexWrap: "wrap", flexDirection: "row", justifyContent: "space-evenly" }}>
-            {(searchInput ? searchedResults : params.subCategory)?.map((subcateg, index) => <CategoryBox key={subcateg.name} categoryName={subcateg.name} imageSource={subcateg.subCategoryImageSources} />)}
+            {(searchInput ? searchedResults : params.subCategory)?.map((subcateg, index) => <CategoryBox key={subcateg.name} subCategoryName = {subcateg.name} categoryName={subcateg.name} imageSource={subcateg.subCategoryImageSources} />)}
         </View>
     </View>
 }

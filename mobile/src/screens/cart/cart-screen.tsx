@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, Image, TouchableOpacity, Touchable } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
 import { useCartService } from "../../contexts/cart-context";
 import { px, useAppNavigation } from "../../hooks/utils";
 import { Entypo } from '@expo/vector-icons';
@@ -33,13 +33,10 @@ export function CartScreen() {
                 <Image source={require("../../../assets/sad_cart.png")} style={{ width: px(100), height: px(100) }} />
                 <Text>No items</Text>
             </View> :
-                <View >
-                    <ScrollView style={{ marginBottom: px(0) }}>
-                        <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around" }}>
-                            {cart.cartItems.map((product, index) => <CartItem key={index} product={product} ></CartItem>)}
-                        </View>
-                    </ScrollView>
-                </View>
+                <FlatList
+                    data={cart.cartItems}
+                    renderItem={({ item }) => <CartItem key={item.id} product={item} />}
+                />
             }
         </View>
     );
