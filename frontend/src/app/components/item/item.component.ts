@@ -23,7 +23,14 @@ export class ItemComponent implements OnInit {
 
   this.dialog.open(ItemDialogComponent,{
     data:{
-      Item:this.itemContainer
+      name:this.itemContainer.name,
+      description:this.itemContainer.description,
+      price:this.itemContainer.price,
+      id:this.itemContainer.id,
+      thumbnail:this.itemContainer.thumbnail,
+      categories:this.itemContainer.categories,
+      quantity:this.itemContainer.quantity
+
     }
   });
   }

@@ -1,6 +1,10 @@
 <div>
+  <img src="{{this.item.thumbnail}}"  alt="Item thumbnial" class="item-image">
+  <h1>{{this.item.name}}</h1>
+  <p>{{this.item.description}}</p>
+  <p style="color:var(--color-warning)">{{this.item.price}}$</p>
+  <p>{{this.item.quantity}}</p>
   <button>Buy</button>
   <button>Favorites</button>
   <button mat-dialog-close="true">Close</button>
-
 </div>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CategoryService} from "../../../services/category-service";
 import {ItemService} from "../../../services/item-service";
 
@@ -10,17 +10,22 @@ import {ItemService} from "../../../services/item-service";
 export class CategoryButtonComponent implements OnInit {
 
   pressed: boolean =true;
-  @Input() name: String;
+  @Input() name: string;
+  @Output() categoryEmitter = new EventEmitter<boolean>();
+
   constructor(private _categ: CategoryService,private _items: ItemService) {
 }
 
   onClick(){
     this.pressed = !this.pressed;
-    if(this.pressed){
-      this._categ.add(this.name.toString());
+
+    if(!this.pressed){
+      this._categ.add(this.name);
     }else{
-      this._categ.remove(this.name.toString());
+      this._categ.remove(this.name);
     }
+
+    this.categoryEmitter.emit(true);
     this._items.get().subscribe(items =>this._items.itemsUpdate(items));
   }
   ngOnInit(): void {

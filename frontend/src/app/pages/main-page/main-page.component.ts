@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../../services/item-service";
 import {Item} from "../../models/Item";
+import {CategoryService} from "../../services/category-service";
+import {map, Observable} from "rxjs";
 
 @Component({
   selector: 'app-main-page',
@@ -10,14 +12,38 @@ import {Item} from "../../models/Item";
 export class MainPageComponent implements OnInit {
 
   itemsList:Item[];
+  itemsContainter: Observable<Item[]> = new Observable<Item[]>();
+  private actualItems: Item[];
 
-  constructor(private _items: ItemService) {
+  constructor(private _items: ItemService, private _categ:CategoryService) {
 
   }
 
   ngOnInit(): void {
-    this._items.get().subscribe(items =>this.itemsList= items);
-    this._items.itemsUpdate(this.itemsList);
+    // this.itemsContainter = this._items.get().pipe(map(items => {
+    // return items.filter(item => {
+    //   return this._categ.categories.every(category => item.categories.includes(category));
+    // })=== []?this._items.initializedItems: items.filter(item => {
+    //   return this._categ.categories.every(category => item.categories.includes(category));} )
+    //   }))
+    this._items.get().subscribe(items => {
+      this.itemsList = items;
+      this.actualItems = items;
+    });
+    if(this.itemsList){
+      this._items.itemsUpdate(this.itemsList);
+    }
   }
 
+  updateitems($event?: boolean) {
+
+    if(this.itemsList && this.actualItems){
+      this.itemsList = this.actualItems;
+      console.log(this.itemsList);
+      this.itemsList = this.itemsList.filter(item => {
+        return this._categ.categories.every(category => item.categories.includes(category));
+      })
+    }
+
+  }
 }

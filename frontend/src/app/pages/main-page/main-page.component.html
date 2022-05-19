@@ -5,35 +5,20 @@
         <h1 class="cover-text">Buy the things that make your life complete</h1>
    </div>
    <div class="category-section">
-     <app-category-button [name]="'Laptops'"></app-category-button>
-     <app-category-button [name]="'Mobile Phones'"></app-category-button>
-     <app-category-button [name]="'Gaming & Office Systems'"></app-category-button>
-     <app-category-button [name]="'Components'"></app-category-button>
-     <app-category-button [name]="'Gaming'"></app-category-button>
-     <app-category-button [name]="'Monitors & Peripheries'"></app-category-button>
-     <app-category-button [name]="'Tv & Video'"></app-category-button>
-     <app-category-button [name]="'Networking & UPS'"></app-category-button>
-     <app-category-button [name]="'Software & Office Supplies'"></app-category-button>
+     <app-category-button [name]="'Laptops'" (categoryEmitter)="updateitems($event)"></app-category-button>
+     <app-category-button [name]="'Mobile Phones'" (categoryEmitter)="updateitems($event)"></app-category-button>
+     <app-category-button [name]="'Gaming & Office Systems'" (categoryEmitter)="updateitems($event)"></app-category-button>
+     <app-category-button [name]="'Components'" (categoryEmitter)="updateitems($event)"></app-category-button>
+     <app-category-button [name]="'Gaming'" (categoryEmitter)="updateitems($event)"></app-category-button>
+     <app-category-button [name]="'Monitors & Peripheries'" (categoryEmitter)="updateitems($event)"></app-category-button>
+     <app-category-button [name]="'Tv & Video'" (categoryEmitter)="updateitems($event)"></app-category-button>
+     <app-category-button [name]="'Networking & UPS'" (categoryEmitter)="updateitems($event)"></app-category-button>
+     <app-category-button [name]="'Software & Office Supplies'" (categoryEmitter)="updateitems($event)"></app-category-button>
    </div>
    <div class="category-section" style="flex-wrap: wrap;row-gap: 16px;">
     <div *ngFor="let item of itemsList">
        <app-item [itemContainer]="item"></app-item>
     </div>
-     <div *ngFor="let item of itemsList">
-       <app-item [itemContainer]="item"></app-item>
-     </div>
-     <div *ngFor="let item of itemsList">
-     <app-item [itemContainer]="item"></app-item>
-   </div>
-     <div *ngFor="let item of itemsList">
-     <app-item [itemContainer]="item"></app-item>
-   </div>
-     <div *ngFor="let item of itemsList">
-     <app-item [itemContainer]="item"></app-item>
-   </div>
-     <div *ngFor="let item of itemsList">
-     <app-item [itemContainer]="item"></app-item>
-   </div>
    </div>
  </div>
  <app-footer></app-footer>
