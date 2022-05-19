@@ -21,6 +21,10 @@ export class ItemComponent implements OnInit {
   openDialog() {
   const dialogConfig = new MatDialogConfig();
 
-  this.dialog.open(ItemDialogComponent,dialogConfig);
+  this.dialog.open(ItemDialogComponent,{
+    data:{
+      Item:this.itemContainer
+    }
+  });
   }
 }

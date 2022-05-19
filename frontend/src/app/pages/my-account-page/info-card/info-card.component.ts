@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FF_MINUS} from "@angular/cdk/keycodes";
 import {MatDialog} from "@angular/material/dialog";
 import {MyAccountDialogComponent} from "../my-account-dialog/my-account-dialog.component";
 
@@ -20,6 +19,7 @@ export class InfoCardComponent implements OnInit {
   @Input() seres: string;
   @Input() thtext: string;
   @Input() thres:string;
+  @Input() selector: boolean;
   ngOnInit(): void {
   }
 
@@ -33,7 +33,8 @@ export class InfoCardComponent implements OnInit {
       var2val:this.seres,
 
       var3:this.thtext,
-      var3val:this.thres
+      var3val:this.thres,
+      selector:this.selector
     }
 
     });

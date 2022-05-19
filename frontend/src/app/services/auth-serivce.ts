@@ -23,6 +23,9 @@ export class AuthSerivce {
   public get curentUserValue(): IUser {
     return this.currentUserSubject.value;
   }
+  public update(user:IUser){
+    this.currentUserSubject.next(user);
+  }
 
   login(username: string, password: string) {
     let user: IUser = new IUser();
@@ -50,7 +53,6 @@ export class AuthSerivce {
   }
 
   logout() {
-
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null!);
   }

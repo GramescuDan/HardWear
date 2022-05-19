@@ -12,10 +12,8 @@ export class ItemService {
   constructor(private _http:HttpClient, private _categ:CategoryService) {
   }
 private _api = environment.apiUrl + "items";
-private items: Item[];
 
-  itemsUpdate(newItems: Item[]){
-    this.items = newItems;
+  itemsUpdate(newItems: Item[]) {
   }
 
   get(){

@@ -5,11 +5,14 @@
                  [fitext]="'Username'" [fires]="currentUser.username"
                  [setext]="'Email'" [seres]="currentUser.email"
                  [thtext]="'Phone'" [thres]="currentUser.phone"
+                 [selector]="false"
   ></app-info-card>
     <app-info-card [headername]="'Personal Details'"
                    [fitext]="'First Name'" [fires]="currentUser.firstName"
                    [setext]="'Last Name'" [seres]="currentUser.lastName"
                    [thtext]="'Address'" [thres]="currentUser.location"
+                   [selector]="true"
     ></app-info-card>
   </div>
 </div>
+

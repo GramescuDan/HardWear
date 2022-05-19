@@ -1,5 +1,7 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {AuthSerivce} from "../../../services/auth-serivce";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-my-account-dialog',
@@ -8,7 +10,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class MyAccountDialogComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private _auth:AuthSerivce,private formBuilder:FormBuilder) { }
 
   fitext: string = this.data.var1;
   fires: string = this.data.var1val;
@@ -19,11 +21,29 @@ export class MyAccountDialogComponent implements OnInit {
   thtext: string = this.data.var3;
   thres:string = this.data.var3val;
 
+  select:boolean = this.data.selector;
 
-
+  updateForm: FormGroup;
 
   ngOnInit(): void {
-    console.log(this.data);
+this.updateForm = this.formBuilder.group(
+  {
+    fir: [],
+    sec: [],
+    th: []
+  }
+)
   }
 
-}
+  pressSave(){
+  if(this.select){
+    //this is not working
+    this._auth.curentUserValue.username ;
+
+  } else{
+
+  }
+
+  }
+
+  }
