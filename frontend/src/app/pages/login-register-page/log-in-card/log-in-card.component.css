@@ -29,3 +29,6 @@ input{
   border-color: var(--color-quaternary);
   border-radius: 4px;
 }
+::ng-deep.mat-form-field{
+  display: flex !important;
+}
