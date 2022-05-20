@@ -25,6 +25,9 @@ export class AuthSerivce {
   }
   public update(user:IUser){
     this.currentUserSubject.next(user);
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    //aici se face un post catre backend
+
   }
 
   login(username: string, password: string) {
