@@ -19,6 +19,7 @@ import com.hardwear.service.userservice.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -65,9 +66,9 @@ public class ItemController {
     }
 
     @PostMapping("/items")
-    public ResponseEntity<Item> createItem(@RequestBody Item item,
-                                           @RequestParam("currentFile") MultipartFile currentFile)
-            throws DatabaseException, ControllerException {
+    public ResponseEntity<Item> createItem(@RequestPart("item") Item item,
+                                           @RequestParam("currentFile") File currentFile)
+            throws DatabaseException {
         if (item.getId() != null) {
             Optional<Item> optionalItem = itemService.getById(item.getId());
             if (optionalItem.isPresent()) {
@@ -78,8 +79,10 @@ public class ItemController {
 
         String bucketName = "hardwear-pad-jmk";
 
-        String photoUrl = uploadPhotoAsUrl(currentFile, bucketName, item);
-        item.setThumbnail(photoUrl);
+        if (currentFile != null) {
+            String photoUrl = uploadPhotoAsUrl(currentFile, bucketName, item);
+            item.setThumbnail(photoUrl);
+        }
 
         Item savedItem = this.itemService.saveOrUpdate(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
@@ -155,14 +158,7 @@ public class ItemController {
         }
     }
 
-    public String uploadPhotoAsUrl(MultipartFile photo, String bucketName, Item item) {
-        File storedPhoto;
-
-        try {
-            storedPhoto = convertMultiPartToFile(photo);
-        } catch (IOException e) {
-            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Unable to convert input stream to file");
-        }
+    public String uploadPhotoAsUrl(File storedPhoto, String bucketName, Item item) {
 
         AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("eu-central-1").build();
         TransferManager xfer_mgr = TransferManagerBuilder.standard().withS3Client(s3client).build();
