@@ -12,7 +12,8 @@
 .item-image{
   border-radius: 4px;
   min-height: 100px;
-  max-height: 160px;
+  min-width: 250px;
+  max-height: 100px;
   max-width: 250px;
 }
 p{
@@ -27,3 +28,5 @@ h1{
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+
