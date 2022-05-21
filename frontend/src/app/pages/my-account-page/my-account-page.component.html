@@ -1,18 +1,33 @@
 <app-navbar></app-navbar>
 <div class="my-account-contents">
-  <div class="details" style="display: flex;  justify-content: space-around;">
-  <app-info-card [headername]="'Account Details'"
-                 [fitext]="'Username'" [fires]="currentUser.username"
-                 [setext]="'Email'" [seres]="currentUser.email"
-                 [thtext]="'Phone'" [thres]="currentUser.phone"
-                 [selector]="true"
-  ></app-info-card>
+  <div class="details" style="display: flex;  justify-content: space-between;">
+    <app-info-card [headername]="'Account Details'"
+                   [fitext]="'Username'" [fires]="currentUser.username"
+                   [setext]="'Email'" [seres]="currentUser.email"
+                   [thtext]="'Phone'" [thres]="currentUser.phone"
+                   [selector]="true"
+    ></app-info-card>
     <app-info-card [headername]="'Personal Details'"
                    [fitext]="'First Name'" [fires]="currentUser.firstName"
                    [setext]="'Last Name'" [seres]="currentUser.lastName"
                    [thtext]="'Address'" [thres]="currentUser.location"
                    [selector]="false"
     ></app-info-card>
+  </div>
+  <div class="item-list">
+    <div>
+      <h1>Favorite Items</h1>
+    </div>
+    <div class="item-list-items">
+      <p>this</p>
+      <p>is</p>
+      <p>the</p>
+      <p>cow</p>
+      <p>muuuu</p>
+    </div>
+    <div>
+
+    </div>
   </div>
 </div>
 

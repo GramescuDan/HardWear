@@ -1,0 +1,35 @@
+::ng-deep.mat-dialog-container{
+  background: var(--color-secundary);
+  color: #CECECE;
+  min-width: 15vw;
+  min-height: 35vh;
+}
+.fav-button{
+  background: var(--color-warning)!important;
+}
+.buy-button{
+  background: var(--color-accent);
+  border : none;
+  font-weight: bold;
+  height: 3.72vh;
+  width: 92px;
+  border-radius: 8px;
+}
+.close-button{
+  color: var(--color-secundary-font);
+  background: none;
+  height: 3.72vh;
+  width: 92px;
+  border-radius: 8px;
+  border-color: var(--color-accent);
+  border-width: 3px;
+}
+
+.item-image{
+  min-width: 200px;
+  min-height: 150px;
+
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 4px;
+}
