@@ -20,12 +20,7 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.itemsContainter = this._items.get().pipe(map(items => {
-    // return items.filter(item => {
-    //   return this._categ.categories.every(category => item.categories.includes(category));
-    // })=== []?this._items.initializedItems: items.filter(item => {
-    //   return this._categ.categories.every(category => item.categories.includes(category));} )
-    //   }))
+
     this._items.get().subscribe(items => {
       this.itemsList = items;
       this.actualItems = items;

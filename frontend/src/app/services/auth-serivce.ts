@@ -4,6 +4,7 @@ import {IUser} from "../models/user";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {UserService} from "./user-service";
+import {Item} from "../models/Item";
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,26 @@ export class AuthSerivce {
     this.currentUserSubject.next(user);
     localStorage.setItem('currentUser', JSON.stringify(user));
     this._user.put(user.id,user).subscribe(()=>user);
+  }
 
+  public saveFav(iid:number){
+  this._user.saveToFav(this.curentUserValue.id,iid).subscribe(user =>
+  {
+    if (user instanceof IUser) {
+      this.currentUserSubject.next(user);
+    }
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  })
+  }
+
+  public removeFav(iid:number){
+    this._user.removeFromFav(this.curentUserValue.id,iid).subscribe(user =>
+    {
+      if (user instanceof IUser) {
+        this.currentUserSubject.next(user);
+      }
+      localStorage.setItem('currentUser', JSON.stringify(user));
+    })
   }
 
   login(username: string, password: string) {

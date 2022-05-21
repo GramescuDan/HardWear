@@ -5,21 +5,36 @@
   min-height: 35vh;
 }
 .fav-button{
-  background: var(--color-warning)!important;
+  background: #FF2424;
+  border : none;
+  font-weight: bold;
+  height: 3.72vh;
+  width: 150px;
+  border-radius: 8px;
 }
+
+.fav-button-clicked{
+  background: var(--color-warning);
+  border : none;
+  font-weight: bold;
+  height: 3.72vh;
+  width: 150px;
+  border-radius: 8px;
+}
+
 .buy-button{
   background: var(--color-accent);
   border : none;
   font-weight: bold;
   height: 3.72vh;
-  width: 92px;
+  width: 150px;
   border-radius: 8px;
 }
 .close-button{
   color: var(--color-secundary-font);
   background: none;
   height: 3.72vh;
-  width: 92px;
+  width: 150px;
   border-radius: 8px;
   border-color: var(--color-accent);
   border-width: 3px;

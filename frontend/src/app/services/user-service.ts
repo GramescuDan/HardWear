@@ -25,4 +25,11 @@ export class UserService {
     return this._http.put(`${environment.apiUrl}users/${id}`,user);
   }
 
+  saveToFav(uid:number,iid:number){
+  return this._http.post(`${environment.apiUrl}items/saveFavourite/${uid}/${iid}`,null);
+  }
+
+  removeFromFav(uid:number,iid:number){
+    return this._http.post(`${environment.apiUrl}items/removeFavourite/${uid}/${iid}`,null);
+  }
 }

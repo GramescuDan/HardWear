@@ -6,7 +6,7 @@
   <p>Quantity: {{this.itemDialog.quantity}}</p>
   <div style="display: flex; flex-direction: column; row-gap: 10px; align-items: center">
     <button class="buy-button">Add to Cart</button>
-    <button class="fav-button buy-button">Add to Favorites</button>
+    <button  class="{{this.buttonPressed ? 'fav-button' :'fav-button-clicked'}}"  (click)="favPress()">{{this.favoriteButton}}</button>
     <button mat-dialog-close="true" class="close-button">Close</button>
   </div>
 

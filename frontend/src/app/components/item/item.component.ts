@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Item} from "../../models/Item";
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {ItemDialogComponent} from "../../pages/main-page/item-dialog/item-dialog.component";
+import {Item} from "../../models/Item";
 
 @Component({
   selector: 'app-item',

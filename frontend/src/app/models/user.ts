@@ -10,6 +10,6 @@ export class IUser implements IBase{
   username: string;
   phone : string;
   location: string;
-  favoriteItems: Item[];
+  favouriteItems: Item[];
 
 }
