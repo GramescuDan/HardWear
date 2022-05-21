@@ -25,3 +25,11 @@
   border-width: 3px;
 }
 
+.item-image{
+  min-width: 200px;
+  min-height: 150px;
+
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 4px;
+}
