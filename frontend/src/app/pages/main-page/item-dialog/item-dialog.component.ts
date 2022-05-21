@@ -9,20 +9,16 @@ import {Item} from "../../../models/Item";
 })
 export class ItemDialogComponent implements OnInit {
 
-  item : Item;
+  itemDialog : Item;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
 
   }
 
   ngOnInit(): void {
-    this.item.name = this.data.name;
-    this.item.price = this.data.price;
-    this.item.description = this.data.description;
-    this.item.id= this.data.id;
-    this.item.quantity = this.data.quantity;
-    this.item.categories = this.data.categories;
     console.log(this.data);
+    this.itemDialog = this.data;
+    console.log(this.itemDialog);
   }
 
 }
