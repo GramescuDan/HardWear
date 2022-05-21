@@ -21,3 +21,22 @@
 ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline{
   color:var(--color-quaternary);
 }
+
+.save-button{
+  background: var(--color-accent);
+  border : none;
+  font-weight: bold;
+  height: 3.72vh;
+  width: 92px;
+  border-radius: 8px;
+}
+
+.close-button{
+  color: var(--color-secundary-font);
+  background: none;
+  height: 3.72vh;
+  width: 92px;
+  border-radius: 8px;
+  border-color: var(--color-accent);
+  border-width: 3px;
+}

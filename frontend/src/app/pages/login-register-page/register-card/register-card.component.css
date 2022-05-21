@@ -47,11 +47,10 @@ input{
   border-radius: 4px;
 }
 .button-full{
-
-  color:var(--color-primary);
+  color: var(--color-secundary);
   background: var(--color-accent);
+  border : none;
   font-weight: bold;
-  border:none;
   height: 3.72vh;
   width: 92px;
   border-radius: 8px;
@@ -60,9 +59,8 @@ input{
 .button-outline{
   color: var(--color-secundary-font);
   background: none;
-  height: 40px;
-  width: 100px;
-  border-style: solid;
+  height: 3.72vh;
+  width: 92px;
   border-radius: 8px;
   border-color: var(--color-accent);
   border-width: 3px;

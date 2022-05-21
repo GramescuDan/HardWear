@@ -21,4 +21,8 @@ export class UserService {
     return this._http.post(`${environment.apiUrl}/users`,user);
   }
 
+  put(id:number, user: IUser){
+    return this._http.put(`${environment.apiUrl}/users/${id}`,user);
+  }
+
 }

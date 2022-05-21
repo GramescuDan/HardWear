@@ -3,6 +3,7 @@ import {BehaviorSubject, map, Observable} from "rxjs";
 import {IUser} from "../models/user";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
+import {UserService} from "./user-service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthSerivce {
   public currentUser: Observable<IUser>;
 
   constructor(
-    private readonly _http: HttpClient
+    private readonly _http: HttpClient, private _user:UserService
   ) {
     this.currentUserSubject = new BehaviorSubject<IUser>(((JSON).parse(localStorage.getItem('currentUser')!)));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -26,7 +27,7 @@ export class AuthSerivce {
   public update(user:IUser){
     this.currentUserSubject.next(user);
     localStorage.setItem('currentUser', JSON.stringify(user));
-    //aici se face un post catre backend
+    this._user.put(user.id,user).subscribe(()=>user);
 
   }
 
