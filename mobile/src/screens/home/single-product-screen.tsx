@@ -12,15 +12,16 @@ export function SingleProductScreen() {
     const cart = useCartService();
     const route = useRoute();
     const params = route.params as { id: number };
-    // momentan
-    const [isFavorite, setIsFavorite] = useState(false);
     const favorites = useFavoriteService();
     const { getItemsById } = useItemsContext();
     const [singleItem, setSingleItem] = useState<Item>();
 
     const onFavoriteChange = () => {
-        favorites.addItemToFavorite({ name: "name", image: require("../../../assets/phone.jpg"), inStock: true, price: 20, quantity: 10 })
-        setIsFavorite(!isFavorite);
+        if (!favorites.isItemFavorite(singleItem!)) {
+            favorites.addItemToFavorite(singleItem!);
+        } else {
+            favorites.removeItemFormFavorites(singleItem!);
+        }
     }
 
     useEffectAsync(async () => {
@@ -28,6 +29,11 @@ export function SingleProductScreen() {
         setSingleItem(data);
     }, [])
 
+    useEffectAsync(async () => {
+        await favorites.getItemsToFavorite();
+    }, [])
+
+    if (!singleItem) return <></>
     return (
         <View style={{ flex: 1, backgroundColor: "white", }}>
             <View style={{ flexGrow: 0.1, alignItems: "center", justifyContent: "center" }}>
@@ -40,7 +46,7 @@ export function SingleProductScreen() {
                     <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                         <Text style={{ fontWeight: "bold", fontSize: px(18) }}>{singleItem?.name}</Text>
                         <TouchableOpacity onPress={onFavoriteChange} style={{}}>
-                            <Image source={!isFavorite ? require("../../../assets/heart.png") : require("../../../assets/heart-filled.png")} style={[{ width: px(19), height: px(17) }, isFavorite ? { tintColor: "darkred" } : { tintColor: "gray" }]} />
+                            <Image source={!favorites.isItemFavorite(singleItem!) ? require("../../../assets/heart.png") : require("../../../assets/heart-filled.png")} style={[{ width: px(19), height: px(17) }, favorites.isItemFavorite(singleItem!) ? { tintColor: "darkred" } : { tintColor: "gray" }]} />
                         </TouchableOpacity>
                     </View>
                     <Text style={{ marginTop: px(10), fontSize: px(14), color: "gray" }}>{singleItem?.description}</Text>
