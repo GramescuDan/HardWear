@@ -1,36 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Image, Text, TouchableOpacity, ImageSourcePropType } from "react-native";
-import { px } from "../hooks/utils";
+import { px, useEffectAsync } from "../hooks/utils";
 import { AntDesign } from '@expo/vector-icons';
 import { useCartService } from "../contexts/cart-context";
 import { useFavoriteService } from "../contexts/favorites-context";
 import { Item } from "../screens/home/product-list-screen";
 
-export interface Product {
-    image: ImageSourcePropType,
-    name: string,
-    description?: string,
-    inStock: boolean,
-    price: number
-    quantity: number,
-    isSelected?: boolean
-}
-
 export function ProductItem(p: Item) {
-    const [isFavorite, setIsFavorite] = useState(false);
     const cart = useCartService();
     const favorites = useFavoriteService();
 
     const onFavoriteChange = () => {
-        favorites.addItemToFavorite({ name: "name", image: require("../../assets/phone.jpg"), inStock: true, price: 20, quantity: 10 })
-        setIsFavorite(!isFavorite);
+        if (!favorites.isItemFavorite(p)) {
+            favorites.addItemToFavorite(p);
+        } else {
+            favorites.removeItemFormFavorites(p);
+        }
     }
-    return (
 
+    useEffectAsync(async () => {
+        await favorites.getItemsToFavorite();
+    }, [])
+
+    return (
         <View style={{ opacity: p.quantity ? 1 : 0.5, flexDirection: "column", marginTop: px(15), backgroundColor: "white", padding: px(20), width: px(185), height: px(300) }}>
             <View style={{ flexDirection: "row" }}>
                 <TouchableOpacity onPress={onFavoriteChange}>
-                    <Image source={!isFavorite ? require("../../assets/heart.png") : require("../../assets/heart-filled.png")} style={[{ width: px(19), height: px(17) }, isFavorite ? { tintColor: "darkred" } : { tintColor: "gray" }]} />
+                    <Image source={!favorites.isItemFavorite(p) ? require("../../assets/heart.png") : require("../../assets/heart-filled.png")} style={[{ width: px(19), height: px(17) }, favorites.isItemFavorite(p) ? { tintColor: "darkred" } : { tintColor: "gray" }]} />
                 </TouchableOpacity>
                 <View style={{ width: px(90), height: px(100) }}>
                     <Image source={require("../../assets/phone.jpg")} style={{ borderRadius: px(30), alignSelf: "center", width: px(70), height: px(80) }} />
