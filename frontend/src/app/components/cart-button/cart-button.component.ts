@@ -8,6 +8,14 @@ import {ICart} from "../../models/cart";
 })
 export class CartButtonComponent {
 
+  cart: ICart;
   @Input() Id = ' ';
   @Input() image = ' ';
+
+  constructor() {
+  }
+
+  cartPress() {
+
+  }
 }

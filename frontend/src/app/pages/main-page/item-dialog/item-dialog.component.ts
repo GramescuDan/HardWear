@@ -55,4 +55,7 @@ export class ItemDialogComponent implements OnInit {
 
   }
 
+  addToCart() {
+
+  }
 }

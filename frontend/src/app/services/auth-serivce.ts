@@ -4,7 +4,6 @@ import {IUser} from "../models/user";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {UserService} from "./user-service";
-import {Item} from "../models/Item";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +17,7 @@ export class AuthSerivce {
   constructor(
     private readonly _http: HttpClient, private _user:UserService
   ) {
+
     this.currentUserSubject = new BehaviorSubject<IUser>(((JSON).parse(localStorage.getItem('currentUser')!)));
     this.currentUser = this.currentUserSubject.asObservable();
   }
