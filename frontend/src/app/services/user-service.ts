@@ -22,7 +22,7 @@ export class UserService {
   }
 
   put(id:number, user: IUser){
-    return this._http.put(`${environment.apiUrl}/users/${id}`,user);
+    return this._http.put(`${environment.apiUrl}users/${id}`,user);
   }
 
 }
