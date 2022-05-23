@@ -33,10 +33,10 @@ public class Item {
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
     private String name;
 
-    @Column(name = "price", updatable = false, columnDefinition = "INTEGER")
+    @Column(name = "price", columnDefinition = "INTEGER")
     private Integer price;
 
-    @Column(name = "quantity", updatable = false, columnDefinition = "INTEGER")
+    @Column(name = "quantity", columnDefinition = "INTEGER")
     private Integer quantity;
 
     @ElementCollection
