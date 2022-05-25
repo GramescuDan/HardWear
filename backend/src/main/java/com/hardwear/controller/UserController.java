@@ -2,8 +2,11 @@ package com.hardwear.controller;
 
 import com.hardwear.exception.DatabaseException;
 import com.hardwear.exception.EntityNotFoundException;
+import com.hardwear.model.Cart;
+import com.hardwear.model.Item;
 import com.hardwear.model.Role;
 import com.hardwear.model.User;
+import com.hardwear.service.cartservice.CartService;
 import com.hardwear.service.roleservice.RoleService;
 import com.hardwear.service.userservice.UserService;
 import org.jetbrains.annotations.NotNull;
@@ -14,10 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CartService cartService;
 
     @Autowired
     private RoleService roleService;
@@ -62,6 +65,14 @@ public class UserController {
         Optional<Role> optionalRole = roleService.findByName("CLIENT");
 
         optionalRole.ifPresent(roles::add);
+
+        Cart cart = new Cart();
+        cart.setId(null);
+        List<Item> itemList = new ArrayList<>();
+        cart.setCartItems(itemList);
+        this.cartService.saveOrUpdate(cart);
+
+        user.setCart(cart);
 
         user.setRoles(roles);
 
