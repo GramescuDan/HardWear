@@ -3,12 +3,14 @@ import { View, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyb
 import { px, useAppNavigation } from "../../hooks/utils";
 import CheckBox from 'expo-checkbox';
 import { useCartService } from "../../contexts/cart-context";
+import { useItemsContext } from "../../contexts/items-context";
 
 export function CartPayment() {
     const [cardInput, setCardInput] = useState<string>();
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
     const nav = useAppNavigation();
-    const { cartItems } = useCartService();
+    const { cartItems, removeItemFromCart } = useCartService();
+    const { removeItemFromDb } = useItemsContext();
 
     const changeCartInput = (val: string) => {
         setCardInput(val);
@@ -44,7 +46,20 @@ export function CartPayment() {
                 <Text style={{ fontSize: 24, color: "black", fontWeight: "bold" }}>{cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0)}$</Text>
             </View>
             <View style={{ flexGrow: 1 }} />
-            <TouchableOpacity onPress={() => nav.navigate("PlacedOrderInfo")} style={{ alignItems: "center", backgroundColor: "lightblue", padding: 20, borderRadius: 10 }}>
+            <TouchableOpacity onPress={() => {
+                // Promise.all(cartItems.map((item) => {
+                // const dummyStringTrimmed = JSON.stringify(item).trim();
+                // const x = dummyStringTrimmed.slice(-1, -2);
+                // console.log(x)
+                //     if (x == ',') {
+                //         console.log(JSON.parse(x))
+                //     }
+                    // const newItem = JSON.parse(correct);
+                    // console.log(newItem);
+                    // removeItemFromDb(item.id, newItem)
+                // }))
+                nav.navigate("PlacedOrderInfo");
+            }} style={{ alignItems: "center", backgroundColor: "lightblue", padding: 20, borderRadius: 10 }}>
                 <View style={{ flexDirection: "row" }}>
                     <Text style={{ fontSize: 20, fontWeight: "bold" }}>Place order</Text>
                     <Text style={{ fontSize: 20, fontWeight: "bold", marginLeft: px(200) }}>{'>'}</Text>

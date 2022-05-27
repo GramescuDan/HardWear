@@ -16,7 +16,6 @@ class UserService {
     }
 
     editProfile(data: EditableInputs<string>) {
-      console.log(data)
       return http.put(`/users/${data.id}`, data)
     }
 

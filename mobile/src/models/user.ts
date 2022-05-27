@@ -1,3 +1,5 @@
+import { Item } from "../screens/home/product-list-screen";
+
 interface Role {
     id: number;
     name: string;
@@ -14,4 +16,5 @@ export interface User {
     location: string;
     roles: Role[];
     enabled: boolean;
+    favouriteItems: Item[];
 }

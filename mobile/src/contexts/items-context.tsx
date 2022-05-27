@@ -1,13 +1,8 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useContext } from "react";
 import { useAppNavigation } from "../hooks/utils";
-import { User } from "../models/user";
-import { EditableInputs } from "../screens/account/my-profile";
-import { LoginInfo } from "../screens/login-screen";
-import { RegInfo } from "../screens/registration-screen";
-import UserService from '../services/user';
 import ItemsService from '../services/item';
 import { Item } from "../screens/home/product-list-screen";
-
+import { useAuthService } from "./auth-context";
 
 export const ItemsContext = createContext<ReturnType<typeof useItems>>(null!);
 
@@ -17,7 +12,7 @@ export function useItemsContext() {
 }
 
 function useItems() {
-    const nav = useAppNavigation();
+    const { loginInfo, setLoginInfo } = useAuthService();
     return function () {
 
         const getItems = async () => {
@@ -29,15 +24,33 @@ function useItems() {
             const result: Item = await (await ItemsService.getItemById(id)).data;
             return result;
         }
-        
+
         // cart final checkout - to do
-        const removeItemFromDb = async (id: number) => {
+        const removeItemFromDb = async (id: number, item: Item) => {
             await ItemsService.putItemById(id)
+        }
+
+        const saveFavourite = async (userId: number, itemId: number) => {
+            await ItemsService.saveFavourite(userId, itemId).then((res) => {
+                setLoginInfo(res.data)
+            });
+        }
+
+        const removeFavourite = async (userId: number, itemId: number) => {
+            await ItemsService.removeFavourite(userId, itemId).then((res) => setLoginInfo(res.data));
+        }
+
+        const isFavorite = (itemParam: Item) => {
+            return loginInfo?.favouriteItems.some(item => item.id === itemParam.id);
         }
 
         return {
             getItems,
-            getItemsById
+            getItemsById,
+            removeItemFromDb,
+            saveFavourite,
+            removeFavourite,
+            isFavorite
         }
     }
 }

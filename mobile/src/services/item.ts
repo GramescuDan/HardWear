@@ -9,9 +9,16 @@ class ItemsService {
     return http.get(`items/${id}`);
   }
 
-  // cart final checkout - to do
   putItemById(id: number) {
     return http.put(`items/${id}`);
+  }
+
+  saveFavourite(userId: number, itemId: number) {
+    return http.post(`/items/saveFavourite/${userId}/${itemId}`)
+  }
+
+  removeFavourite(userId: number, itemId: number) {
+    return http.post(`items/removeFavourite/${userId}/${itemId}`)
   }
 
 }

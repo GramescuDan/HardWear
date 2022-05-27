@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 import { useAppNavigation } from "../hooks/utils";
 import { User } from "../models/user";
 import { EditableInputs } from "../screens/account/my-profile";
@@ -57,7 +57,8 @@ function useAuth() {
             register,
             loginInfo,
             editProfile,
-            doLogout
+            doLogout,
+            setLoginInfo
         }
     }
 }

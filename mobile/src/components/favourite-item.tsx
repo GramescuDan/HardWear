@@ -1,15 +1,17 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { useFavoriteService } from "../contexts/favorites-context";
+import { useAuthService } from "../contexts/auth-context";
+import { useItemsContext } from "../contexts/items-context";
 import { px, useAppNavigation } from "../hooks/utils";
 import { Item } from "../screens/home/product-list-screen";
 
 export function FavouriteItem(p: { product: Item }) {
-    const favorites = useFavoriteService();
+    const items = useItemsContext();
     const nav = useAppNavigation();
+    const auth = useAuthService();
 
     const onFavoriteChange = () => {
-        favorites.removeItemFormFavorites(p.product);
+        items.removeFavourite(auth.loginInfo?.id!, p.product.id);
     }
 
     const goToSingleProducts = (id: number) => {
@@ -26,10 +28,10 @@ export function FavouriteItem(p: { product: Item }) {
                     <Text style={{ marginLeft: px(10), fontWeight: "bold", fontSize: px(18) }}>{p.product.name}</Text>
                 </View>
                 <Text style={{ textAlign: "right", fontSize: px(14), color: "gray" }}>{p.product.price}$</Text>
-                   <View style = {{flexDirection: "row"}}>
-                   <Image source={require("../../assets/phone.jpg")} style={{ width: px(70), height: px(70)  }} />
-                    <Text style = {{fontWeight: "bold"}}>{p.product.description}</Text>
-                   </View>
+                <View style={{ flexDirection: "row" }}>
+                    <Image source={require("../../assets/phone.jpg")} style={{ width: px(70), height: px(70) }} />
+                    <Text style={{ fontWeight: "bold" }}>{p.product.description}</Text>
+                </View>
             </View>
         </TouchableOpacity>
     );

@@ -3,34 +3,31 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { px, useEffectAsync } from "../../hooks/utils";
 import { AntDesign } from '@expo/vector-icons';
 import { useCartService } from "../../contexts/cart-context";
-import { useFavoriteService } from "../../contexts/favorites-context";
 import { useRoute } from "@react-navigation/native";
 import { useItemsContext } from "../../contexts/items-context";
 import { Item } from "./product-list-screen";
+import { useAuthService } from "../../contexts/auth-context";
 
 export function SingleProductScreen() {
     const cart = useCartService();
     const route = useRoute();
     const params = route.params as { id: number };
-    const favorites = useFavoriteService();
+    const items = useItemsContext();
     const { getItemsById } = useItemsContext();
+    const { loginInfo } = useAuthService();
     const [singleItem, setSingleItem] = useState<Item>();
 
     const onFavoriteChange = () => {
-        if (!favorites.isItemFavorite(singleItem!)) {
-            favorites.addItemToFavorite(singleItem!);
+        if (!items.isFavorite(singleItem!)) {
+            items.saveFavourite(loginInfo?.id!, singleItem?.id!);
         } else {
-            favorites.removeItemFormFavorites(singleItem!);
+            items.removeFavourite(loginInfo?.id!, singleItem?.id!);
         }
     }
 
     useEffectAsync(async () => {
         const data = await getItemsById(params.id);
         setSingleItem(data);
-    }, [])
-
-    useEffectAsync(async () => {
-        await favorites.getItemsToFavorite();
     }, [])
 
     if (!singleItem) return <></>
@@ -46,7 +43,7 @@ export function SingleProductScreen() {
                     <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                         <Text style={{ fontWeight: "bold", fontSize: px(18) }}>{singleItem?.name}</Text>
                         <TouchableOpacity onPress={onFavoriteChange} style={{}}>
-                            <Image source={!favorites.isItemFavorite(singleItem!) ? require("../../../assets/heart.png") : require("../../../assets/heart-filled.png")} style={[{ width: px(19), height: px(17) }, favorites.isItemFavorite(singleItem!) ? { tintColor: "darkred" } : { tintColor: "gray" }]} />
+                            <Image source={!items.isFavorite(singleItem!) ? require("../../../assets/heart.png") : require("../../../assets/heart-filled.png")} style={[{ width: px(19), height: px(17) }, items.isFavorite(singleItem!) ? { tintColor: "darkred" } : { tintColor: "gray" }]} />
                         </TouchableOpacity>
                     </View>
                     <Text style={{ marginTop: px(10), fontSize: px(14), color: "gray" }}>{singleItem?.description}</Text>

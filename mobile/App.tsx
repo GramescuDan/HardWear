@@ -19,11 +19,11 @@ export default function App() {
       <FavoriteContextProvider>
         <CartContextProvider>
           <NavigationContainer>
-            <ItemsContextProvider>
-              <AuthContextProvider>
+            <AuthContextProvider>
+              <ItemsContextProvider>
                 <StackNavComponent></StackNavComponent>
-              </AuthContextProvider>
-            </ItemsContextProvider>
+              </ItemsContextProvider>
+            </AuthContextProvider>
           </NavigationContainer>
         </CartContextProvider>
       </FavoriteContextProvider>
