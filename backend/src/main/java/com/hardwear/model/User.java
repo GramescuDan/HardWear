@@ -56,6 +56,9 @@ public class User {
     @OneToMany
     private List<Item> favouriteItems;
 
+    @OneToOne
+    private Cart cart;
+
     private Boolean enabled = false; //email validation
 
     public User(String email, String password, String firstName, String lastName, String username,
