@@ -58,7 +58,7 @@ public class ItemController {
         return itemService.getByCategories(categories);
     }
 
-    @GetMapping("items/byName")
+    @GetMapping("/items/byName")
     public Item getItemByName(@RequestParam String name) {
         return itemService.getByName(name);
     }
