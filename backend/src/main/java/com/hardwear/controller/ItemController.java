@@ -8,9 +8,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.TransferManagerBuilder;
 import com.amazonaws.services.s3.transfer.Upload;
-import com.hardwear.exception.ControllerException;
 import com.hardwear.exception.DatabaseException;
-import com.hardwear.exception.DuplicateEntityException;
 import com.hardwear.exception.EntityNotFoundException;
 import com.hardwear.model.Item;
 import com.hardwear.model.User;
@@ -19,7 +17,6 @@ import com.hardwear.service.userservice.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -67,8 +64,8 @@ public class ItemController {
     }
 
     @PostMapping("/items")
-    public ResponseEntity<Item> createItem(@RequestPart("item") Item item,
-                                           @RequestParam("currentFile") File currentFile)
+    public ResponseEntity<Item> createItem(@RequestBody Item item,
+                                           @RequestParam("currentFile") MultipartFile currentFile)
             throws DatabaseException {
         if (item.getId() != null) {
             Optional<Item> optionalItem = itemService.getById(item.getId());
@@ -159,14 +156,22 @@ public class ItemController {
         }
     }
 
-    public String uploadPhotoAsUrl(File storedPhoto, String bucketName, Item item) {
+    public String uploadPhotoAsUrl(MultipartFile storedPhoto, String bucketName, Item item) {
+
+        File photo;
+
+        try {
+            photo = convertMultiPartToFile(storedPhoto);
+        } catch (IOException e) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Unable to convert input stream to file");
+        }
 
         AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("eu-central-1").build();
         TransferManager xfer_mgr = TransferManagerBuilder.standard().withS3Client(s3client).build();
         String fileName = "Item-Photo-For-" + item.getName() + "-" + new Timestamp(System.currentTimeMillis());
         fileName = fileName.replaceAll(" ", "-");
         try {
-            Upload xfer = xfer_mgr.upload(new PutObjectRequest(bucketName, fileName, storedPhoto)
+            Upload xfer = xfer_mgr.upload(new PutObjectRequest(bucketName, fileName, photo)
                     .withCannedAcl(CannedAccessControlList.PublicRead));
 
             xfer.waitForCompletion();
