@@ -2,6 +2,7 @@ import { environment } from "../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { IUser } from "../models/user";
 import { Injectable } from "@angular/core";
+import { tap } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,10 @@ export class UserService {
   }
 
   saveToFav(userId: number, itemId: number) {
-    return this._http.post(`${environment.apiUrl}items/saveFavourite/${userId}/${itemId}`, null);
+    return this._http.post(`${environment.apiUrl}items/saveFavourite/${userId}/${itemId}`, null).pipe(tap(console.log));
   }
 
   removeFromFav(userId: number, itemId: number) {
-    return this._http.post(`${environment.apiUrl}items/removeFavourite/${userId}/${itemId}`, null);
+    return this._http.post(`${environment.apiUrl}items/removeFavourite/${userId}/${itemId}`, null).pipe(tap(console.log));
   }
 }
