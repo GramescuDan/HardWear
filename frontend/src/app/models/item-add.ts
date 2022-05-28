@@ -1,6 +1,4 @@
-import { IBase } from './base';
-
-export interface Item extends IBase {
+export interface ItemAdd {
   thumbnail: string;
   description: string;
   name: string;

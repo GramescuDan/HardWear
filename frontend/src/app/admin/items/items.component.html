@@ -1,0 +1,12 @@
+<div *ngIf="items$ | async as items">
+  <div *ngFor="let item of items">
+    <app-item [itemContainer]="item"></app-item>
+    <button [routerLink]="'edit/' + item.id">Edit</button>
+  </div>
+
+  <div *ngIf="items.length === 0">
+    No items, please add one
+  </div>
+
+  <button routerLink="add">Add</button>
+</div>

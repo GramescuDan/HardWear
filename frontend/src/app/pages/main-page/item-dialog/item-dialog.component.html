@@ -1,14 +1,14 @@
 <div style="display: flex; flex-direction: column; row-gap: 8px;width:300px; height: 500px">
-  <img src="{{this.itemDialog.thumbnail}}" alt="Item thumbnial" class="item-image">
-  <h1 style="max-width: 300px">{{this.itemDialog.name}}</h1>
-  <p style="max-width: 300px">{{this.itemDialog.description}}</p>
-  <p style="color:var(--color-warning)">{{this.itemDialog.price}}$</p>
-  <p>Quantity: {{this.itemDialog.quantity}}</p>
+  <img alt="Item thumbnial" class="item-image" src="{{data.thumbnail}}">
+  <h1 style="max-width: 300px">{{data.name}}</h1>
+  <p style="max-width: 300px">{{data.description}}</p>
+  <p style="color:var(--color-warning)">{{data.price}}$</p>
+  <p>Quantity: {{data.quantity}}</p>
   <div style="display: flex; flex-direction: column; row-gap: 10px; align-items: center">
-    <button class="buy-button" (click)="addToCart()" mat-dialog-close="true">Add to Cart</button>
-    <button class="{{this.buttonPressed ? 'fav-button' :'fav-button-clicked'}}"
-            (click)="favPress()">{{this.favoriteButton}}</button>
-    <button mat-dialog-close="true" class="close-button">Close</button>
+    <button (click)="addToCart()" class="buy-button" mat-dialog-close="true">Add to Cart</button>
+    <button (click)="favPress()"
+            class="{{buttonPressed ? 'fav-button' :'fav-button-clicked'}}">{{favoriteButton}}</button>
+    <button class="close-button" mat-dialog-close="true">Close</button>
   </div>
 
 </div>

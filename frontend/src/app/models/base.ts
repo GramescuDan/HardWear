@@ -1,3 +1,3 @@
-export  interface IBase{
+export interface IBase {
   id: number;
 }
