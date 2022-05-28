@@ -44,7 +44,7 @@ public class ItemController {
     }
 
     @GetMapping("/items/{itemId}")
-    public Item getItemById(@PathVariable("itemId") Integer itemId) throws EntityNotFoundException {
+    public Item getItemById(@PathVariable("itemId") Integer itemId) {
         Optional<Item> optionalItem = itemService.getById(itemId);
         if (optionalItem.isPresent()) {
             return optionalItem.get();
