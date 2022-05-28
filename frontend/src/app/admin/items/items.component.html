@@ -1,8 +1,6 @@
 <div *ngIf="items$ | async as items">
   <div *ngFor="let item of items">
-    <div>
-      {{item | json}}
-    </div>
+    <app-item [itemContainer]="item"></app-item>
     <button [routerLink]="'edit/' + item.id">Edit</button>
   </div>
 

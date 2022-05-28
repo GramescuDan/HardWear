@@ -9,6 +9,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatInputModule } from "@angular/material/input";
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { MatInputModule } from "@angular/material/input";
     MatChipsModule,
     MatCheckboxModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    SharedModule
   ],
   exports: [RouterModule]
 })
