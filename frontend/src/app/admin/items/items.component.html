@@ -3,9 +3,12 @@
     <div>
       {{item | json}}
     </div>
+    <button [routerLink]="'edit/' + item.id">Edit</button>
   </div>
 
   <div *ngIf="items.length === 0">
-    No items, please <a routerLink="add">Add</a> one
+    No items, please add one
   </div>
+
+  <button routerLink="add">Add</button>
 </div>

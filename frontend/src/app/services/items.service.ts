@@ -66,4 +66,8 @@ export class ItemsService {
     // formData.append('item', item);
     return this._http.post(apiUrl, item).pipe(tap(console.log));
   }
+
+  update(item: Item) {
+    return this._http.post(apiUrl + '/' + item.id, item).pipe(tap(console.log));
+  }
 }

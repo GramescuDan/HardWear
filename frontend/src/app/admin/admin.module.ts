@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
-import { AddItemComponent } from './add-item/add-item.component';
+import { AddEditItemComponent } from './add-item/add-edit-item.component';
 import { ItemsComponent } from './items/items.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -13,7 +13,7 @@ import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   declarations: [
-    AddItemComponent,
+    AddEditItemComponent,
     ItemsComponent
   ],
   imports: [
@@ -25,7 +25,11 @@ import { MatInputModule } from "@angular/material/input";
       },
       {
         path: 'items/add',
-        component: AddItemComponent
+        component: AddEditItemComponent
+      },
+      {
+        path: 'items/edit/:itemId',
+        component: AddEditItemComponent
       },
       {
         path: '**',
