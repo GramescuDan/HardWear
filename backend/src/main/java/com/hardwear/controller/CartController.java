@@ -1,6 +1,7 @@
 package com.hardwear.controller;
 
 import com.hardwear.exception.DatabaseException;
+import com.hardwear.exception.EntityNotFoundException;
 import com.hardwear.model.Cart;
 import com.hardwear.model.Item;
 import com.hardwear.service.cartservice.CartService;
@@ -22,6 +23,16 @@ public class CartController {
 
     @Autowired
     private ItemService itemService;
+
+    @GetMapping("/carts/{cartId}")
+    public Cart getCartById(@PathVariable("cartId") Integer cartId) {
+        Optional<Cart> optionalItem = cartService.getById(cartId);
+        if (optionalItem.isPresent()) {
+            return optionalItem.get();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
+        }
+    }
 
     @PutMapping("/carts/{cartId}")
     public Cart updateCart(@PathVariable Integer cartId,
