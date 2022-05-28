@@ -27,6 +27,6 @@ public class Cart {
 //    @OneToOne
 //    private User user;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Item> cartItems;
 }

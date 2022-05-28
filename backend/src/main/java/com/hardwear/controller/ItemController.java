@@ -168,7 +168,7 @@ public class ItemController {
 
         AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("eu-central-1").build();
         TransferManager xfer_mgr = TransferManagerBuilder.standard().withS3Client(s3client).build();
-        String fileName = "Item-Photo-For-" + item.getName() + "-" + new Timestamp(System.currentTimeMillis());
+        String fileName = "Item-Photo-For-" + item.getName() + "-" + new Timestamp(System.currentTimeMillis()) + ".jpg";
         fileName = fileName.replaceAll(" ", "-");
         try {
             Upload xfer = xfer_mgr.upload(new PutObjectRequest(bucketName, fileName, photo)

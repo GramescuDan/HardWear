@@ -1,6 +1,8 @@
 package com.hardwear.model;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -54,6 +56,7 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Item> favouriteItems;
 
     @OneToOne
