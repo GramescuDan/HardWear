@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CategoryService} from "../../../services/category-service";
-import {ItemService} from "../../../services/item-service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CategoryService } from "../../../services/category-service";
+import { ItemsService } from "../../../services/items.service";
 
 @Component({
   selector: 'app-category-button',
@@ -9,25 +9,26 @@ import {ItemService} from "../../../services/item-service";
 })
 export class CategoryButtonComponent implements OnInit {
 
-  pressed: boolean =true;
+  pressed: boolean = true;
   @Input() name: string;
   @Output() categoryEmitter = new EventEmitter<boolean>();
 
-  constructor(private _categ: CategoryService,private _items: ItemService) {
-}
+  constructor(private _categ: CategoryService, private _items: ItemsService) {
+  }
 
-  onClick(){
+  onClick() {
     this.pressed = !this.pressed;
 
-    if(!this.pressed){
+    if (!this.pressed) {
       this._categ.add(this.name);
-    }else{
+    } else {
       this._categ.remove(this.name);
     }
 
     this.categoryEmitter.emit(true);
-    this._items.get().subscribe(items =>this._items.itemsUpdate(items));
+    this._items.get().subscribe(items => this._items.itemsUpdate(items));
   }
+
   ngOnInit(): void {
   }
 

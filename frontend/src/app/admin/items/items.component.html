@@ -1,0 +1,11 @@
+<div *ngIf="items$ | async as items">
+  <div *ngFor="let item of items">
+    <div>
+      {{item | json}}
+    </div>
+  </div>
+
+  <div *ngIf="items.length === 0">
+    No items, please <a routerLink="add">Add</a> one
+  </div>
+</div>

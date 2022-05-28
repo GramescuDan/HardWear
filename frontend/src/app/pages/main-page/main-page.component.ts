@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ItemService} from "../../services/item-service";
-import {Item} from "../../models/Item";
-import {CategoryService} from "../../services/category-service";
-import {map, Observable} from "rxjs";
+import { ItemsService } from "../../services/items.service";
+import { Item } from "../../models/Item";
+import { CategoryService } from "../../services/category-service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-main-page',
@@ -11,11 +11,11 @@ import {map, Observable} from "rxjs";
 })
 export class MainPageComponent implements OnInit {
 
-  itemsList:Item[];
+  itemsList: Item[];
   itemsContainter: Observable<Item[]> = new Observable<Item[]>();
   private actualItems: Item[];
 
-  constructor(private _items: ItemService, private _categ:CategoryService) {
+  constructor(private _items: ItemsService, private _categ: CategoryService) {
 
   }
 
@@ -25,14 +25,14 @@ export class MainPageComponent implements OnInit {
       this.itemsList = items;
       this.actualItems = items;
     });
-    if(this.itemsList){
+    if (this.itemsList) {
       this._items.itemsUpdate(this.itemsList);
     }
   }
 
   updateitems($event?: boolean) {
 
-    if(this.itemsList && this.actualItems){
+    if (this.itemsList && this.actualItems) {
       this.itemsList = this.actualItems;
       console.log(this.itemsList);
       this.itemsList = this.itemsList.filter(item => {

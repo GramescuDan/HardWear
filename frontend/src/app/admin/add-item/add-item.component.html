@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input formControlName="name" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Price</mat-label>
+    <input formControlName="price" matInput type="number">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Quantity</mat-label>
+    <input formControlName="quantity" matInput type="number">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input formControlName="description" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Thumbnail</mat-label>
+    <input formControlName="thumbnail" matInput>
+  </mat-form-field>
+
+  <section class="example-section">
+    <span class="example-list-section">
+    <ul>
+      <li *ngFor="let category of categoriesService.categories">
+        <mat-checkbox (ngModelChange)="addCategory(category)" [ngModelOptions]="{standalone: true}"
+                      [ngModel]="isSelected(category)">
+          {{category}}
+        </mat-checkbox>
+      </li>
+    </ul>
+  </span>
+  </section>
+
+
+  <div class="login-buttons">
+    <button (click)="save()">Save</button>
+    <button routerLink="..">Back</button>
+  </div>
+</form>
