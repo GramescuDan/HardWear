@@ -2,19 +2,19 @@
   <div class="navbar-items">
     <div class="search-bar-border">
       <div style="padding-top: 2px; padding-right: 10px">
-        <input class="search-bar"  (keyup)="onKey($event)" [value]="SearchResult" placeholder="Search for parts here">
+        <input (keyup)="onKey($event)" [value]="SearchResult" class="search-bar" placeholder="Search for parts here">
       </div>
-      <button class="x" (click)="clearInputField()" >
+      <button (click)="clearInputField()" class="x">
         <img *ngIf="!SearchResult" src="/assets/lupa.svg">
-        <img  *ngIf="SearchResult" src="/assets/x.svg" style="padding: 2.5px">
+        <img *ngIf="SearchResult" src="/assets/x.svg" style="padding: 2.5px">
       </button>
     </div>
 
-    <app-cart-button image="/assets/shopping-cart.svg"></app-cart-button>
+    <app-cart-button image="/assets/shopping-cart.svg" routerLink="cart"></app-cart-button>
     <app-user-button image="/assets/user.svg"></app-user-button>
-    <button class="home-button" (click)="homeButton()">
+    <button (click)="homeButton()" class="home-button">
       <mat-icon svgIcon="Home"></mat-icon>
     </button>
   </div>
-  <div style="  padding-top: 75px;"> </div>
+  <div style="  padding-top: 75px;"></div>
 </div>

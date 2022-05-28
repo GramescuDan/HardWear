@@ -27,7 +27,7 @@
   <section class="example-section">
     <span class="example-list-section">
     <ul>
-      <li *ngFor="let category of categoriesService.categories">
+      <li *ngFor="let category of categoriesService.allCateg">
         <mat-checkbox (ngModelChange)="addCategory(category)" [ngModelOptions]="{standalone: true}"
                       [ngModel]="isSelected(category)">
           {{category}}

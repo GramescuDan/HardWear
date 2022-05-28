@@ -7,7 +7,7 @@ import { HttpClient } from "@angular/common/http";
 })
 
 export class CategoryService {
-  public categories: string[] = [
+  readonly allCateg = [
     'Laptops',
     'Mobile Phones',
     'Gaming & Office Systems',
@@ -18,6 +18,8 @@ export class CategoryService {
     'Networking & UPS',
     'Software & Office Supplies',
   ];
+
+  public categories: string[] = [];
   private readonly _apiUrl = environment.apiUrl + 'categories';
 
   constructor(

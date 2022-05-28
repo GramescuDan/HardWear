@@ -55,16 +55,14 @@ export class AuthSerivce {
     user.password = password;
 
     let url = this._apiUrl + "/login";
-    console.log(url);
     return this._http.post<IUser>(url, user).pipe(tap(saveToStorage), map(user => {
       this.currentUserSubject.next(user);
+      console.log(user)
       return user;
     }));
-
   }
 
   register(user: IUser): Observable<IUser> {
-
     return this._http.post<IUser>(this._apiUrl, user).pipe(tap(saveToStorage), map(user => {
       this.currentUserSubject.next(user);
       return user;

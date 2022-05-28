@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Item } from "../../../models/Item";
 import { AuthSerivce } from "../../../services/auth-serivce";
 import { IUser } from "../../../models/user";
+import { CartService } from "../../../services/cart-service";
+import { firstValueFrom } from "rxjs";
 
 @Component({
   selector: 'app-item-dialog',
@@ -15,7 +17,7 @@ export class ItemDialogComponent implements OnInit {
   favoriteButton: string = "Add to favorites";
   buttonPressed: boolean;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Item, private _auth: AuthSerivce) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Item, private _auth: AuthSerivce, private readonly _cartService: CartService) {
 
   }
 
@@ -52,6 +54,6 @@ export class ItemDialogComponent implements OnInit {
   }
 
   addToCart() {
-
+    return firstValueFrom(this._cartService.add(this.data, this._auth.curentUserValue.cart.id))
   }
 }

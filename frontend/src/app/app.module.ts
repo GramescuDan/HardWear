@@ -35,6 +35,7 @@ import { ItemDialogComponent } from './pages/main-page/item-dialog/item-dialog.c
 import { MatDialogModule } from "@angular/material/dialog";
 import { MyAccountDialogComponent } from './pages/my-account-page/my-account-dialog/my-account-dialog.component';
 import { SharedModule } from "./shared/shared.module";
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { SharedModule } from "./shared/shared.module";
     InfoCardComponent,
     ItemDialogComponent,
     MyAccountDialogComponent,
+    CartPageComponent,
   ],
   imports: [
     CommonModule,

@@ -52,7 +52,7 @@ export class ItemsService {
 
   get(): Observable<Item[]> {
     if (this._categoryService.categories.length == 0) {
-      return this._http.get<Item[]>(`${environment.apiUrl}items`).pipe(tap(console.log), shareReplay());
+      return this._http.get<Item[]>(`${environment.apiUrl}items`).pipe(tap(console.log), map(items => items.length ? items : this.mock), shareReplay());
     }
     const url = apiUrl + "/byCategories?categories=";
     const categories = this._categoryService.categories.map(c => encodeURIComponent(c))

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ItemsService } from "../../services/items.service";
 import { Item } from "../../models/Item";
 import { CategoryService } from "../../services/category-service";
-import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-main-page',
@@ -12,7 +11,6 @@ import { Observable } from "rxjs";
 export class MainPageComponent implements OnInit {
 
   itemsList: Item[];
-  itemsContainter: Observable<Item[]> = new Observable<Item[]>();
   private actualItems: Item[];
 
   constructor(private _items: ItemsService, private _categ: CategoryService) {
@@ -35,10 +33,10 @@ export class MainPageComponent implements OnInit {
     if (this.itemsList && this.actualItems) {
       this.itemsList = this.actualItems;
       console.log(this.itemsList);
+      console.log(this._categ.categories)
       this.itemsList = this.itemsList.filter(item => {
         return this._categ.categories.every(category => item.categories.includes(category));
       })
     }
-
   }
 }
