@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { IconButtonComponent } from './components/user-button/icon-button.component';
-import { CartButtonComponent } from './components/cart-button/cart-button.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatMenuModule } from "@angular/material/menu";
@@ -41,9 +38,6 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    IconButtonComponent,
-    CartButtonComponent,
     MainPageComponent,
     MyAccountPageComponent,
     NotFoundPageComponent,
@@ -83,7 +77,7 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
   providers: [AuthSerivce],
   exports: [
     ButtonFullComponent,
-    ButtonOutlineComponent
+    ButtonOutlineComponent,
   ],
   bootstrap: [AppComponent]
 })
