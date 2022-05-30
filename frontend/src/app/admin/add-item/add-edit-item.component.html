@@ -1,27 +1,29 @@
+<h1>{{ itemId ? 'Edit item' : 'Add item' }}</h1>
+
 <form [formGroup]="form">
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
-    <input formControlName="name" matInput/>
+    <input formControlName="name" matInput />
   </mat-form-field>
 
   <mat-form-field appearance="outline" color="warn">
     <mat-label>Price</mat-label>
-    <input formControlName="price" matInput type="number"/>
+    <input formControlName="price" matInput type="number" />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Quantity</mat-label>
-    <input formControlName="quantity" matInput type="number"/>
+    <input formControlName="quantity" matInput type="number" />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Description</mat-label>
-    <input formControlName="description" matInput/>
+    <input formControlName="description" matInput />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Thumbnail</mat-label>
-    <input formControlName="thumbnail" matInput/>
+    <input formControlName="thumbnail" matInput />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
@@ -48,10 +50,24 @@
     </span>
   </section>
 
-  {{form.status}}
-
-  <div class="login-buttons">
-    <button (click)="save()">Save</button>
-    <button routerLink="..">Back</button>
+  <div class="buttons">
+    <button
+      [routerLink]="'..'"
+      aria-label="Example icon button with a menu icon"
+      color="primary"
+      mat-button
+    >
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+    <button
+      (click)="save()"
+      aria-label="Example icon button with a menu icon"
+      color="primary"
+      mat-raised-button
+    >
+      <mat-icon>save</mat-icon>
+      Save
+    </button>
   </div>
 </form>

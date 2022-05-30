@@ -1,0 +1,15 @@
+.items {
+  display: flex;
+}
+
+.item {
+  margin: 10px;
+}
+
+.add-button {
+  display: flex;
+  height: 70px;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
+}

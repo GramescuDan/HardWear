@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AddEditItemComponent, ItemsComponent],
@@ -43,6 +44,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatInputModule,
     SharedModule,
     MaterialFileInputModule,
+    MatButtonModule,
   ],
   exports: [RouterModule],
 })

@@ -8,7 +8,7 @@
 
 .main-page-cover {
   display: flex;
-  height: 73vh;
+  max-height: 73vh;
   flex-direction: column;
   font-size: 20px;
   max-width: 100%;

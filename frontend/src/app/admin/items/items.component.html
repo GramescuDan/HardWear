@@ -1,10 +1,30 @@
 <div *ngIf="items$ | async as items">
-  <div *ngFor="let item of items">
-    <app-item [itemContainer]="item"></app-item>
-    <button [routerLink]="'edit/' + item.id">Edit</button>
+  <div class="add-button">
+    <button
+      [routerLink]="'add'"
+      aria-label="Example icon button with a menu icon"
+      color="primary"
+      mat-raised-button
+    >
+      <mat-icon>add</mat-icon>
+      Add
+    </button>
+  </div>
+
+  <div class="items">
+    <div *ngFor="let item of items" class="item">
+      <app-item [itemContainer]="item">
+        <button
+          [routerLink]="'edit/' + item.id"
+          aria-label="Example icon button with a menu icon"
+          color="accent"
+          mat-icon-button
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </app-item>
+    </div>
   </div>
 
   <div *ngIf="items.length === 0">No items, please add one</div>
-
-  <button routerLink="add">Add</button>
 </div>

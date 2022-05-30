@@ -10,7 +10,7 @@ import { FileInput } from 'ngx-material-file-input';
 @Component({
   selector: 'app-add-edit-item',
   templateUrl: './add-edit-item.component.html',
-  styleUrls: ['./add-edit-item.component.css'],
+  styleUrls: ['./add-edit-item.component.scss'],
 })
 export class AddEditItemComponent implements OnInit {
   readonly form: FormGroup;
