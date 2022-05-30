@@ -4,9 +4,7 @@
     <button [routerLink]="'edit/' + item.id">Edit</button>
   </div>
 
-  <div *ngIf="items.length === 0">
-    No items, please add one
-  </div>
+  <div *ngIf="items.length === 0">No items, please add one</div>
 
   <button routerLink="add">Add</button>
 </div>

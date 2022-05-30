@@ -1,6 +1,5 @@
-import {IBase} from './base';
+import { IBase } from './base';
 
-export interface ICategory extends IBase{
-
-  name:string;
+export interface ICategory extends IBase {
+  name: string;
 }

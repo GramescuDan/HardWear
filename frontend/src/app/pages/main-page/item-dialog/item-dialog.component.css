@@ -1,36 +1,38 @@
-::ng-deep.mat-dialog-container{
+::ng-deep.mat-dialog-container {
   background: var(--color-secundary);
-  color: #CECECE;
+  color: #cecece;
   min-width: 15vw;
   min-height: 35vh;
 }
-.fav-button{
-  background: #FF2424;
-  border : none;
+
+.fav-button {
+  background: #ff2424;
+  border: none;
   font-weight: bold;
   height: 3.72vh;
   width: 150px;
   border-radius: 8px;
 }
 
-.fav-button-clicked{
+.fav-button-clicked {
   background: var(--color-warning);
-  border : none;
+  border: none;
   font-weight: bold;
   height: 3.72vh;
   width: 150px;
   border-radius: 8px;
 }
 
-.buy-button{
+.buy-button {
   background: var(--color-accent);
-  border : none;
+  border: none;
   font-weight: bold;
   height: 3.72vh;
   width: 150px;
   border-radius: 8px;
 }
-.close-button{
+
+.close-button {
   color: var(--color-secundary-font);
   background: none;
   height: 3.72vh;
@@ -40,7 +42,7 @@
   border-width: 3px;
 }
 
-.item-image{
+.item-image {
   min-width: 200px;
   min-height: 150px;
 

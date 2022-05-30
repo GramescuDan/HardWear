@@ -1,11 +1,11 @@
-import {Component, Input} from '@angular/core';
-import {ICart} from "../../models/cart";
-import { CartService } from "../../services/cart-service";
+import { Component, Input } from '@angular/core';
+import { ICart } from '../../models/cart';
+import { CartService } from '../../services/cart-service';
 
 @Component({
   selector: 'app-cart-button',
   templateUrl: './cart-button.component.html',
-  styleUrls: ['./cart-button.component.css']
+  styleUrls: ['./cart-button.component.css'],
 })
 export class CartButtonComponent {
   readonly items$ = this._cartService.items$;
@@ -14,10 +14,7 @@ export class CartButtonComponent {
   @Input() Id = ' ';
   @Input() image = ' ';
 
-  constructor(private readonly _cartService: CartService) {
-  }
+  constructor(private readonly _cartService: CartService) {}
 
-  cartPress() {
-
-  }
+  cartPress() {}
 }

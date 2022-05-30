@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import { environment } from "../../environments/environment";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class CategoryService {
   readonly allCateg = [
     'Laptops',
@@ -22,10 +21,7 @@ export class CategoryService {
   public categories: string[] = [];
   private readonly _apiUrl = environment.apiUrl + 'categories';
 
-  constructor(
-    private readonly _http: HttpClient
-  ) {
-  }
+  constructor(private readonly _http: HttpClient) {}
 
   add(elem: string) {
     this.categories.push(elem);
@@ -35,9 +31,5 @@ export class CategoryService {
     this.categories = this.categories.filter(c => c !== elem);
   }
 
-  post() {
-
-  }
-
-
+  post() {}
 }

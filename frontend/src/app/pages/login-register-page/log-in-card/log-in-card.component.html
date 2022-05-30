@@ -1,19 +1,24 @@
 <div class="form-start">
   <h1>Welcome back!</h1>
   <p>Let’s make your PC shine like no other!</p>
-  <div style="display: flex;align-content: center; flex-direction: column;align-items: center;">
+  <div style="display: flex; align-content: center; flex-direction: column; align-items: center">
     <form [formGroup]="loginForm">
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-        <input formControlName="username" matInput>
+        <input formControlName="username" matInput />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
-        <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
-                matSuffix>
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput />
+        <button
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          mat-icon-button
+          matSuffix
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
       </mat-form-field>
 

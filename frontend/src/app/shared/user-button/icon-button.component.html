@@ -1,13 +1,15 @@
 <div class="icon-button">
   <button [matMenuTriggerFor]="menu" disableRipple="true" mat-button>
-    <img [src]="[image]" alt="Account" class="changecolor">
+    <img [src]="[image]" alt="Account" class="changecolor" />
   </button>
 
   <mat-menu #menu="matMenu" class="user-menu" yPosition="below">
     <div class="user-content">
-      <button (click)="onMyAccountClick()" *ngIf="!auth.isAdmin" class="user-option">My account</button>
+      <button (click)="onMyAccountClick()" *ngIf="!auth.isAdmin" class="user-option">
+        My account
+      </button>
       <button *ngIf="auth.isAdmin" class="user-option" routerLink="/admin">Admin</button>
-      <button (click)="onLoginClick()" class="user-option">{{buttonlog}}</button>
+      <button (click)="onLoginClick()" class="user-option">{{ buttonlog }}</button>
     </div>
   </mat-menu>
 </div>

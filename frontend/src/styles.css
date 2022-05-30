@@ -1,14 +1,13 @@
-
 h1 {
   color: var(--color-main-font);
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 30px;
   font-weight: bolder;
 }
 
 h2 {
   color: var(--color-main-font);
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: bolder;
 }
@@ -20,30 +19,30 @@ p {
 body {
   background: var(--color-primary);
   color: var(--color-secundary-font);
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
 }
 
 :root {
   /* Background and all elements colors */
-  --color-primary: #19141A;
-  --color-secundary: #331F33;
-  --color-tertiary: #4D264D;
+  --color-primary: #19141a;
+  --color-secundary: #331f33;
+  --color-tertiary: #4d264d;
   --color-quaternary: #662966;
 
-  --color-accent: #00DB30;
-  --color-warning: #EBDF71;
+  --color-accent: #00db30;
+  --color-warning: #ebdf71;
 
-  --color-main-font: #F4F4F4;
-  --color-secundary-font: #CECECE;
+  --color-main-font: #f4f4f4;
+  --color-secundary-font: #cecece;
 }
 
-
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }

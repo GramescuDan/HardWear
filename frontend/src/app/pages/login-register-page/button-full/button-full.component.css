@@ -1,6 +1,6 @@
-button{
+button {
   background: var(--color-accent);
-  border : none;
+  border: none;
   font-weight: bold;
   height: 3.72vh;
   width: 92px;

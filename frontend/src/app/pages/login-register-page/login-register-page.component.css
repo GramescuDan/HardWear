@@ -1,19 +1,19 @@
-img{
-  background-size:100%;
-  height:100%;
-  width:100%;
+img {
+  background-size: 100%;
+  height: 100%;
+  width: 100%;
 }
 
-html,body{
+html,
+body {
   height: 100%;
   margin: 0;
 }
 
-.background-image{
+.background-image {
   position: relative;
-  background: url("/assets/background-vid.gif") no-repeat fixed;
+  background: url('/assets/background-vid.gif') no-repeat fixed;
   background-size: cover;
   height: 100%;
   z-index: -1;
 }
-

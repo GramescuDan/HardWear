@@ -1,30 +1,32 @@
-.main-page-contents{
+.main-page-contents {
   display: flex;
   padding-left: 74px;
   padding-right: 74px;
   flex-direction: column;
   row-gap: 1vw;
 }
-.main-page-cover{
 
+.main-page-cover {
   display: flex;
   height: 73vh;
   flex-direction: column;
   font-size: 20px;
   max-width: 100%;
 }
-.cover-text{
+
+.cover-text {
   position: relative;
   bottom: 4.25vw;
   left: 3.19vw;
   font-size: 3vw;
 }
-.category-section{
+
+.category-section {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.details{
-  flex-direction: row;
 
+.details {
+  flex-direction: row;
 }

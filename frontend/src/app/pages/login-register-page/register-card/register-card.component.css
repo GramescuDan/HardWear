@@ -1,62 +1,72 @@
-.form-start{
-  top:0;
+.form-start {
+  top: 0;
   position: absolute;
   padding-top: 5vh;
-  background: rgb(51,31,51,95%);
+  background: rgb(51, 31, 51, 95%);
   margin-top: 21.72vh;
-  margin-left:  9.57vw;
+  margin-left: 9.57vw;
   width: 22.35vw;
   border-radius: 16px;
   z-index: 1;
-
 }
-h1,p{
+
+h1,
+p {
   margin-left: 3vw;
   margin-right: 3vw;
 }
-.login-buttons{
+
+.login-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
   column-gap: 20px;
 }
 
-::ng-deep.mat-input-element, .mat-input-element{
-  color:var(--color-secundary-font);
-}
-::ng-deep.mat-stepper-vertical{
-  background: none;
-}
-::ng-deep.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
-  background-color: var(--color-accent)!important;
-}
-::ng-deep.mat-step-header .mat-step-icon{
-background-color: var(--color-primary);
+::ng-deep.mat-input-element,
+.mat-input-element {
+  color: var(--color-secundary-font);
 }
 
-::ng-deep.mat-input-element, .mat-input-element{
+::ng-deep.mat-stepper-vertical {
+  background: none;
+}
+
+::ng-deep.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: var(--color-accent) !important;
+}
+
+::ng-deep.mat-step-header .mat-step-icon {
+  background-color: var(--color-primary);
+}
+
+::ng-deep.mat-input-element,
+.mat-input-element {
   caret-color: var(--color-quaternary);
 }
 
-::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-thick{
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-thick {
   color: var(--color-quaternary);
 }
 
-input{
+input {
   border-color: var(--color-quaternary);
   border-radius: 4px;
 }
-.button-full{
+
+.button-full {
   color: var(--color-secundary);
   background: var(--color-accent);
-  border : none;
+  border: none;
   font-weight: bold;
   height: 3.72vh;
   width: 92px;
   border-radius: 8px;
 }
 
-.button-outline{
+.button-outline {
   color: var(--color-secundary-font);
   background: none;
   height: 3.72vh;

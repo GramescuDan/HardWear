@@ -8,9 +8,8 @@ describe('ButtonOutlineComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ButtonOutlineComponent ]
-    })
-    .compileComponents();
+      declarations: [ButtonOutlineComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

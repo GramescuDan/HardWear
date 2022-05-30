@@ -1,24 +1,25 @@
-button{
-  width:fit-content;
+button {
+  width: fit-content;
   height: fit-content;
   padding: 10px 15px;
   border-radius: 8px;
 
   font-weight: bold;
-  font-family: "JetBrains Mono",monospace;
+  font-family: 'JetBrains Mono', monospace;
 
-  border:none;
+  border: none;
 }
-.category-button{
+
+.category-button {
   background: var(--color-secundary);
   color: var(--color-secundary-font);
 }
-.category-button-selected{
+
+.category-button-selected {
   color: var(--color-primary);
   background: var(--color-accent);
 }
 
-.category-button:hover{
+.category-button:hover {
   background: var(--color-tertiary);
 }
-

@@ -1,6 +1,6 @@
-<div class="item" (click)="openDialog()">
-  <img src="{{this.itemContainer.thumbnail}}"  alt="Item thumbnial" class="item-image">
-  <h1>{{this.itemContainer.name}}</h1>
-  <p>{{this.itemContainer.description}}</p>
-  <p style="color:var(--color-warning)">{{this.itemContainer.price}}$</p>
+<div (click)="openDialog()" class="item">
+  <img alt="Item thumbnial" class="item-image" src="{{ this.itemContainer.thumbnail }}" />
+  <h1>{{ this.itemContainer.name }}</h1>
+  <p>{{ this.itemContainer.description }}</p>
+  <p style="color: var(--color-warning)">{{ this.itemContainer.price }}$</p>
 </div>

@@ -1,7 +1,13 @@
-<div class="cart-button" >
-  <div [matBadge]="(items$ | async)?.length" matBadgeSize="small" matBadgeOverlap="true" matBadgePosition="below after" matBadgeHidden="false">
+<div class="cart-button">
+  <div
+    [matBadge]="(items$ | async)?.length"
+    matBadgeHidden="false"
+    matBadgeOverlap="true"
+    matBadgePosition="below after"
+    matBadgeSize="small"
+  >
     <a (click)="cartPress()">
-      <img [src]="[image]">
+      <img [src]="[image]" />
     </a>
   </div>
 </div>

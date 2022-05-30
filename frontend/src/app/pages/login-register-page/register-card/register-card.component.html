@@ -1,20 +1,30 @@
 <div class="form-start">
   <h1>Hello there!</h1>
   <p>Take your first step into greatness!</p>
-  <div style="display: flex;align-content: center; flex-direction: column;align-items: center;">
+  <div style="display: flex; align-content: center; flex-direction: column; align-items: center">
     <mat-stepper orientation="vertical">
       <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
-          <mat-form-field appearance="outline" >
+          <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="user.username" formControlName="Username">
+            <input [(ngModel)]="user.username" formControlName="Username" matInput />
           </mat-form-field>
-          <mat-form-field appearance="outline" >
+          <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput [(ngModel)]="user.password" [type]="hide ? 'password' : 'text'" formControlName="Password">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <input
+              [(ngModel)]="user.password"
+              [type]="hide ? 'password' : 'text'"
+              formControlName="Password"
+              matInput
+            />
+            <button
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+              mat-icon-button
+              matSuffix
+            >
+              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
           </mat-form-field>
           <div class="login-buttons">
@@ -25,13 +35,13 @@
       </mat-step>
       <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
-          <mat-form-field appearance="outline" >
+          <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput [(ngModel)]="user.firstName" formControlName="FirstName">
+            <input [(ngModel)]="user.firstName" formControlName="FirstName" matInput />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput [(ngModel)]="user.lastName"  formControlName="LastName">
+            <input [(ngModel)]="user.lastName" formControlName="LastName" matInput />
           </mat-form-field>
           <div class="login-buttons">
             <button class="button-full" mat-button matStepperNext>Next</button>
@@ -44,11 +54,11 @@
         <form [formGroup]="thirdFormGroup">
           <mat-form-field appearance="outline">
             <mat-label>E-mail</mat-label>
-            <input email matInput [(ngModel)]="user.email"  formControlName="Email">
+            <input [(ngModel)]="user.email" email formControlName="Email" matInput />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Phone Number</mat-label>
-            <input matInput [(ngModel)]="user.phone"  formControlName="Phone">
+            <input [(ngModel)]="user.phone" formControlName="Phone" matInput />
           </mat-form-field>
           <div class="login-buttons">
             <button class="button-full" mat-button matStepperNext>Next</button>
@@ -59,12 +69,12 @@
 
       <mat-step [stepControl]="forthFormGroup">
         <form [formGroup]="forthFormGroup">
-          <mat-form-field appearance="outline" >
+          <mat-form-field appearance="outline">
             <mat-label>Adress</mat-label>
-            <input matInput [(ngModel)]="user.location" formControlName="Adress">
+            <input [(ngModel)]="user.location" formControlName="Adress" matInput />
           </mat-form-field>
           <div class="login-buttons">
-            <button class="button-full" mat-button (click)="registerpress()">Register</button>
+            <button (click)="registerpress()" class="button-full" mat-button>Register</button>
             <button class="button-outline" matStepperPrevious>Back</button>
           </div>
         </form>

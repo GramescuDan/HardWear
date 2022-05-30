@@ -1,16 +1,15 @@
-import { environment } from "../../environments/environment";
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { CategoryService } from "./category-service";
-import { Item } from "../models/Item";
-import { map, Observable, shareReplay, tap } from "rxjs";
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { CategoryService } from './category-service';
+import { Item } from '../models/Item';
+import { map, Observable, shareReplay, tap } from 'rxjs';
 
-const apiUrl = environment.apiUrl + "items";
+const apiUrl = environment.apiUrl + 'items';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class ItemsService {
   initializedItems: Item[];
   mock: Item[] = [
@@ -21,7 +20,7 @@ export class ItemsService {
       quantity: 13,
       description: 'Some description',
       thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg',
-      categories: ['Laptops']
+      categories: ['Laptops'],
     },
     {
       id: 2,
@@ -30,7 +29,7 @@ export class ItemsService {
       quantity: 13,
       description: 'Some description 2',
       thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg',
-      categories: ['Laptops']
+      categories: ['Laptops'],
     },
     {
       id: 3,
@@ -39,12 +38,14 @@ export class ItemsService {
       quantity: 13,
       description: 'Some description 3',
       thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg',
-      categories: ['Laptops']
+      categories: ['Laptops'],
     },
-  ]
+  ];
 
-  constructor(private readonly _http: HttpClient, private readonly _categoryService: CategoryService) {
-  }
+  constructor(
+    private readonly _http: HttpClient,
+    private readonly _categoryService: CategoryService,
+  ) {}
 
   itemsUpdate(newItems: Item[]) {
     this.initializedItems = newItems;
@@ -52,11 +53,19 @@ export class ItemsService {
 
   get(): Observable<Item[]> {
     if (this._categoryService.categories.length == 0) {
-      return this._http.get<Item[]>(`${environment.apiUrl}items`).pipe(tap(console.log), map(items => items.length ? items : this.mock), shareReplay());
+      return this._http.get<Item[]>(`${environment.apiUrl}items`).pipe(
+        tap(console.log),
+        map(items => (items.length ? items : this.mock)),
+        shareReplay(),
+      );
     }
-    const url = apiUrl + "/byCategories?categories=";
-    const categories = this._categoryService.categories.map(c => encodeURIComponent(c))
-    return this._http.get<Item[]>(url + categories.join("&categories=")).pipe(tap(console.log), map(items => items.length ? items : this.mock), shareReplay());
+    const url = apiUrl + '/byCategories?categories=';
+    const categories = this._categoryService.categories.map(c => encodeURIComponent(c));
+    return this._http.get<Item[]>(url + categories.join('&categories=')).pipe(
+      tap(console.log),
+      map(items => (items.length ? items : this.mock)),
+      shareReplay(),
+    );
   }
 
   add(item: Item) {

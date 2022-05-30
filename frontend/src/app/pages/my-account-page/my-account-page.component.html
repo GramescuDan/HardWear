@@ -1,16 +1,24 @@
 <div class="my-account-contents">
-  <div class="details" style="display: flex;  justify-content: space-between;">
-    <app-info-card [fires]="currentUser.username"
-                   [fitext]="'Username'" [headername]="'Account Details'"
-                   [selector]="true" [seres]="currentUser.email"
-                   [setext]="'Email'" [thres]="currentUser.phone"
-                   [thtext]="'Phone'"
+  <div class="details" style="display: flex; justify-content: space-between">
+    <app-info-card
+      [fires]="currentUser.username"
+      [fitext]="'Username'"
+      [headername]="'Account Details'"
+      [selector]="true"
+      [seres]="currentUser.email"
+      [setext]="'Email'"
+      [thres]="currentUser.phone"
+      [thtext]="'Phone'"
     ></app-info-card>
-    <app-info-card [fires]="currentUser.firstName"
-                   [fitext]="'First Name'" [headername]="'Personal Details'"
-                   [selector]="false" [seres]="currentUser.lastName"
-                   [setext]="'Last Name'" [thres]="currentUser.location"
-                   [thtext]="'Address'"
+    <app-info-card
+      [fires]="currentUser.firstName"
+      [fitext]="'First Name'"
+      [headername]="'Personal Details'"
+      [selector]="false"
+      [seres]="currentUser.lastName"
+      [setext]="'Last Name'"
+      [thres]="currentUser.location"
+      [thtext]="'Address'"
     ></app-info-card>
   </div>
   <div class="item-list">
@@ -20,8 +28,6 @@
     <div *ngFor="let item of currentUser.favouriteItems">
       <app-item [itemContainer]="item"></app-item>
     </div>
-    <div>
-
-    </div>
+    <div></div>
   </div>
 </div>

@@ -1,37 +1,37 @@
-.dialog-account{
+.dialog-account {
   display: flex;
   flex-direction: column;
-
 }
-.my-account-buttons{
+
+.my-account-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-::ng-deep.mat-dialog-container{
+::ng-deep.mat-dialog-container {
   background: var(--color-tertiary);
   color: var(--color-secundary-font);
 }
 
-::ng-deep.mat-input-element{
+::ng-deep.mat-input-element {
   caret-color: #662966;
-
-}
-::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline{
-  color:var(--color-quaternary);
 }
 
-.save-button{
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--color-quaternary);
+}
+
+.save-button {
   background: var(--color-accent);
-  border : none;
+  border: none;
   font-weight: bold;
   height: 3.72vh;
   width: 92px;
   border-radius: 8px;
 }
 
-.close-button{
+.close-button {
   color: var(--color-secundary-font);
   background: none;
   height: 3.72vh;

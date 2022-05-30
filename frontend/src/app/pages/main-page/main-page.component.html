@@ -1,23 +1,47 @@
 <div class="main-page-contents">
   <div class="main-page-cover">
-    <img alt="Cover for main page" src="assets/glasses.png">
+    <img alt="Cover for main page" src="assets/glasses.png" />
     <h1 class="cover-text">Buy the things that make your life complete</h1>
   </div>
   <div class="category-section">
-    <app-category-button (categoryEmitter)="updateitems($event)" [name]="'Laptops'"></app-category-button>
-    <app-category-button (categoryEmitter)="updateitems($event)" [name]="'Mobile Phones'"></app-category-button>
-    <app-category-button (categoryEmitter)="updateitems($event)"
-                         [name]="'Gaming & Office Systems'"></app-category-button>
-    <app-category-button (categoryEmitter)="updateitems($event)" [name]="'Components'"></app-category-button>
-    <app-category-button (categoryEmitter)="updateitems($event)" [name]="'Gaming'"></app-category-button>
-    <app-category-button (categoryEmitter)="updateitems($event)"
-                         [name]="'Monitors & Peripheries'"></app-category-button>
-    <app-category-button (categoryEmitter)="updateitems($event)" [name]="'Tv & Video'"></app-category-button>
-    <app-category-button (categoryEmitter)="updateitems($event)" [name]="'Networking & UPS'"></app-category-button>
-    <app-category-button (categoryEmitter)="updateitems($event)"
-                         [name]="'Software & Office Supplies'"></app-category-button>
+    <app-category-button
+      (categoryEmitter)="updateitems($event)"
+      [name]="'Laptops'"
+    ></app-category-button>
+    <app-category-button
+      (categoryEmitter)="updateitems($event)"
+      [name]="'Mobile Phones'"
+    ></app-category-button>
+    <app-category-button
+      (categoryEmitter)="updateitems($event)"
+      [name]="'Gaming & Office Systems'"
+    ></app-category-button>
+    <app-category-button
+      (categoryEmitter)="updateitems($event)"
+      [name]="'Components'"
+    ></app-category-button>
+    <app-category-button
+      (categoryEmitter)="updateitems($event)"
+      [name]="'Gaming'"
+    ></app-category-button>
+    <app-category-button
+      (categoryEmitter)="updateitems($event)"
+      [name]="'Monitors & Peripheries'"
+    ></app-category-button>
+    <app-category-button
+      (categoryEmitter)="updateitems($event)"
+      [name]="'Tv & Video'"
+    ></app-category-button>
+    <app-category-button
+      (categoryEmitter)="updateitems($event)"
+      [name]="'Networking & UPS'"
+    ></app-category-button>
+    <app-category-button
+      (categoryEmitter)="updateitems($event)"
+      [name]="'Software & Office Supplies'"
+    ></app-category-button>
   </div>
-  <div class="category-section" style="flex-wrap: wrap;row-gap: 16px;">
+  <div class="category-section" style="flex-wrap: wrap; row-gap: 16px">
     <div *ngFor="let item of itemsList">
       <app-item [itemContainer]="item"></app-item>
     </div>

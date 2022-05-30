@@ -1,4 +1,4 @@
-.not-found{
+.not-found {
   font-family: JetBrains Mono;
   font-size: 300px;
   font-weight: 700;
@@ -8,7 +8,7 @@
   color: rgba(102, 41, 102, 1);
 }
 
-.not-found-text{
+.not-found-text {
   font-family: JetBrains Mono;
   font-size: 16px;
   font-weight: 400;
@@ -17,17 +17,19 @@
   text-align: center;
   color: rgba(102, 41, 102, 1);
 }
-button{
+
+button {
   width: 138px;
   height: 32px;
   left: 651px;
   top: 685px;
 
-  background: #10DD3D;
+  background: #10dd3d;
   border-radius: 8px;
   border-style: none;
 }
-div{
+
+div {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,4 +1,4 @@
-.my-account-contents{
+.my-account-contents {
   display: flex;
   z-index: -1;
   margin-top: 70px;
@@ -7,7 +7,8 @@
   flex-direction: column;
   row-gap: 1vw;
 }
-.item-list{
+
+.item-list {
   display: flex;
   flex-direction: column;
   padding-left: 16px;
@@ -17,8 +18,8 @@
   min-height: 500px;
 }
 
-.item-list-items{
+.item-list-items {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   justify-content: space-evenly;
 }

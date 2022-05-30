@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from "@angular/router";
+import { RouterModule } from '@angular/router';
 import { AddEditItemComponent } from './add-item/add-edit-item.component';
 import { ItemsComponent } from './items/items.component';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatIconModule } from "@angular/material/icon";
-import { MatChipsModule } from "@angular/material/chips";
-import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatInputModule } from "@angular/material/input";
-import { SharedModule } from "../shared/shared.module";
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AddEditItemComponent,
-    ItemsComponent
-  ],
+  declarations: [AddEditItemComponent, ItemsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -26,16 +22,16 @@ import { SharedModule } from "../shared/shared.module";
       },
       {
         path: 'items/add',
-        component: AddEditItemComponent
+        component: AddEditItemComponent,
       },
       {
         path: 'items/edit/:itemId',
-        component: AddEditItemComponent
+        component: AddEditItemComponent,
       },
       {
         path: '**',
-        redirectTo: 'items'
-      }
+        redirectTo: 'items',
+      },
     ]),
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -44,9 +40,8 @@ import { SharedModule } from "../shared/shared.module";
     MatCheckboxModule,
     FormsModule,
     MatInputModule,
-    SharedModule
+    SharedModule,
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminModule {
-}
+export class AdminModule {}

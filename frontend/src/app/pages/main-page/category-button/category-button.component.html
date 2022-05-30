@@ -1,1 +1,6 @@
-<button class="{{this.pressed ? 'category-button' :'category-button-selected'}}" (click)="onClick()" >{{name}}</button>
+<button
+  (click)="onClick()"
+  class="{{ this.pressed ? 'category-button' : 'category-button-selected' }}"
+>
+  {{ name }}
+</button>

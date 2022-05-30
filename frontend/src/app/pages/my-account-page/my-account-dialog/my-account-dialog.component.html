@@ -1,22 +1,22 @@
 <div class="dialog-account">
   <form [formGroup]="updateForm" class="dialog-account">
     <mat-form-field appearance="outline">
-    <mat-label>{{this.fitext}}</mat-label>
-      <input matInput value="{{this.fires}}" formControlName="fir">
+      <mat-label>{{ this.fitext }}</mat-label>
+      <input formControlName="fir" matInput value="{{ this.fires }}" />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>{{this.setext}}</mat-label>
-      <input matInput value="{{this.seres}}" formControlName="sec">
+      <mat-label>{{ this.setext }}</mat-label>
+      <input formControlName="sec" matInput value="{{ this.seres }}" />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>{{this.thtext}}</mat-label>
-      <input matInput value="{{this.thres}}" formControlName="th">
+      <mat-label>{{ this.thtext }}</mat-label>
+      <input formControlName="th" matInput value="{{ this.thres }}" />
     </mat-form-field>
-  <div class="my-account-buttons">
-    <button (click)="pressSave()" [mat-dialog-close]="true" class="save-button">Save</button>
-    <button [mat-dialog-close]="true" class="close-button">Close</button>
-  </div>
+    <div class="my-account-buttons">
+      <button (click)="pressSave()" [mat-dialog-close]="true" class="save-button">Save</button>
+      <button [mat-dialog-close]="true" class="close-button">Close</button>
+    </div>
   </form>
 </div>

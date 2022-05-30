@@ -1,36 +1,41 @@
-.icon-button{
+.icon-button {
   padding: 6px;
 }
-button{
+
+button {
   background: none;
   line-height: 0;
   padding: 0;
   min-width: 0;
-  font:inherit;
+  font: inherit;
 }
-.changecolor{
+
+.changecolor {
   fill: var(--color-accent);
 }
-::ng-deep.mat-menu-panel.user-menu{
+
+::ng-deep.mat-menu-panel.user-menu {
   margin-top: 20px;
   background: var(--color-tertiary);
   border-radius: 8px;
 }
-.user-content{
+
+.user-content {
   padding-top: 4px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
-.user-option{
+
+.user-option {
   padding-right: 10px;
   display: flex;
   justify-content: flex-end;
   color: var(--color-secundary-font);
   background: none;
   border-style: none;
-
 }
-.user-option:hover{
-  color:var(--color-main-font);
+
+.user-option:hover {
+  color: var(--color-main-font);
 }
