@@ -1,27 +1,35 @@
 <form [formGroup]="form">
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
-    <input formControlName="name" matInput />
+    <input formControlName="name" matInput/>
   </mat-form-field>
 
   <mat-form-field appearance="outline" color="warn">
     <mat-label>Price</mat-label>
-    <input formControlName="price" matInput type="number" />
+    <input formControlName="price" matInput type="number"/>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Quantity</mat-label>
-    <input formControlName="quantity" matInput type="number" />
+    <input formControlName="quantity" matInput type="number"/>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Description</mat-label>
-    <input formControlName="description" matInput />
+    <input formControlName="description" matInput/>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Thumbnail</mat-label>
-    <input formControlName="thumbnail" matInput />
+    <input formControlName="thumbnail" matInput/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <ngx-mat-file-input
+      formControlName="currentFile"
+      placeholder="Basic Input"
+    ></ngx-mat-file-input>
+    <mat-icon matSuffix>folder</mat-icon>
   </mat-form-field>
 
   <section class="example-section">
@@ -39,6 +47,8 @@
       </ul>
     </span>
   </section>
+
+  {{form.status}}
 
   <div class="login-buttons">
     <button (click)="save()">Save</button>

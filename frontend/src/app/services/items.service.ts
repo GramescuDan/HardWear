@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CategoryService } from './category-service';
 import { Item } from '../models/Item';
-import { map, Observable, shareReplay, tap } from 'rxjs';
+import { firstValueFrom, map, Observable, shareReplay, tap } from 'rxjs';
 
 const apiUrl = environment.apiUrl + 'items';
 
@@ -68,12 +68,11 @@ export class ItemsService {
     );
   }
 
-  add(item: Item) {
-    // let formData = new FormData();
-    // const img = await firstValueFrom(this._http.get<Blob>('https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg'))
-    // formData.append("currentFile", img);
-    // formData.append('item', item);
-    return this._http.post(apiUrl, item).pipe(tap(console.log));
+  async add(item: Item, file: Blob) {
+    let formData = new FormData();
+    formData.append('currentFile', file);
+    formData.append('item', new Blob([JSON.stringify(item)], { type: 'application/json' }));
+    return firstValueFrom(this._http.post(apiUrl, formData).pipe(tap(console.log)));
   }
 
   update(item: Item) {

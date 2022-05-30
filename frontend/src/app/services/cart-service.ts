@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Item } from '../models/Item';
-import { BehaviorSubject, catchError, Observable, of, pipe, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, pipe, switchMap, tap } from 'rxjs';
+import { ICart } from '../models/cart';
 
 const apiUrl = environment.apiUrl + 'carts';
 
@@ -35,7 +36,8 @@ export class CartService {
   }
 
   get(cartId: number): Observable<Item[]> {
-    return this._http.get<Item[]>(apiUrl + '/' + cartId, {}).pipe(
+    return this._http.get<ICart>(apiUrl + '/' + cartId, {}).pipe(
+      map(cart => cart.cartItems),
       catchError(() => of(JSON.parse(localStorage.getItem('cart') as string))),
       tap(console.log),
     );

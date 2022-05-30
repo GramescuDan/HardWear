@@ -12,9 +12,9 @@
 
 .item-image {
   border-radius: 4px;
-  min-height: 100px;
-  min-width: 250px;
-  max-height: 100px;
+  /*min-height: 100px;*/
+  /*min-width: 250px;*/
+  max-height: 165px;
   max-width: 250px;
 }
 

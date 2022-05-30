@@ -4,7 +4,8 @@ import { CategoryService } from '../../services/category-service';
 import { ItemsService } from '../../services/items.service';
 import { Item } from '../../models/Item';
 import { firstValueFrom, map } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FileInput } from 'ngx-material-file-input';
 
 @Component({
   selector: 'app-add-edit-item',
@@ -18,6 +19,7 @@ export class AddEditItemComponent implements OnInit {
     formBuilder: FormBuilder,
     readonly categoriesService: CategoryService,
     private readonly _itemsService: ItemsService,
+    private readonly _router: Router,
     private readonly activatedRoute: ActivatedRoute,
   ) {
     this.form = formBuilder.group({
@@ -27,6 +29,7 @@ export class AddEditItemComponent implements OnInit {
       description: ['', Validators.required],
       thumbnail: ['', Validators.required],
       categories: [[], Validators.required],
+      currentFile: [null, Validators.required],
     });
   }
 
@@ -52,16 +55,21 @@ export class AddEditItemComponent implements OnInit {
     this.form.get('categories')?.patchValue([...existing, category]);
   }
 
-  save() {
+  async save() {
     if (this.form.invalid) {
       return alert('Form invalid!');
     }
 
     if (this.itemId) {
-      return firstValueFrom(this._itemsService.update(this.form.getRawValue()));
+      await firstValueFrom(this._itemsService.update(this.form.getRawValue()));
+      return this._router.navigate(['/admin/items']);
     }
 
-    return firstValueFrom(this._itemsService.add(this.form.getRawValue()));
+    const fileInput = this.form.get('currentFile')?.value as FileInput;
+    const file = fileInput.files[0];
+    console.log(this.form.getRawValue(), file as Blob);
+    await this._itemsService.add(this.form.getRawValue(), file as Blob);
+    return this._router.navigate(['/admin/items']);
   }
 
   isSelected(category: string) {
