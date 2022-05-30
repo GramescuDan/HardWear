@@ -1,43 +1,39 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {AuthSerivce} from "../../services/auth-serivce";
-import {IUser} from "../../models/user";
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { IUser } from '../../models/user';
 
 @Component({
   selector: 'app-user-button',
   templateUrl: './icon-button.component.html',
-  styleUrls: ['./icon-button.component.css']
+  styleUrls: ['./icon-button.component.css'],
 })
-export class IconButtonComponent implements OnInit {
-
-  constructor(private router: Router, private _auth: AuthSerivce) {
-    _auth.currentUser.subscribe((data: IUser) => this.user = data);
-    if (this.user) {
-      this.buttonlog = "Log out";
-    }
-  }
-
+export class IconButtonComponent {
   user: IUser;
   @Input() Id = ' ';
   @Input() image = ' ';
   @Input() buttonlog = 'Log in';
-  menu: any;
 
-  onMyAccountClick(): void {
+  constructor(private router: Router, readonly auth: AuthService) {
+    auth.currentUser.subscribe((data: IUser) => (this.user = data));
     if (this.user) {
-      console.log(this.user);
-      this.router.navigateByUrl('/my-account');
-    } else {
-      this.router.navigateByUrl('/login');
+      this.buttonlog = 'Log out';
     }
   }
 
-  onLoginClick(): void {
-    if(this.user){
-      this._auth.logout();}
-    this.router.navigateByUrl('/login');
+  onMyAccountClick() {
+    if (this.user) {
+      return this.router.navigateByUrl('/my-account');
+    }
+
+    return this.router.navigateByUrl('/login');
   }
 
-  ngOnInit(): void {
+  onLoginClick() {
+    if (this.user) {
+      this.auth.logout();
+    }
+
+    return this.router.navigateByUrl('/login');
   }
 }

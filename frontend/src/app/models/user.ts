@@ -1,6 +1,6 @@
 import { IBase } from './base';
-import { Item } from "./Item";
-import { ICart } from "./cart";
+import { Item } from './Item';
+import { ICart } from './cart';
 
 export class IUser implements IBase {
   id: number;
@@ -13,4 +13,5 @@ export class IUser implements IBase {
   location: string;
   favouriteItems: Item[];
   cart: ICart;
+  roles: { id: number; name: string }[];
 }

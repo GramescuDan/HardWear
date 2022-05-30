@@ -1,24 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemsService } from "../../services/items.service";
-import { Item } from "../../models/Item";
-import { CategoryService } from "../../services/category-service";
+import { ItemsService } from '../../services/items.service';
+import { Item } from '../../models/Item';
+import { CategoryService } from '../../services/category-service';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit {
-
   itemsList: Item[];
   private actualItems: Item[];
 
-  constructor(private _items: ItemsService, private _categ: CategoryService) {
-
-  }
+  constructor(private _items: ItemsService, private _categ: CategoryService) {}
 
   ngOnInit(): void {
-
     this._items.get().subscribe(items => {
       this.itemsList = items;
       this.actualItems = items;
@@ -29,14 +25,13 @@ export class MainPageComponent implements OnInit {
   }
 
   updateitems($event?: boolean) {
-
     if (this.itemsList && this.actualItems) {
       this.itemsList = this.actualItems;
       console.log(this.itemsList);
-      console.log(this._categ.categories)
+      console.log(this._categ.categories);
       this.itemsList = this.itemsList.filter(item => {
         return this._categ.categories.every(category => item.categories.includes(category));
-      })
+      });
     }
   }
 }
