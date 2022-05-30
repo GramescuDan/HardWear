@@ -43,10 +43,7 @@
 }
 
 .item-image {
-  min-width: 200px;
-  min-height: 150px;
-
-  max-width: 300px;
-  max-height: 300px;
+  max-height: 350px;
+  max-width: 350px;
   border-radius: 4px;
 }

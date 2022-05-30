@@ -16,4 +16,8 @@ export class CartPageComponent implements OnInit {
   ngOnInit() {
     return firstValueFrom(this._cartService.loadItems(this._auth.curentUserValue.cart.id));
   }
+
+  deleteItem(id: number) {
+    return firstValueFrom(this._cartService.remove(id, this._auth.curentUserValue.cart.id));
+  }
 }

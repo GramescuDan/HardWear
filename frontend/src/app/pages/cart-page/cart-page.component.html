@@ -1,3 +1,12 @@
 <div *ngFor="let item of items$ | async">
-  <app-item [itemContainer]="item"></app-item>
+  <app-item [itemContainer]="item">
+    <button
+      (click)="$event.stopPropagation(); $event.preventDefault(); deleteItem(item.id)"
+      aria-label="Example icon button with a menu icon"
+      color="warn"
+      mat-icon-button
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </app-item>
 </div>
