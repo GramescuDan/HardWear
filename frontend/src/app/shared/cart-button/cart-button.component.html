@@ -1,5 +1,5 @@
 <div class="cart-button" >
-  <div matBadge="" matBadgeSize="small" matBadgeOverlap="true" matBadgePosition="below after" matBadgeHidden="false">
+  <div [matBadge]="(items$ | async)?.length" matBadgeSize="small" matBadgeOverlap="true" matBadgePosition="below after" matBadgeHidden="false">
     <a (click)="cartPress()">
       <img [src]="[image]">
     </a>

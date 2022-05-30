@@ -6,6 +6,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { CartButtonComponent } from "./cart-button/cart-button.component";
 import { IconButtonComponent } from "./user-button/icon-button.component";
 import { MatMenuModule } from "@angular/material/menu";
+import {RouterModule} from "@angular/router";
+import { MatBadgeModule } from "@angular/material/badge";
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { MatMenuModule } from "@angular/material/menu";
   imports: [
     CommonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    RouterModule,
+    MatBadgeModule
   ],
   exports: [
     ItemComponent,
