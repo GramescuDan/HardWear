@@ -14,14 +14,25 @@
   <div class="items">
     <div *ngFor="let item of items" class="item">
       <app-item [itemContainer]="item">
-        <button
-          [routerLink]="'edit/' + item.id"
-          aria-label="Example icon button with a menu icon"
-          color="accent"
-          mat-icon-button
-        >
-          <mat-icon>edit</mat-icon>
-        </button>
+        <div>
+          <button
+            [routerLink]="'edit/' + item.id"
+            aria-label="Example icon button with a menu icon"
+            color="accent"
+            mat-icon-button
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button
+            (click)="$event.stopPropagation(); $event.preventDefault(); deleteItem(item.id)"
+            aria-label="Example icon button with a menu icon"
+            color="warn"
+            mat-icon-button
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </app-item>
     </div>
   </div>

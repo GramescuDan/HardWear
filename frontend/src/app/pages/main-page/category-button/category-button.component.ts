@@ -24,7 +24,7 @@ export class CategoryButtonComponent implements OnInit {
     }
 
     this.categoryEmitter.emit(true);
-    this._items.get().subscribe(items => this._items.itemsUpdate(items));
+    this._items.load().subscribe(items => this._items.itemsUpdate(items));
   }
 
   ngOnInit(): void {}

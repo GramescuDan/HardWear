@@ -7,7 +7,6 @@ import { CartService } from '../../../services/cart-service';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'app-item-dialog',
   templateUrl: './item-dialog.component.html',
   styleUrls: ['./item-dialog.component.css'],
 })

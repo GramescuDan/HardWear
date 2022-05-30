@@ -40,7 +40,7 @@ export class AddEditItemComponent implements OnInit {
   async ngOnInit() {
     const itemId = this.itemId;
     const item = this._itemsService
-      .get()
+      .load()
       .pipe(map(items => items.find(i => i.id === Number(itemId))));
     if (item) {
       this.patchForm((await firstValueFrom(item)) ?? ({} as Item));

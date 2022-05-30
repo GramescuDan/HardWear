@@ -3,7 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CategoryService } from './category-service';
 import { Item } from '../models/Item';
-import { firstValueFrom, map, Observable, shareReplay, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  firstValueFrom,
+  map,
+  Observable,
+  of,
+  pipe,
+  shareReplay,
+  switchMap,
+  tap,
+} from 'rxjs';
 
 const apiUrl = environment.apiUrl + 'items';
 
@@ -11,7 +22,7 @@ const apiUrl = environment.apiUrl + 'items';
   providedIn: 'root',
 })
 export class ItemsService {
-  initializedItems: Item[];
+  items$ = new BehaviorSubject<Item[]>([]);
   mock: Item[] = [
     {
       id: 1,
@@ -45,17 +56,20 @@ export class ItemsService {
   constructor(
     private readonly _http: HttpClient,
     private readonly _categoryService: CategoryService,
-  ) {}
-
-  itemsUpdate(newItems: Item[]) {
-    this.initializedItems = newItems;
+  ) {
+    firstValueFrom(this.load()).then();
   }
 
-  get(): Observable<Item[]> {
+  itemsUpdate(newItems: Item[]) {
+    this.items$.next(newItems);
+  }
+
+  load(): Observable<Item[]> {
     if (this._categoryService.categories.length == 0) {
       return this._http.get<Item[]>(`${environment.apiUrl}items`).pipe(
         tap(console.log),
         map(items => (items.length ? items : this.mock)),
+        tap(items => this.itemsUpdate(items)),
         shareReplay(),
       );
     }
@@ -64,6 +78,7 @@ export class ItemsService {
     return this._http.get<Item[]>(url + categories.join('&categories=')).pipe(
       tap(console.log),
       map(items => (items.length ? items : this.mock)),
+      tap(items => this.itemsUpdate(items)),
       shareReplay(),
     );
   }
@@ -72,10 +87,27 @@ export class ItemsService {
     let formData = new FormData();
     formData.append('currentFile', file);
     formData.append('item', new Blob([JSON.stringify(item)], { type: 'application/json' }));
-    return firstValueFrom(this._http.post(apiUrl, formData).pipe(tap(console.log)));
+    return firstValueFrom(
+      this._http.post(apiUrl, formData).pipe(tap(console.log), this.#reloadItemsAfterRequest()),
+    );
   }
 
   update(item: Item) {
-    return this._http.post(apiUrl + '/' + item.id, item).pipe(tap(console.log));
+    return this._http
+      .post(apiUrl + '/' + item.id, item)
+      .pipe(tap(console.log), this.#reloadItemsAfterRequest());
+  }
+
+  delete(id: number) {
+    return this._http
+      .delete(apiUrl + '/' + id)
+      .pipe(tap(console.log), this.#reloadItemsAfterRequest());
+  }
+
+  #reloadItemsAfterRequest() {
+    return pipe(
+      catchError(() => of({})),
+      switchMap(() => this.load()),
+    );
   }
 }

@@ -15,7 +15,7 @@ export class MainPageComponent implements OnInit {
   constructor(private _items: ItemsService, private _categ: CategoryService) {}
 
   ngOnInit(): void {
-    this._items.get().subscribe(items => {
+    this._items.load().subscribe(items => {
       this.itemsList = items;
       this.actualItems = items;
     });
