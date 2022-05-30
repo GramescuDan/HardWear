@@ -1,0 +1,149 @@
+
+{
+  "root": true,
+  "ignorePatterns": [
+    "**/*",
+    "*.scss"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@angular-eslint/recommended--extra",
+        "airbnb-base",
+        "airbnb-typescript/base",
+        "prettier",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "@angular-eslint/prefer-on-push-component-change-detection": "error",
+        "@angular-eslint/use-lifecycle-interface": "error",
+        "@angular-eslint/no-input-prefix": "error",
+        "@angular-eslint/no-input-rename": "error",
+        "@angular-eslint/no-output-on-prefix": "error",
+        "@angular-eslint/no-output-rename": "error",
+        "@angular-eslint/prefer-output-readonly": "error",
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "formidable",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "formidable",
+            "style": "camelCase"
+          }
+        ],
+        "@typescript-eslint/unbound-method": [
+          "error",
+          {
+            "ignoreStatic": true
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "warn",
+          {
+            "accessibility": "no-public"
+          }
+        ],
+        "@typescript-eslint/member-ordering": "error",
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/lines-between-class-members": "off",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "memberLike",
+            "modifiers": [
+              "private"
+            ],
+            "format": [
+              "camelCase"
+            ],
+            "leadingUnderscore": "require"
+          },
+          {
+            "selector": "memberLike",
+            "modifiers": [
+              "protected"
+            ],
+            "format": [
+              "camelCase"
+            ],
+            "leadingUnderscore": "require"
+          },
+          {
+            "selector": "memberLike",
+            "modifiers": [
+              "private"
+            ],
+            "format": [
+              "UPPER_CASE",
+              "camelCase"
+            ],
+            "leadingUnderscore": "require"
+          }
+        ],
+        "import/prefer-default-export": "off",
+        "no-underscore-dangle": "off",
+        "quotes": [
+          2,
+          "single",
+          {
+            "avoidEscape": true
+          }
+        ],
+        "indent": [
+          "error",
+          2,
+          {
+            "SwitchCase": 1
+          }
+        ],
+        "arrow-parens": [
+          "error",
+          "as-needed"
+        ],
+        "semi": [
+          "error",
+          "always"
+        ],
+        "object-curly-spacing": [
+          "error",
+          "always"
+        ],
+        "no-param-reassign": "error",
+        "max-lines": [
+          "error",
+          400
+        ]
+      },
+      "plugins": [
+        "@angular-eslint/eslint-plugin",
+        "@typescript-eslint"
+      ]
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "plugins": [
+        "prettier"
+      ]
+    }
+  ]
+}
