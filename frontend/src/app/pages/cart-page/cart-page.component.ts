@@ -24,7 +24,7 @@ export class CartPageComponent implements OnInit {
 
   async buy() {
     const items = await firstValueFrom(this.items$);
-    // items.forEach(item => this.deleteItem(item.id));
+    items.forEach(item => this.deleteItem(item.id));
     this.itemsSold = true;
   }
 }
