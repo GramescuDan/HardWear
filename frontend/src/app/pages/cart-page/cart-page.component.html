@@ -1,12 +1,39 @@
-<div *ngFor="let item of items$ | async">
-  <app-item [itemContainer]="item">
+<ng-container *ngIf="!itemsSold">
+  <div class="items">
+    <app-item *ngFor="let item of items$ | async" [itemContainer]="item" class="item">
+      <button
+        (click)="$event.stopPropagation(); $event.preventDefault(); deleteItem(item.id)"
+        aria-label="Example icon button with a menu icon"
+        color="warn"
+        mat-icon-button
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </app-item>
+  </div>
+
+  <div class="buy-button">
     <button
-      (click)="$event.stopPropagation(); $event.preventDefault(); deleteItem(item.id)"
+      (click)="buy()"
       aria-label="Example icon button with a menu icon"
-      color="warn"
-      mat-icon-button
+      color="primary"
+      mat-raised-button
     >
-      <mat-icon>delete</mat-icon>
+      <mat-icon>money</mat-icon>
+      Buy
     </button>
-  </app-item>
+  </div>
+</ng-container>
+
+<div *ngIf="itemsSold" class="items-sold">
+  <h1>Thank you for your purchase!</h1>
+  <button
+    aria-label="Example icon button with a menu icon"
+    color="primary"
+    mat-raised-button
+    routerLink="/"
+  >
+    <mat-icon>arrow_back</mat-icon>
+    Go shopping again!
+  </button>
 </div>
