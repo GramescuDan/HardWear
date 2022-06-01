@@ -12,9 +12,6 @@ At HardWear, we keep our customers ahead of the line by providing a discount of 
 * A new client can register by completing the registration form.
 #### Login
 Usual username and password login.
-Admin:
-* full access in application (used for testing or resolving problems that require extended access).
-* can see detailed reports.
 #### Client
 * has access to different products.
 *	can add products to favourites
@@ -23,6 +20,7 @@ Admin:
 #### Admin
 *	can add products
 *	can delete/edit products
+* full access in application (used for testing or resolving problems that require extended access)
 
 ### Technologies
   ![_alt_text_](https://img.shields.io/badge/React_Native-20232A?style=or-the-badge&logo=react&logoColor=61DAFB) 
