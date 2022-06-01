@@ -6,10 +6,11 @@ import { firstValueFrom } from 'rxjs';
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.css'],
+  styleUrls: ['./cart-page.component.scss'],
 })
 export class CartPageComponent implements OnInit {
   readonly items$ = this._cartService.items$;
+  itemsSold = false;
 
   constructor(private readonly _cartService: CartService, private readonly _auth: AuthService) {}
 
@@ -19,5 +20,11 @@ export class CartPageComponent implements OnInit {
 
   deleteItem(id: number) {
     return firstValueFrom(this._cartService.remove(id, this._auth.curentUserValue.cart.id));
+  }
+
+  async buy() {
+    const items = await firstValueFrom(this.items$);
+    items.forEach(item => this.deleteItem(item.id));
+    this.itemsSold = true;
   }
 }
