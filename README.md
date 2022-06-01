@@ -5,13 +5,11 @@ This web and mobile application stays as an interface between users and differen
 At HardWear, we keep our customers ahead of the line by providing a discount of 15% and you can see that in real time by looking at the product tags.
 ### Roles
  	Admin
- 	Retailer
  	Client
 
 ### Functional Requirements
 #### Registration
 * A new client can register by completing the registration form.
-* A new retailer can be registered by an admin
 #### Login
 Usual username and password login.
 Admin:
@@ -19,11 +17,10 @@ Admin:
 * can see detailed reports.
 #### Client
 * has access to different products.
-* can review products.
-* can set auto-emails for reminding to train or to renew the subscription
-*	can give feedbacks for trainings/alimentation plans
-*	planning calendar
-#### Retailer
+*	can add products to favourites
+*	cand add products to cart and purchase them
+*	can edit its personal details such as password, name, address
+#### Admin
 *	can add products
 *	can delete/edit products
 
