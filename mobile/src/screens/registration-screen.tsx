@@ -37,6 +37,16 @@ export function RegistrationScreen() {
         username: ""
     })
 
+    const [inputValidation, setInputValidation] = useState({
+        location: false,
+        email: false,
+        firstName: false,
+        lastName: false,
+        password: false,
+        phone: false,
+        username: false
+    })
+
     const onChangeUsername = (val: string) => {
         setRegInfo({...regInfo!, username: val});
     }
@@ -69,6 +79,7 @@ export function RegistrationScreen() {
         <CustomTextInput
             value={regInfo?.username}
             onChangeText = {onChangeUsername}
+            error={inputValidation.username}
             placeholderText="Enter your username"
             isTextSecured = {false}
             icon={<MaterialCommunityIcons name="account" size={24} color="gray" />}
@@ -77,6 +88,7 @@ export function RegistrationScreen() {
         <CustomTextInput
             value={regInfo?.password}
             onChangeText = {onChangePassword}
+            error={inputValidation.password}
             placeholderText="Enter your password"
             isTextSecured = {false}
             icon={<Entypo name="lock-open" size={24} color="gray" />}
@@ -86,6 +98,7 @@ export function RegistrationScreen() {
             value={regInfo?.email}
             onChangeText = {onChangeEmail}
             isTextSecured = {false}
+            error={inputValidation.email}
             placeholderText="Enter your email"
             icon={<Entypo name="mail" size={24} color="gray" />}
             key = {2}
@@ -93,6 +106,7 @@ export function RegistrationScreen() {
         <CustomTextInput
             value={regInfo?.firstName}
             isTextSecured = {false}
+            error={inputValidation.firstName}
             onChangeText = {onChangeFirstName}
             placeholderText="Enter your first name"
             icon={<MaterialIcons name="drive-file-rename-outline" size={24} color="gray" />}
@@ -101,6 +115,7 @@ export function RegistrationScreen() {
         <CustomTextInput
             value={regInfo?.lastName}
             isTextSecured = {false}
+            error={inputValidation.lastName}
             onChangeText = {onChangeLastName}
             placeholderText="Enter your last name"
             icon={<MaterialIcons name="drive-file-rename-outline" size={24} color="gray" />}
@@ -109,6 +124,7 @@ export function RegistrationScreen() {
         <CustomTextInput
             value={regInfo?.phone}
             isTextSecured = {false}
+            error={inputValidation.phone}
             onChangeText = {onChangePhone}
             placeholderText="Enter your phone number"
             icon={<Entypo name="phone" size={24} color="gray" />}
@@ -117,6 +133,7 @@ export function RegistrationScreen() {
         <CustomTextInput
             value={regInfo?.location}
             isTextSecured = {false}
+            error={inputValidation.location}
             onChangeText = {onChangelocation}
             placeholderText="Enter your location"
             icon={<Entypo name="calendar" size={24} color="gray" />}
@@ -129,7 +146,22 @@ export function RegistrationScreen() {
             title="Register now"
             textInputs={inputs}
             buttonText = "REGISTER"
-            buttonOnPress = {() => register(regInfo!)}
+            buttonOnPress = {() => {
+                if (regInfo.email === "" || regInfo.firstName === "" || regInfo.lastName === "" || regInfo.location === "" || regInfo.password === "" || regInfo.phone === "" || regInfo.username === "") {
+                    setInputValidation({
+                        email: regInfo.email === "" ? true : false,
+                        firstName: regInfo.firstName === "" ? true : false,
+                        location: regInfo.location === "" ? true : false,
+                        lastName: regInfo.lastName === "" ? true : false,
+                        password: regInfo.password === "" ? true : false,
+                        phone: regInfo.phone === "" ? true : false,
+                        username: regInfo.username === "" ? true : false,
+                    })
+                } else {
+                    register(regInfo!);
+
+                }
+            }}
         ></AuthentificationBox>
 
     );

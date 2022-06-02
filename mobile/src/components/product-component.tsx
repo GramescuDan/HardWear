@@ -27,7 +27,7 @@ export function ProductItem(p: Item) {
                     <Image source={!items.isFavorite(p) ? require("../../assets/heart.png") : require("../../assets/heart-filled.png")} style={[{ width: px(19), height: px(17) }, items.isFavorite(p) ? { tintColor: "darkred" } : { tintColor: "gray" }]} />
                 </TouchableOpacity>
                 <View style={{ width: px(90), height: px(100) }}>
-                    <Image source={require("../../assets/phone.jpg")} style={{ borderRadius: px(30), alignSelf: "center", width: px(70), height: px(80) }} />
+                    <Image source={{uri: p.thumbnail}} style={{ borderRadius: px(30), alignSelf: "center", width: px(70), height: px(80) }} />
                 </View>
             </View>
             {!p.quantity && <Text style={{ fontSize: 20, fontWeight: "bold", color: "red", transform: [{ rotate: '-45deg' }] }}>OUT OF STOCK</Text>}

@@ -21,5 +21,13 @@ class ItemsService {
     return http.post(`items/removeFavourite/${userId}/${itemId}`)
   }
 
+  addItemToCart(itemId: number, cartId: number) {
+    return http.post(`/carts/addItem/${itemId}/${cartId}`);
+  }
+
+  removeFromCart(cartId: number, itemId: number) {
+    return http.post(`carts/removeItem/${itemId}/${cartId}`)
+  }
+
 }
 export default new ItemsService();

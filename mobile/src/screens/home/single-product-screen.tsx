@@ -35,7 +35,7 @@ export function SingleProductScreen() {
         <View style={{ flex: 1, backgroundColor: "white", }}>
             <View style={{ flexGrow: 0.1, alignItems: "center", justifyContent: "center" }}>
                 <TouchableOpacity>
-                    <Image source={require("../../../assets/phone.jpg")} style={{ width: px(300), height: px(300) }} />
+                    <Image source={{uri: singleItem.thumbnail}} style={{ width: px(300), height: px(300) }} />
                 </TouchableOpacity>
             </View>
             <View style={{ flexGrow: 1, backgroundColor: "#f3f9fe", borderTopEndRadius: px(50), borderTopLeftRadius: px(50) }}>

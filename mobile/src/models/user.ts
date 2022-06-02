@@ -17,4 +17,8 @@ export interface User {
     roles: Role[];
     enabled: boolean;
     favouriteItems: Item[];
+    cart: {
+        id: number,
+        cartItems: Item[]
+    }
 }

@@ -12,7 +12,7 @@ export function CartItem(p: { product: Item }) {
         <View style={{ flexDirection: "row", marginTop: px(15), marginLeft: px(25), width: px(350), height: px(180), borderRadius: px(20), borderStyle: "solid", borderWidth: px(1.5), borderColor: "lightgray" }}>
             <View style={{ flex: 1, margin: px(20), flexDirection: "column" }}>
                 <View style={{ flexDirection: "row" }}>
-                    <Image source={require("../../assets/phone.jpg")} style={{ width: px(80), height: px(100), borderWidth: px(1), borderColor: "lightgray", borderRadius: px(10) }} />
+                    <Image source={{uri: p.product.thumbnail}} style={{ width: px(80), height: px(100), borderWidth: px(1), borderColor: "lightgray", borderRadius: px(10) }} />
                     <View style={{ flexDirection: "column", marginLeft: px(20) }}>
                         <Text style={{ fontWeight: "bold" }}>Name: {p.product.name}</Text>
                         <Text style={{ fontWeight: "bold" }}>Price: {p.product.price}$</Text>

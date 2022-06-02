@@ -29,7 +29,7 @@ export function FavouriteItem(p: { product: Item }) {
                 </View>
                 <Text style={{ textAlign: "right", fontSize: px(14), color: "gray" }}>{p.product.price}$</Text>
                 <View style={{ flexDirection: "row" }}>
-                    <Image source={require("../../assets/phone.jpg")} style={{ width: px(70), height: px(70) }} />
+                    <Image source={{uri: p.product.thumbnail}} style={{ width: px(70), height: px(70) }} />
                     <Text style={{ fontWeight: "bold" }}>{p.product.description}</Text>
                 </View>
             </View>

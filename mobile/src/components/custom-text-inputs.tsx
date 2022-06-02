@@ -19,13 +19,14 @@ type CustomInputProps = {
     value: string | undefined, 
     placeholderText: string, 
     onChangeText: (val: string) => void,
-    isTextSecured: boolean
+    isTextSecured: boolean,
+    error: boolean
 }
 
 export function CustomTextInput(p: CustomInputProps) {
     const inputRef = useRef<TextInput>(null!);
 
-    return <View style={textInputStyles} onTouchEnd = {() => inputRef.current.focus()}>
+    return <View style={[textInputStyles, p.error ? {borderColor: "red"} : {}]} onTouchEnd = {() => inputRef.current.focus()}>
         {p.icon}
         <TextInput
             placeholder={p.placeholderText}
@@ -33,11 +34,11 @@ export function CustomTextInput(p: CustomInputProps) {
             ref = {inputRef}
             secureTextEntry = {p.isTextSecured}
             onChangeText = {p.onChangeText}
-            style={{
+            style={[{
                 marginLeft: 10,
                 width: "90%",
                 
-            }}
+            }]}
             value={p.value}
         />
     </View>

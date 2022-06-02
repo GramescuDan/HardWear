@@ -14,7 +14,7 @@ export const categories = [
     categoryName: "Phones, Tablets",
     imageSource: require("../../../assets/phones-tablets.jpg"),
     subCategory: [{
-      name: "Phones",
+      name: "Mobile Phones",
       subCategoryImageSources: require("../../../assets/phone.jpg")
     },
     {
@@ -31,8 +31,12 @@ export const categories = [
         subCategoryImageSources: require("../../../assets/laptop.jpg")
       },
       {
-        name: "Desktop",
+        name: "Monitors & Peripheries",
         subCategoryImageSources: require("../../../assets/desktop.jpg")
+      },
+      {
+        name: "Software & Office Supplies",
+        subCategoryImageSources: require("../../../assets/office.jpg")
       }]
   },
   {
@@ -40,38 +44,33 @@ export const categories = [
     imageSource: require("../../../assets/gaming.jpg"),
     subCategory: [
       {
-        name: "Keyboards",
+        name: "Gaming & Office Systems",
+        subCategoryImageSources: require("../../../assets/office_systems.jpg")
+      },
+      {
+        name: "Gaming",
+        subCategoryImageSources: require("../../../assets/gaming2.jpg")
+      },
+      {
+        name: "Components",
         subCategoryImageSources: require("../../../assets/keyboard.jpg")
-      },
-      {
-        name: "Mouses",
-        subCategoryImageSources: require("../../../assets/mouse.png")
-      },
-      {
-        name: "Headphones",
-        subCategoryImageSources: require("../../../assets/headphones.jpg")
-      },
-      {
-        name: "Mousepad",
-        subCategoryImageSources: require("../../../assets/mousepad.jpg")
-      }]
+      }
+    ]
   },
+
   {
-    categoryName: "TV, Audio-Video, Photo",
+    categoryName: "TV, Audio-Video, Networking",
     imageSource: require("../../../assets/tv.jpg"),
     subCategory: [
       {
-        name: "TV",
+        name: "TV & Video",
         subCategoryImageSources: require("../../../assets/tv.jpg")
       },
       {
-        name: "Audio-Video",
-        subCategoryImageSources: require("../../../assets/speakers.jpg")
-      },
-      {
-        name: "Photo",
-        subCategoryImageSources: require("../../../assets/camera.png")
-      }]
+        name: "Networking & UPS",
+        subCategoryImageSources: require("../../../assets/networking.jpg")
+      }
+      ]
   },
 ]
 

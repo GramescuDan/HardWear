@@ -29,6 +29,7 @@ export function LoginScreen() {
     const inputs = [
         <CustomTextInput
             value={regInfo?.username}
+            error = {false}
             onChangeText = {onChangeUsername}
             placeholderText="Enter your username"
             icon={<MaterialCommunityIcons name="account" size={24} color="gray" />}
@@ -37,6 +38,7 @@ export function LoginScreen() {
         />,
         <CustomTextInput
             value={regInfo?.password}
+            error = {false}
             onChangeText = {onChangePassword}
             placeholderText="Enter your password"
             isTextSecured

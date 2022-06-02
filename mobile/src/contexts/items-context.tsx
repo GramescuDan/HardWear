@@ -44,13 +44,29 @@ function useItems() {
             return loginInfo?.favouriteItems.some(item => item.id === itemParam.id);
         }
 
+        const addToCart = async (cartId: number, itemId: number) => {
+            await ItemsService.addItemToCart(itemId, cartId).then((res) => {
+                setLoginInfo(res.data)
+            });
+        }
+
+        const removeItemFromCart = async (cartId: number, itemId: number) => {
+            await ItemsService.removeFromCart(cartId, itemId).then((res) => setLoginInfo(res.data));
+        }
+
+        const isInCart = (itemParam: Item) => {
+            return loginInfo?.cart.cartItems.some(item => item.id === itemParam.id);
+        }
+
         return {
             getItems,
             getItemsById,
             removeItemFromDb,
             saveFavourite,
             removeFavourite,
-            isFavorite
+            isFavorite,
+            addToCart,
+            removeItemFromCart
         }
     }
 }
