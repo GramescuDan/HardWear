@@ -27,9 +27,9 @@ export class AddEditItemComponent implements OnInit {
       price: [0, Validators.required],
       quantity: [0, Validators.required],
       description: ['', Validators.required],
-      thumbnail: ['', Validators.required],
+      thumbnail: [''],
       categories: [[], Validators.required],
-      currentFile: [null, Validators.required],
+      currentFile: [null],
     });
   }
 
@@ -66,7 +66,7 @@ export class AddEditItemComponent implements OnInit {
     }
 
     const fileInput = this.form.get('currentFile')?.value as FileInput;
-    const file = fileInput.files[0];
+    const file = fileInput.files[ 0 ];
     console.log(this.form.getRawValue(), file as Blob);
     await this._itemsService.add(this.form.getRawValue(), file as Blob);
     return this._router.navigate(['/admin/items']);
