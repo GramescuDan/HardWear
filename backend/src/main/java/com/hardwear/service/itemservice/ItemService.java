@@ -1,5 +1,6 @@
 package com.hardwear.service.itemservice;
 
+import com.hardwear.exception.DatabaseException;
 import com.hardwear.model.Item;
 import com.hardwear.service.CRUDService;
 

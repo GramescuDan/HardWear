@@ -1,17 +1,18 @@
 package com.hardwear.service.itemservice.impl;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.hardwear.exception.DatabaseException;
 import com.hardwear.model.Item;
 import com.hardwear.repository.ItemRepository;
 import com.hardwear.service.itemservice.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -52,12 +53,22 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     @Transactional
-    public void delete(Integer id) {
-        itemRepository.deleteById(id);
-    }
+    public void delete(Integer id) throws DatabaseException {
 
-    public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
-        Set<Object> seen = ConcurrentHashMap.newKeySet();
-        return t -> seen.add(keyExtractor.apply(t));
+        Optional<Item> optionalItem = getById(id);
+
+        if(optionalItem.isPresent()) {
+
+            String bucketName = "hardwear-pad-jmk";
+
+            String filename = optionalItem.get().getThumbnail().replaceAll("https://" + bucketName + ".s3.eu-central-1.amazonaws.com/", "");
+
+            AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion("eu-central-1").build();
+            s3client.deleteObject(bucketName, filename);
+
+            itemRepository.deleteById(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found");
+        }
     }
 }

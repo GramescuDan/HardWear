@@ -65,8 +65,8 @@ public class ItemController {
     }
 
     @PostMapping(path = "/items", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Item> createItem(@RequestPart("item") Item item,
-                                           @RequestParam("currentFIle") MultipartFile currentFile)
+    public ResponseEntity<Item> createItem(@RequestPart Item item,
+                                           @RequestPart MultipartFile currentFile)
             throws DatabaseException {
         if (item.getId() != null) {
             Optional<Item> optionalItem = itemService.getById(item.getId());
