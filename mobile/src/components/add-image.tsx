@@ -4,7 +4,6 @@ import Feather from "@expo/vector-icons/build/Feather";
 import { px } from "../hooks/utils";
 import { manipulateAsync, SaveFormat } from "expo-image-manipulator";
 import * as ImagePicker from 'react-native-image-crop-picker';
-import { useMessageBox } from "../screens/modals/message-modal";
 
 type imageURI = {
     localImageUri: string;
@@ -15,7 +14,6 @@ const selectImage = async (multiple: boolean, imageURI: imageURI[], setImageURI:
     // const androidPermission = PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE;
     // const iOSPermission = PERMISSIONS.IOS.PHOTO_LIBRARY;
     // const photosPermission = Platform.OS === "android" ? androidPermission : iOSPermission;
-    const { showMessage } = useMessageBox();
 
     const loadImages = async (imgPath: string) => {
         const manipResult = await manipulateAsync(

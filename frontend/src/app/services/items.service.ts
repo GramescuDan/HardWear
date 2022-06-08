@@ -48,7 +48,7 @@ export class ItemsService {
     const categories = this._categoryService.categories.map(c => encodeURIComponent(c));
     return this._http.get<Item[]>(url + categories.join('&categories=')).pipe(
       tap(console.log),
-      map(items => (items.length ? items : this.mock)),
+      // map(items => (items.length ? items : this.mock)),
       tap(items => this.itemsUpdate(items)),
       shareReplay(),
     );
@@ -59,23 +59,23 @@ export class ItemsService {
     formData.append('currentFile', file);
     formData.append('item', new Blob([JSON.stringify(item)], {type: 'application/json'}));
     return firstValueFrom(
-      this._http.post(apiUrl, formData).pipe(tap(console.log), this.#reloadItemsAfterRequest()),
+      this._http.post(apiUrl, formData).pipe(tap(console.log), this.reloadItemsAfterRequest()),
     );
   }
 
   update(item: Item) {
     return this._http
       .post(apiUrl + '/' + item.id, item)
-      .pipe(tap(console.log), this.#reloadItemsAfterRequest());
+      .pipe(tap(console.log), this.reloadItemsAfterRequest());
   }
 
   delete(id: number) {
     return this._http
       .delete(apiUrl + '/' + id)
-      .pipe(tap(console.log), this.#reloadItemsAfterRequest());
+      .pipe(tap(console.log), this.reloadItemsAfterRequest());
   }
 
-  #reloadItemsAfterRequest() {
+  reloadItemsAfterRequest() {
     return pipe(
       catchError(() => of({})),
       switchMap(() => this.load()),
