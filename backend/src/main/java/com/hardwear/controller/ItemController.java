@@ -121,7 +121,7 @@ public class ItemController {
                 return new ResponseEntity<>(savedUser, HttpStatus.OK);
             }
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found"); //isDeleted => SQL logic
     }
 
 //    @PostMapping(value = "/items/uploadPhoto")

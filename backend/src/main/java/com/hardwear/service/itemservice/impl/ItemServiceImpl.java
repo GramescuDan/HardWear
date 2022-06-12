@@ -33,7 +33,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Item getByName(String name) {
         return itemRepository.findByName(name);
-    }
+    } //ignoreCase
 
     @Override
     public List<Item> getByCategories(List<String> categories) {

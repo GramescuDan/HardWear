@@ -48,7 +48,6 @@ export class ItemsService {
     const categories = this._categoryService.categories.map(c => encodeURIComponent(c));
     return this._http.get<Item[]>(url + categories.join('&categories=')).pipe(
       tap(console.log),
-      // map(items => (items.length ? items : this.mock)),
       tap(items => this.itemsUpdate(items)),
       shareReplay(),
     );
